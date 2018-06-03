@@ -47,6 +47,15 @@
         height: 50px;
         text-align: center;
     }
+    #cart {
+        border-radius: 5px;
+        font-size: 10px;
+        background: rgba(255, 0, 0, 0.9);
+        color: #FAFCFD;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+    }
     </style>
 </head>
 
@@ -70,6 +79,23 @@
                             <li class="nav-item"><a href="index.php#section-contact" class="nav-link">連繫我們</a></li>
                         </ul>
                     </div>
+                </div>
+                <div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <div class="form-inline">
+                                    <div style="position: relative; width: 35px; height: 35px;">
+                                        <div style="position: absolute;left: 0px;bottom: 0;">
+                                            <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
+                                        </div>
+                                        <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
+                                    </div>
+                                    購物車
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -155,32 +181,38 @@ $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
 if (!$link) {
-	echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
-	echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
-	exit();
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
 }
 echo "<div class=\"carousel-inner\">";
 
 if ($result = mysqli_query($link, "SELECT * FROM products")) {
-	$total_records = mysqli_num_rows($result);
-	$total_page = ceil($total_records / 9);
-	mysqli_data_seek($result, (@$_GET['page'] - 1) * 9);
-	echo "<div class=\"carousel-item active\"><div class=\"aaa owl-loaded\">";
-	for ($j = 1; $j <= 3; $j++) {
-		echo "<div class=\"bbb form-inline\">";
-		for ($k = 1; $k <= 3; $k++) {
-			$row = mysqli_fetch_assoc($result);
-			echo "<div class=\"d-block mb-4 text-center ftco-media border-0\" style=\"width: 360px; margin-right: 10px;\">
-                                            <img src=\"images/1.jpg\" /*class=\"img-fluid\" */ height=\"400px\">
+    $total_records = mysqli_num_rows($result);
+    $total_page = ceil($total_records / 9);
+    mysqli_data_seek($result, (@$_GET['page'] - 1) * 9);
+    echo "<div class=\"carousel-item active\"><div class=\"aaa owl-loaded\">";
+    for ($j = 1; $j <= 3; $j++) {
+        echo "<div class=\"bbb form-inline\">";
+        for ($k = 1; $k <= 3; $k++) {
+            $row = mysqli_fetch_assoc($result);
+            if(!is_null($row))
+            {
+                
+            
+            echo "<div class=\"d-block mb-4 text-center ftco-media border-0\" style=\"width: 360px; margin-right: 10px;\">
+                                            <img src=\"images/products/".$row["image_name"]."\" /*class=\"img-fluid\" */ height=\"400px\">
                                             <div class=\"media-body  p-4\">";
-			echo "<h5 class=\"text-primary\">" . $row["price"] . "</h5><h5 class=\"mt-0 h4\">" . $row["name"] . "</h5><p class=\"mb-4\">" . $row["description"] . "</p>
+            echo "<h5 class=\"text-primary\">" . $row["price"] . "</h5><h5 class=\"mt-0 h4\">" . $row["name"] . "</h5><p class=\"mb-4\">" . $row["description"] . "</p>
                                                 <p class=\"mb-0\"><a href=\"menu.php\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>
                                             </div>
                                         </div>";
-		}
+                                    }
+        }
+        echo "</div>";
 
-	}
-	echo "</div></div>";
+    }
+    echo "</div></div>";
 
 }
 echo "</div></div></div>";
@@ -194,18 +226,45 @@ echo "<div style=\"margin: auto\" id=\"myDIV\">
                                     <span class=\"sr-only\">Previous</span>
                                 </a>
                         </li>";
-for ($i = 1; $i <= $total_page; $i++) {
-	/*if ($i == 1) {
-		echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
-	} else*/{
-		echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
-		echo $i - 1;
-		echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
-		/*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
-		/*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
-	}
+                        if(NULL==@$_GET['page'])
+                        {
+                            echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
+        echo 0;
+        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=1#section-menu'>1</a></li>";
+        for ($i = 2; $i <= $total_page; $i++) {
+    /*if ($i == 1) {
+        echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
+    } else*/{
+
+        echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
+        echo $i - 1;
+        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
+        /*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
+        /*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
+    }
 
 }
+                        }
+                        else
+                        {
+
+
+for ($i = 1; $i <= $total_page; $i++) {
+    /*if ($i == 1) {
+        echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
+    } else*/{
+        if(@$_GET['page']==$i)
+            echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
+        else
+            echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
+        echo $i - 1;
+        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
+        /*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
+        /*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
+    }
+
+}
+ }
 echo "<li class=\"page-item\">
                             <a class=\"page-link\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
                                    <span aria-hidden=\"true\">&raquo;</span>
@@ -303,20 +362,20 @@ mysqli_close($link); // 關閉資料庫連結
         var btns = header.getElementsByClassName("page-item");
 
         btns[0].addEventListener("click", function() {
-            for (var i = 2; i < 4; i++) {
+            for (var i = 2; i < btns.length - 1; i++) {
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i - 1].className += " active";
-                    location.href = "#section-offer";
+                    location.href = "?page=" + (i - 1) + "#section-menu";
                 }
             }
         });
-        btns[4].addEventListener("click", function() {
-            for (var i = 2; i > 0; i--) {
+        btns[btns.length - 1].addEventListener("click", function() {
+            for (var i = btns.length - 3; i > 0; i--) {
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i + 1].className += " active";
-                    location.href = "#section-menu";
+                    location.href = "?page=" + (i + 1) + "#section-menu";
                 }
             }
         });
@@ -327,13 +386,19 @@ mysqli_close($link); // 關閉資料庫連結
     var header = document.getElementById("myDIV");
     var btns = header.getElementsByClassName("page-item");
 
-    for (var i = 1; i < 4; i++) {
+    for (var i = 1; i < btns.length - 1; i++) {
         btns[i].addEventListener("click", function() {
-            btns[1].className = btns[1].className.replace(" active", "");
-            btns[2].className = btns[2].className.replace(" active", "");
-            btns[3].className = btns[3].className.replace(" active", "");
+            for (var j = 1; j < btns.length - 1; j++) {
+                if ($(btns[j]).hasClass("active") == true) {
+                    btns[j].className = btns[j].className.replace(" active", "");
+                }
+            }
             this.className += " active";
-            location.href = "#section-menu";
+            for (var j = 1; j < btns.length - 1; j++) {
+                if ($(btns[j]).hasClass("active") == true) {
+                    location.href = "?page=" + j + "#section-menu";
+                }
+            }
         });
     }
     </script>
