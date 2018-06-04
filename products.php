@@ -47,6 +47,7 @@
         height: 50px;
         text-align: center;
     }
+
     #cart {
         border-radius: 5px;
         font-size: 10px;
@@ -57,49 +58,85 @@
         text-align: center;
     }
     </style>
+    <script type="text/javascript">
+    var xmlHttp;
+
+    function sendRequest($i) {
+        if (window.XMLHttpRequest) xmlHttp = new XMLHttpRequest(); //建立XMLHttpRequest物件
+        else if (window.ActiveXObject) xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        var url = 'products_ajax.php?page=' + $i;
+        xmlHttp.open('GET', url, true); //建立XMLHttpRequest連線要求
+        xmlHttp.onreadystatechange = catchResult; //指定處理程式
+        xmlHttp.send(null);
+    }
+
+    function catchResult() {
+        if (xmlHttp.readyState == 4 || xmlHttp.readyState == 'complete') { //取得XMLHttpRequest物件的狀態值,4--動作完成
+            if (xmlHttp.status == 200) { //執行狀態：200：OK 、403：Forbidden 、404：Not Found.......
+                var str = xmlHttp.responseText; //接收以文字方式傳回的執行結果
+                document.getElementById('products_content').innerHTML = str;
+            } else {
+                alert('執行錯誤,代碼:' + xmlHttp.status + '\(' + xmlHttp.statusText + '\)');
+            }
+        }
+    }
+    </script>
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
     <div id="gotop"><i class="fas fa-angle-up"></i></div>
-    <section class="bg-dark">
-        <div class="container" style="height: 100px">
-            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-                <div class="container">
-                    <a class="navbar-brand" href="index.php">胖不是罪</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="oi oi-menu"></span> Menu
-                    </button>
-                    <div class="collapse navbar-collapse" id="ftco-nav">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active"><a href="index.php" class="nav-link">首頁</a></li>
-                            <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
-                            <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
-                            <li class="nav-item"><a href="index.php#section-offer" class="nav-link">本日精選</a></li>
-                            <li class="nav-item"><a href="index.php#section-about" class="nav-link">關於我們</a></li>
-                            <li class="nav-item"><a href="index.php#section-contact" class="nav-link">連繫我們</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <div class="form-inline">
-                                    <div style="position: relative; width: 35px; height: 35px;">
-                                        <div style="position: absolute;left: 0px;bottom: 0;">
-                                            <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
-                                        </div>
-                                        <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">胖不是罪</a>
+            <div id="cart1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <div class="form-inline">
+                                <div style="position: relative; width: 35px; height: 35px;">
+                                    <div style="position: absolute;left: 0px;bottom: 0;">
+                                        <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
                                     </div>
-                                    購物車
+                                    <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
                                 </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+                                購物車
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="#section-home" class="nav-link">首頁</a></li>
+                    <li class="nav-item"><a href="#section-offer" class="nav-link">本日精選</a></li>
+                    <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
+                    <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
+                    <li class="nav-item"><a href="#section-about" class="nav-link">關於我們</a></li>
+                    <li class="nav-item"><a href="#section-contact" class="nav-link">連繫我們</a></li>
+                </ul>
+            </div>
         </div>
-    </section>
+        <div id="cart2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <div class="form-inline">
+                            <div style="position: relative; width: 35px; height: 35px;">
+                                <div style="position: absolute;left: 0px;bottom: 0;">
+                                    <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
+                                </div>
+                                <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
+                            </div>
+                            購物車
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <!-- END nav -->
     <section class="bg-light" id="section-news">
         <div class="container" style="padding: 50px">
@@ -176,7 +213,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="false" data-wrap="false">
-                        <?php
+<?php
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
@@ -185,34 +222,12 @@ if (!$link) {
     echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
     exit();
 }
-echo "<div class=\"carousel-inner\">";
+echo "<div  id='products_content'>";
 
 if ($result = mysqli_query($link, "SELECT * FROM products")) {
     $total_records = mysqli_num_rows($result);
     $total_page = ceil($total_records / 9);
-    mysqli_data_seek($result, (@$_GET['page'] - 1) * 9);
-    echo "<div class=\"carousel-item active\"><div class=\"aaa owl-loaded\">";
-    for ($j = 1; $j <= 3; $j++) {
-        echo "<div class=\"bbb form-inline\">";
-        for ($k = 1; $k <= 3; $k++) {
-            $row = mysqli_fetch_assoc($result);
-            if(!is_null($row))
-            {
-                
-            
-            echo "<div class=\"d-block mb-4 text-center ftco-media border-0\" style=\"width: 360px; margin-right: 10px;\">
-                                            <img src=\"images/products/".$row["image_name"]."\" /*class=\"img-fluid\" */ height=\"400px\">
-                                            <div class=\"media-body  p-4\">";
-            echo "<h5 class=\"text-primary\">" . $row["price"] . "</h5><h5 class=\"mt-0 h4\">" . $row["name"] . "</h5><p class=\"mb-4\">" . $row["description"] . "</p>
-                                                <p class=\"mb-0\"><a href=\"menu.php\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>
-                                            </div>
-                                        </div>";
-                                    }
-        }
-        echo "</div>";
 
-    }
-    echo "</div></div>";
 
 }
 echo "</div></div></div>";
@@ -228,6 +243,8 @@ echo "<div style=\"margin: auto\" id=\"myDIV\">
                         </li>";
                         if(NULL==@$_GET['page'])
                         {
+                            echo "<script type=\"text/javascript\">sendRequest(1);</script>";
+                            
                             echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
         echo 0;
         echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=1#section-menu'>1</a></li>";
@@ -366,7 +383,8 @@ mysqli_close($link); // 關閉資料庫連結
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i - 1].className += " active";
-                    location.href = "?page=" + (i - 1) + "#section-menu";
+                    sendRequest(i-1);
+                    location.href="#section-menu";
                 }
             }
         });
@@ -375,7 +393,8 @@ mysqli_close($link); // 關閉資料庫連結
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i + 1].className += " active";
-                    location.href = "?page=" + (i + 1) + "#section-menu";
+                    sendRequest(i+1);
+                    location.href="#section-menu";
                 }
             }
         });
@@ -396,7 +415,8 @@ mysqli_close($link); // 關閉資料庫連結
             this.className += " active";
             for (var j = 1; j < btns.length - 1; j++) {
                 if ($(btns[j]).hasClass("active") == true) {
-                    location.href = "?page=" + j + "#section-menu";
+                    sendRequest(j);
+                    location.href="#section-menu";
                 }
             }
         });

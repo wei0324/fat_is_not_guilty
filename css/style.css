@@ -28,16 +28,37 @@ h1, h2, h3, h4, h5,
   color: #F96D00 !important; }
 
 .ftco-navbar-light {
-  background: transparent !important;
-  position: absolute;
+  /*background: transparent !important;
+  position: absolute;*/
   left: 0;
   right: 0;
   z-index: 3; }
+  @media(min-width: 991px) 
+  {
+    #cart1{
+  display: none;
+}
+#cart2{
+  display: block;
+} 
+  }
+  @media(max-width: 991px) 
+  {
+    #cart1{
+  display: block;
+  margin-left:auto;
+}
+#cart2{
+  display: none;
+} 
+  }
   @media screen and (max-width: 991px) {
     .ftco-navbar-light {
       background: #000 !important;
       top: 0;
-      position: relative; } }
+      position: relative; } 
+
+    }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
     font-size: 16px;
     padding-top: 30px;
@@ -49,7 +70,9 @@ h1, h2, h3, h4, h5,
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 0px;
-        padding-right: 0px; } }
+        padding-right: 0px; } 
+
+      }
   .ftco-navbar-light .navbar-nav > .nav-item.ftco-cta a {
     color: #fff; }
   .ftco-navbar-light .navbar-nav > .nav-item.ftco-seperator {
@@ -59,7 +82,9 @@ h1, h2, h3, h4, h5,
     @media screen and (max-width: 960px) {
       .ftco-navbar-light .navbar-nav > .nav-item.ftco-seperator {
         padding-left: 0;
-        margin-left: 0; } }
+        margin-left: 0; } 
+
+      }
     .ftco-navbar-light .navbar-nav > .nav-item.ftco-seperator:before {
       position: absolute;
       content: "";
@@ -70,7 +95,9 @@ h1, h2, h3, h4, h5,
       background: rgba(255, 255, 255, 0.05); }
       @media screen and (max-width: 960px) {
         .ftco-navbar-light .navbar-nav > .nav-item.ftco-seperator:before {
-          display: none; } }
+          display: none; } 
+
+        }
   .ftco-navbar-light .navbar-toggler {
     border: none;
     color: rgba(255, 255, 255, 0.5) !important;
@@ -91,12 +118,16 @@ h1, h2, h3, h4, h5,
         background: none;
         border-radius: 0px;
         padding-left: 0rem !important;
-        padding-right: 0rem !important; } }
+        padding-right: 0rem !important; } 
+
+      }
     @media screen and (max-width: 576px) {
       .ftco-navbar-light.scrolled .navbar-nav {
         background: none;
         padding-left: 0 !important;
-        padding-right: 0 !important; } }
+        padding-right: 0 !important; } 
+
+      }
     .ftco-navbar-light.scrolled .navbar-toggler {
       border: none;
       color: rgba(0, 0, 0, 0.5) !important;

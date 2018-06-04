@@ -47,33 +47,96 @@
         height: 50px;
         text-align: center;
     }
+
+    #cart {
+        border-radius: 5px;
+        font-size: 10px;
+        background: rgba(255, 0, 0, 0.9);
+        color: #FAFCFD;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+    }
     </style>
+    <script type="text/javascript">
+    var xmlHttp;
+
+    function sendRequest($i) {
+        if (window.XMLHttpRequest) xmlHttp = new XMLHttpRequest(); //建立XMLHttpRequest物件
+        else if (window.ActiveXObject) xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        var url = 'products_ajax.php?page=' + $i;
+        xmlHttp.open('GET', url, true); //建立XMLHttpRequest連線要求
+        xmlHttp.onreadystatechange = catchResult; //指定處理程式
+        xmlHttp.send(null);
+    }
+
+    function catchResult() {
+        if (xmlHttp.readyState == 4 || xmlHttp.readyState == 'complete') { //取得XMLHttpRequest物件的狀態值,4--動作完成
+            if (xmlHttp.status == 200) { //執行狀態：200：OK 、403：Forbidden 、404：Not Found.......
+                var str = xmlHttp.responseText; //接收以文字方式傳回的執行結果
+                document.getElementById('products_content').innerHTML = str;
+            } else {
+                alert('執行錯誤,代碼:' + xmlHttp.status + '\(' + xmlHttp.statusText + '\)');
+            }
+        }
+    }
+    </script>
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
     <div id="gotop"><i class="fas fa-angle-up"></i></div>
-    <section class="bg-dark">
-        <div class="container" style="height: 100px">
-            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-                <div class="container">
-                    <a class="navbar-brand" href="index.php">胖不是罪</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="oi oi-menu"></span> Menu
-                    </button>
-                    <div class="collapse navbar-collapse" id="ftco-nav">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active"><a href="index.php" class="nav-link">首頁</a></li>
-                            <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
-                            <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
-                            <li class="nav-item"><a href="index.php#section-offer" class="nav-link">本日精選</a></li>
-                            <li class="nav-item"><a href="index.php#section-about" class="nav-link">關於我們</a></li>
-                            <li class="nav-item"><a href="index.php#section-contact" class="nav-link">連繫我們</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">胖不是罪</a>
+            <div id="cart1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <div class="form-inline">
+                                <div style="position: relative; width: 35px; height: 35px;">
+                                    <div style="position: absolute;left: 0px;bottom: 0;">
+                                        <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
+                                    </div>
+                                    <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
+                                </div>
+                                購物車
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="#section-home" class="nav-link">首頁</a></li>
+                    <li class="nav-item"><a href="#section-offer" class="nav-link">本日精選</a></li>
+                    <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
+                    <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
+                    <li class="nav-item"><a href="#section-about" class="nav-link">關於我們</a></li>
+                    <li class="nav-item"><a href="#section-contact" class="nav-link">連繫我們</a></li>
+                </ul>
+            </div>
         </div>
-    </section>
+        <div id="cart2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <div class="form-inline">
+                            <div style="position: relative; width: 35px; height: 35px;">
+                                <div style="position: absolute;left: 0px;bottom: 0;">
+                                    <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
+                                </div>
+                                <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
+                            </div>
+                            購物車
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <!-- END nav -->
     <section class="bg-light" id="section-news">
         <div class="container" style="padding: 50px">
@@ -150,317 +213,89 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="false" data-wrap="false">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="aaa owl-loaded">
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/1.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">1</h5>
-                                                <h5 class="mt-0 h4">111</h5>
-                                                <p class="mb-4">333</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/2.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">1</h5>
-                                                <h5 class="mt-0 h4">aaa</h5>
-                                                <p class="mb-4">ddd</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/3.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">1</h5>
-                                                <h5 class="mt-0 h4">aaa</h5>
-                                                <p class="mb-4">ddd</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!---->
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">2</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">3</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">8</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!---->
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">9</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">123</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">58</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--2-->
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="carousel-item">
-                                <div class="aaa owl-loaded">
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/1.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">2</h5>
-                                                <h5 class="mt-0 h4">111</h5>
-                                                <p class="mb-4">333</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/2.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">1</h5>
-                                                <h5 class="mt-0 h4">aaa</h5>
-                                                <p class="mb-4">ddd</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/3.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">1</h5>
-                                                <h5 class="mt-0 h4">aaa</h5>
-                                                <p class="mb-4">ddd</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!---->
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">2</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">3</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">8</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!---->
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">9</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">123</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">58</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--2-->
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="aaa owl-loaded">
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/1.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">3</h5>
-                                                <h5 class="mt-0 h4">111</h5>
-                                                <p class="mb-4">333</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/2.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">1</h5>
-                                                <h5 class="mt-0 h4">aaa</h5>
-                                                <p class="mb-4">ddd</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/3.jpg" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">1</h5>
-                                                <h5 class="mt-0 h4">aaa</h5>
-                                                <p class="mb-4">ddd</p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!---->
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">2</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">3</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">8</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!---->
-                                    <div class="bbb form-inline">
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">9</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">123</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-block mb-4 text-center ftco-media border-0" style="width: 360px; margin-right: 10px;">
-                                            <img src="images/products/" /*class="img-fluid" */ height="400px">
-                                            <div class="media-body  p-4">
-                                                <h5 class="text-primary">58</h5>
-                                                <h5 class="mt-0 h4"></h5>
-                                                <p class="mb-4"></p>
-                                                <p class="mb-0"><a href="menu.php" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--2-->
-                                </div>
-                            </div>
-                            <!---->
-                        </div>
+<?php
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
+echo "<div  id='products_content'>";
+
+if ($result = mysqli_query($link, "SELECT * FROM products")) {
+    $total_records = mysqli_num_rows($result);
+    $total_page = ceil($total_records / 9);
+
+
+}
+echo "</div></div></div>";
+
+echo "<div style=\"margin: auto\" id=\"myDIV\">
+                <nav aria-label=\"Page navigation example\">
+                    <ul class=\"pagination\">
+                        <li class=\"page-item\">
+                            <a class=\"page-link\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
+                                    <span aria-hidden=\"true\">&laquo;</span>
+                                    <span class=\"sr-only\">Previous</span>
+                                </a>
+                        </li>";
+                        if(NULL==@$_GET['page'])
+                        {
+                            echo "<script type=\"text/javascript\">sendRequest(1);</script>";
+                            
+                            echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
+        echo 0;
+        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=1#section-menu'>1</a></li>";
+        for ($i = 2; $i <= $total_page; $i++) {
+    /*if ($i == 1) {
+        echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
+    } else*/{
+
+        echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
+        echo $i - 1;
+        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
+        /*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
+        /*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
+    }
+
+}
+                        }
+                        else
+                        {
+
+
+for ($i = 1; $i <= $total_page; $i++) {
+    /*if ($i == 1) {
+        echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
+    } else*/{
+        if(@$_GET['page']==$i)
+            echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
+        else
+            echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
+        echo $i - 1;
+        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
+        /*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
+        /*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
+    }
+
+}
+ }
+echo "<li class=\"page-item\">
+                            <a class=\"page-link\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
+                                   <span aria-hidden=\"true\">&raquo;</span>
+                                   <span class=\"sr-only\">Next</span>
+                               </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>";
+
+mysqli_close($link); // 關閉資料庫連結
+?>
                     </div>
                 </div>
-                <div style="margin: auto" id="myDIV">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active" data-target="#carouselExampleIndicators" data-slide-to="0"><a class="page-link" href='#'>1</a></li>
-                            <li class="page-item" data-target="#carouselExampleIndicators" data-slide-to="1"><a class="page-link" href='#'>2</a></li>
-                            <!--/group_15/products.php?page=2#section-menu-->
-                            <li class="page-item">
-                                <a class="page-link" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                   <span aria-hidden="true">&raquo;</span>
-                                   <span class="sr-only">Next</span>
-                               </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
     </section>
     <!-- END section -->
     <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -544,20 +379,22 @@
         var btns = header.getElementsByClassName("page-item");
 
         btns[0].addEventListener("click", function() {
-            for (var i = 2; i < btns.length-1; i++) {
+            for (var i = 2; i < btns.length - 1; i++) {
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i - 1].className += " active";
-                    /*location.href = "?page="+i+"#section-menu3";*/
+                    sendRequest(i-1);
+                    location.href="#section-menu";
                 }
             }
         });
-        btns[btns.length-1].addEventListener("click", function() {
-            for (var i = btns.length-3; i > 0; i--) {
+        btns[btns.length - 1].addEventListener("click", function() {
+            for (var i = btns.length - 3; i > 0; i--) {
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i + 1].className += " active";
-                   /* location.href = "?page="+(i+2)+"#section-menu2";*/
+                    sendRequest(i+1);
+                    location.href="#section-menu";
                 }
             }
         });
@@ -568,15 +405,20 @@
     var header = document.getElementById("myDIV");
     var btns = header.getElementsByClassName("page-item");
 
-    for (var i = 1; i < btns.length-1; i++) {
+    for (var i = 1; i < btns.length - 1; i++) {
         btns[i].addEventListener("click", function() {
-            for (var j = 1; j < btns.length-1; j++) {
+            for (var j = 1; j < btns.length - 1; j++) {
                 if ($(btns[j]).hasClass("active") == true) {
-                btns[j].className = btns[j].className.replace(" active", "");
-            }
+                    btns[j].className = btns[j].className.replace(" active", "");
+                }
             }
             this.className += " active";
-            /*location.href = "?page="+(i+1)+"#section-menu1";*/
+            for (var j = 1; j < btns.length - 1; j++) {
+                if ($(btns[j]).hasClass("active") == true) {
+                    sendRequest(j);
+                    location.href="#section-menu";
+                }
+            }
         });
     }
     </script>
