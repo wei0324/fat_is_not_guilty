@@ -255,7 +255,7 @@
                                             if(!is_null($row))
                                             {
                                                 echo "<div class=\"media d-block mb-4 text-center ftco-media ftco-animate border-0\">";
-                                                echo "<img class=\"mr-3\" src=\"images/products/\"".$row["image_name"]."height=\"400px\">";
+                                                echo "<img class=\"mr-3\" src=\"images/products/".$row["image_name"]."\" height=\"400px\">";
                                                 echo "<div class=\"media-body p-4\">";
                                                 echo "<h5 class=\"text-primary\">$".$row["price"]."</h5>";
                                                 echo "<h5 class=\"mt-0 h4\">".$row["name"]."</h5>";
@@ -323,7 +323,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                             if(!is_null($row))
                                             {
                                                 echo "<div class=\"media menu-item\">";
-                                                echo "<img class=\"mr-3\" src=\"images/products/\"".$row["image_name"]."class=\"img-fluid\">";
+                                                echo "<img class=\"mr-3\" src=\"images/products/".$row["image_name"]."\" class=\"img-fluid\">";
                                                 echo "<div class=\"media-body\">";
                                                 echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
                                                 echo "<p>".$row["description"]."</p>";
@@ -361,7 +361,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                             if(!is_null($row))
                                             {
                                                 echo "<div class=\"media menu-item\">";
-                                                echo "<img class=\"mr-3\" src=\"images/products/\"".$row["image_name"]."class=\"img-fluid\">";
+                                                echo "<img class=\"mr-3\" src=\"images/products/".$row["image_name"]."\" class=\"img-fluid\">";
                                                 echo "<div class=\"media-body\">";
                                                 echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
                                                 echo "<p>".$row["description"]."</p>";
@@ -399,7 +399,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                             if(!is_null($row))
                                             {
                                                 echo "<div class=\"media menu-item\">";
-                                                echo "<img class=\"mr-3\" src=\"images/products/\"".$row["image_name"]."class=\"img-fluid\">";
+                                                echo "<img class=\"mr-3\" src=\"images/products/".$row["image_name"]."\" class=\"img-fluid\">";
                                                 echo "<div class=\"media-body\">";
                                                 echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
                                                 echo "<p>".$row["description"]."</p>";
