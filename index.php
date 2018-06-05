@@ -81,10 +81,8 @@
             overflow: hidden;
         }
     }
-    </style>
-    <style type="text/css">
     .error {
-        color: #D82424;
+        color: red !important;
         font-weight: normal;
         font-family: "微軟正黑體";
         display: inline;
@@ -123,6 +121,38 @@
         position: absolute;
     }
     </style>
+    <script type="text/javascript">
+    var xmlHttp;
+
+    function sendRequest() {
+        if (window.XMLHttpRequest) xmlHttp = new XMLHttpRequest(); //建立XMLHttpRequest物件
+        else if (window.ActiveXObject) xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        var url = 'register.php?account=' + document.form1.account.value;
+        xmlHttp.open('GET', url, true); //建立XMLHttpRequest連線要求
+        xmlHttp.onreadystatechange = catchResult; //指定處理程式
+        xmlHttp.send(null);
+    }
+
+    function catchResult() {
+        if (xmlHttp.readyState == 4 || xmlHttp.readyState == 'complete') { //取得XMLHttpRequest物件的狀態值,4--動作完成
+            if (xmlHttp.status == 200) { //執行狀態：200：OK 、403：Forbidden 、404：Not Found.......
+                var str = xmlHttp.responseText; //接收以文字方式傳回的執行結果
+                if (str == '1')
+                {
+                     document.getElementById('show_msg').innerHTML = '此帳號已存在!';
+                     document.getElementById('same').value="";
+                }
+                else
+                {
+                    document.getElementById('show_msg').innerHTML = '';
+                    document.getElementById('same').value="0";
+                }
+            } else {
+                alert('執行錯誤,代碼:' + xmlHttp.status + '\(' + xmlHttp.statusText + '\)');
+            }
+        }
+    }
+    </script>
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
@@ -206,105 +236,38 @@
                 </div>
                 <div class="col-md-12">
                     <div class="owl-carousel ftco-owl">
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/1.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body  p-4">
-                                    <h5 class="text-primary">$200</h5>
-                                    <h5 class="mt-0 h4">栗王</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/2.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body p-4">
-                                    <h5 class="text-primary">$260</h5>
-                                    <h5 class="mt-0 h4">草莓布丁蛋糕</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/7.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body p-4">
-                                    <h5 class="text-primary">$160</h5>
-                                    <h5 class="mt-0 h4">竹林</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/4.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body p-4">
-                                    <h5 class="text-primary">$140</h5>
-                                    <h5 class="mt-0 h4">莓果莓果</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/5.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body p-4">
-                                    <h5 class="text-primary">$160</h5>
-                                    <h5 class="mt-0 h4">洋梨波波</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/6.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body p-4">
-                                    <h5 class="text-primary">$170</h5>
-                                    <h5 class="mt-0 h4">草莓芙蓮</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/3.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body p-4">
-                                    <h5 class="text-primary">$400</h5>
-                                    <h5 class="mt-0 h4">抹茶生乳捲</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/8.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body p-4">
-                                    <h5 class="text-primary">$50</h5>
-                                    <h5 class="mt-0 h4">葡式蛋塔</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/9.jpg" /*class="img-fluid" */ height="400px">
-                                <div class="media-body p-4">
-                                    <h5 class="text-primary">$450</h5>
-                                    <h5 class="mt-0 h4">重乳酪蛋糕七重奏</h5>
-                                    <p class="mb-4">要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">馬上訂購</a></p>
-                                </div>
-                            </div>
-                        </div>
+                        <?php     
+                            $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+                            mysqli_query($link, 'SET CHARACTER SET utf8');
+                            mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+                            if (!$link) {
+                                echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+                                echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+                                exit();
+                            }
+                            $result = mysqli_query($link, "SELECT * FROM products");
+                                for ($i=0; $i < 6 ; $i++) { 
+                                    echo "<div class=\"item\">";
+                                    
+                                    
+                                         
+                                            $row = mysqli_fetch_assoc($result);
+                                            if(!is_null($row))
+                                            {
+                                                echo "<div class=\"media d-block mb-4 text-center ftco-media ftco-animate border-0\">";
+                                                echo "<img class=\"mr-3\" src=\"images/products/\"".$row["image_name"]."height=\"400px\">";
+                                                echo "<div class=\"media-body p-4\">";
+                                                echo "<h5 class=\"text-primary\">$".$row["price"]."</h5>";
+                                                echo "<h5 class=\"mt-0 h4\">".$row["name"]."</h5>";
+                                                echo "<p class=\"mb-4\">".$row["description"]."</p>";
+                                                echo "<p class=\"mb-0\"><a href=\"#\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>";
+                                                echo "</div>";
+                                                echo "</div>";
+                                            }
+                                    
+                                    echo "</div>";
+                                }
+                            ?>
                     </div>
                 </div>
             </div>
@@ -340,170 +303,116 @@
                     <div class="tab-content text-left">
                         <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
                             <div class="row">
-                                <div class="col-md-6 ftco-animate">
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_1.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Salted Fried Chicken</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$35.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_2.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$24.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_3.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$14.50</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 ftco-animate">
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_2.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$35.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_1.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Salted Fried Chicken</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$12.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_3.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$18.50</h6>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
+$result = mysqli_query($link, "SELECT * FROM products");
+                                for ($i=0; $i < 2 ; $i++) { 
+                                    echo "<div class=\"col-md-6 ftco-animate\">";
+                                    
+                                    
+                                        for ($j=0; $j < 3 ; $j++) { 
+                                            $row = mysqli_fetch_assoc($result);
+                                            if(!is_null($row))
+                                            {
+                                                echo "<div class=\"media menu-item\">";
+                                                echo "<img class=\"mr-3\" src=\"images/products/\"".$row["image_name"]."class=\"img-fluid\">";
+                                                echo "<div class=\"media-body\">";
+                                                echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
+                                                echo "<p>".$row["description"]."</p>";
+                                                echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
+                                                echo "</div>";
+                                                echo "</div>";
+                                            }
+                                    }
+                                    echo "</div>";
+                                }
+                                
+
+?>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="pills-lunch" role="tabpanel" aria-labelledby="pills-lunch-tab">
                             <div class="row">
-                                <div class="col-md-6 ftco-animate">
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_3.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$14.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_1.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Salted Fried Chicken</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$35.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_2.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$24.50</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 ftco-animate">
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_3.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$18.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_2.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$35.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_1.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Salted Fried Chicken</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$12.50</h6>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
+$result = mysqli_query($link, "SELECT * FROM products");
+                                for ($i=0; $i < 2 ; $i++) { 
+                                    echo "<div class=\"col-md-6 ftco-animate\">";
+                                    
+                                    
+                                        for ($j=0; $j < 3 ; $j++) { 
+                                            $row = mysqli_fetch_assoc($result);
+                                            if(!is_null($row))
+                                            {
+                                                echo "<div class=\"media menu-item\">";
+                                                echo "<img class=\"mr-3\" src=\"images/products/\"".$row["image_name"]."class=\"img-fluid\">";
+                                                echo "<div class=\"media-body\">";
+                                                echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
+                                                echo "<p>".$row["description"]."</p>";
+                                                echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
+                                                echo "</div>";
+                                                echo "</div>";
+                                            }
+                                    }
+                                    echo "</div>";
+                                }
+                                
+
+?>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="pills-dinner" role="tabpanel" aria-labelledby="pills-dinner-tab">
                             <div class="row">
-                                <div class="col-md-6 ftco-animate">
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_2.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$24.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_1.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Salted Fried Chicken</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$35.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_3.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$14.50</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 ftco-animate">
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_3.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$18.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_2.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$35.50</h6>
-                                        </div>
-                                    </div>
-                                    <div class="media menu-item">
-                                        <img class="mr-3" src="images/menu_1.jpg" class="img-fluid">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Salted Fried Chicken</h5>
-                                            <p>要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。</p>
-                                            <h6 class="text-primary menu-price">$12.50</h6>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
+$result = mysqli_query($link, "SELECT * FROM products");
+                                for ($i=0; $i < 2 ; $i++) { 
+                                    echo "<div class=\"col-md-6 ftco-animate\">";
+                                    
+                                    
+                                        for ($j=0; $j < 3 ; $j++) { 
+                                            $row = mysqli_fetch_assoc($result);
+                                            if(!is_null($row))
+                                            {
+                                                echo "<div class=\"media menu-item\">";
+                                                echo "<img class=\"mr-3\" src=\"images/products/\"".$row["image_name"]."class=\"img-fluid\">";
+                                                echo "<div class=\"media-body\">";
+                                                echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
+                                                echo "<p>".$row["description"]."</p>";
+                                                echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
+                                                echo "</div>";
+                                                echo "</div>";
+                                            }
+                                    }
+                                    echo "</div>";
+                                }
+                                
+
+?>
                             </div>
                         </div>
                     </div>
@@ -671,48 +580,48 @@
                                 <small>CLOSE </small><span aria-hidden="true">&times;</span>
                             </button>
                             <h1 class="mb-4">登入</h1>
-                            <form action="#" method="post">
+                            <form action="#" method="post" id="form2">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <label for="m_fname">帳號</label>
-                                        <input type="text" class="form-control" id="m_fname" name="account_login" required>
+                                        <label for="account_login">帳號</label>
+                                        <input type="text" class="form-control" id="account_login" name="account_login" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <label for="m_fname">密碼</label>
-                                        <input type="text" class="form-control" id="m_fname" name="password_login" required>
+                                        <label for="password_login">密碼</label>
+                                        <input type="password" class="form-control" id="password_login" name="password_login" required>
                                     </div>
                                 </div>
                                 <div>
-                                    <!--<?php
-/*$link = mysqli_connect("localhost", "root", "root123456", "group_15") // 建立MySQL的資料庫連結
+                                    <?php
+$link = mysqli_connect("localhost", "root", "root123456", "group_15") // 建立MySQL的資料庫連結
 or die("無法開啟MySQL資料庫連結!<br>");
 
 // 送出編碼的MySQL指令
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
-if ($id = @$_POST['account_login'] && $pw = @$_POST['password_login']) {
+if (@$_POST['account_login'] && @$_POST['password_login']) {
 // 送出查詢的SQL指令
+    $id=$_POST['account_login'];
+    $pw=$_POST['password_login'];
 $result = mysqli_query($link, "SELECT * FROM account where account = '$id'");
 $row = @mysqli_fetch_row($result);
-
 if ($row[0] == $id && $row[1] == $pw) {
 //將帳號寫入session，方便驗證使用者身份
 
 } else {
-
 echo "<script>
 $(function(){
 $('#reservationModal').modal({
 show:true,
 })
 });
-</script>" . '<span style="color:red">帳號或密碼錯誤</span>';
+</script>" . "<span style=\"color:red\">帳號或密碼錯誤</span>";
 }
 }
-mysqli_close($link); // 關閉資料庫連結*/
-?>-->
+mysqli_close($link); // 關閉資料庫連結
+?>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
@@ -738,12 +647,14 @@ mysqli_close($link); // 關閉資料庫連結*/
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <small>CLOSE </small><span aria-hidden="true">&times;</span>
                             </button>
-                            <h1 class="mb-4">登入</h1>
-                            <form action="#" method="post" id="form1">
+                            <h1 class="mb-4">註冊</h1>
+                            <form action="#" method="post" id="form1" name="form1">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label for="account">帳號</label>
-                                        <input type="text" class="form-control" id="account" name="account" value="" placeholder="4-10字元">
+                                        <input type="text" class="form-control" id="account" name="account" value="" placeholder="4-10字元" onkeyup=sendRequest();>
+                                        <input type="text" id="same" name="same" style="display: none">
+                                        <span id='show_msg' style="color:red"></span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -781,6 +692,25 @@ mysqli_close($link); // 關閉資料庫連結*/
                                     </div>
                                 </div>
                             </form>
+<?php
+$link = mysqli_connect("localhost","root","root123456","group_15")
+or die("無法開啟MySQL資料庫連結!<br>");
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link,"SET collation_connection = 'utf8_unicode_ci'");
+
+if (isset($_POST['account']))
+{
+  $sql="insert into account values ('" . $_POST['account'] . "','" . $_POST['pwd'] . "','" . $_POST['mail']. "','" . $_POST['addr'] ."','" . $_POST['news'] ."')";
+
+  if ( $result = mysqli_query($link, $sql) ) // 送出查詢的SQL指令
+    $msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";
+  else
+    $msg= "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" .mysqli_error($link) ."</span>";
+
+  mysqli_close($link); // 關閉資料庫連結
+}
+
+?>
                         </div>
                     </div>
                 </div>
