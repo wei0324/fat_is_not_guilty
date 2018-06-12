@@ -20,44 +20,6 @@
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <style type="text/css">
-    .aaa,
-    .aaa .bbb {
-        -webkit-tap-highlight-color: transparent;
-        position: relative;
-    }
-
-    .aaa .bbb img {
-        display: block;
-        width: 100%;
-    }
-
-    #gotop {
-        position: fixed;
-        border-radius: 50px;
-        right: 20px;
-        bottom: 30px;
-        padding: 5px;
-        font-size: 25px;
-        background: rgba(0, 0, 0, 0.36);
-        color: #FAFCFD;
-        cursor: pointer;
-        z-index: 1000;
-        width: 50px;
-        height: 50px;
-        text-align: center;
-    }
-
-    #cart {
-        border-radius: 5px;
-        font-size: 10px;
-        background: rgba(255, 0, 0, 0.9);
-        color: #FAFCFD;
-        width: 20px;
-        height: 20px;
-        text-align: center;
-    }
-    </style>
     <script type="text/javascript">
     var xmlHttp;
 
@@ -84,59 +46,7 @@
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
-    <div id="gotop"><i class="fas fa-angle-up"></i></div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">胖不是罪</a>
-            <div id="cart1">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <div class="form-inline">
-                                <div style="position: relative; width: 35px; height: 35px;">
-                                    <div style="position: absolute;left: 0px;bottom: 0;">
-                                        <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
-                                    </div>
-                                    <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
-                                </div>
-                                購物車
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#section-home" class="nav-link">首頁</a></li>
-                    <li class="nav-item"><a href="#section-offer" class="nav-link">本日精選</a></li>
-                    <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
-                    <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
-                    <li class="nav-item"><a href="#section-about" class="nav-link">關於我們</a></li>
-                    <li class="nav-item"><a href="#section-contact" class="nav-link">連繫我們</a></li>
-                </ul>
-            </div>
-        </div>
-        <div id="cart2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <div class="form-inline">
-                            <div style="position: relative; width: 35px; height: 35px;">
-                                <div style="position: absolute;left: 0px;bottom: 0;">
-                                    <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
-                                </div>
-                                <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
-                            </div>
-                            購物車
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php include("navbar.php"); ?>
     <!-- END nav -->
     <section class="bg-light" id="section-news">
         <div class="container" style="padding: 50px">
@@ -213,7 +123,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="false" data-wrap="false">
-<?php
+                        <?php
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
@@ -383,8 +293,8 @@ mysqli_close($link); // 關閉資料庫連結
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i - 1].className += " active";
-                    sendRequest(i-1);
-                    location.href="#section-menu";
+                    sendRequest(i - 1);
+                    location.href = "#section-menu";
                 }
             }
         });
@@ -393,8 +303,8 @@ mysqli_close($link); // 關閉資料庫連結
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i + 1].className += " active";
-                    sendRequest(i+1);
-                    location.href="#section-menu";
+                    sendRequest(i + 1);
+                    location.href = "#section-menu";
                 }
             }
         });
@@ -416,7 +326,7 @@ mysqli_close($link); // 關閉資料庫連結
             for (var j = 1; j < btns.length - 1; j++) {
                 if ($(btns[j]).hasClass("active") == true) {
                     sendRequest(j);
-                    location.href="#section-menu";
+                    location.href = "#section-menu";
                 }
             }
         });
