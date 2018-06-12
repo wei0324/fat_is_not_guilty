@@ -26,61 +26,6 @@
     <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js "></script>
     <script src="js/check.js"></script>
     <style type="text/css">
-    #Create .close {
-        position: absolute;
-        right: 30px;
-        top: 10px;
-        cursor: pointer;
-    }
-
-    #Create .close:active,
-    #Create .close:focus {
-        outline: none !important;
-    }
-
-    #Create .close span {
-        font-size: 30px;
-    }
-
-    #Create .close small {
-        font-size: 16px;
-        position: relative;
-        top: -2px;
-        right: 10px;
-    }
-
-    #Create .modal-content {
-        border-radius: 0;
-    }
-
-    #Create .modal-content label {
-        color: #000;
-    }
-
-    #Create .modal-content .modal-body {
-        padding: 0;
-    }
-
-    #Create .modal-content .bg-image,
-    #Create .modal-content .ftco-cover {
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-    }
-
-    @media screen and (max-width: 960px) {
-        #Create .modal-content .bg-image,
-        #Create .modal-content .ftco-cover {
-            height: 200px;
-            padding-right: 0 !important;
-            padding-left: 0 !important;
-            margin-left: 15px;
-            margin-right: 15px;
-            overflow: hidden;
-        }
-    }
     .error {
         color: red !important;
         font-weight: normal;
@@ -156,59 +101,7 @@
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
-    <div id="gotop"><i class="fas fa-angle-up"></i></div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">胖不是罪</a>
-            <div id="cart1">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <div class="form-inline">
-                                <div style="position: relative; width: 35px; height: 35px;">
-                                    <div style="position: absolute;left: 0px;bottom: 0;">
-                                        <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
-                                    </div>
-                                    <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
-                                </div>
-                                購物車
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#section-home" class="nav-link">首頁</a></li>
-                    <li class="nav-item"><a href="#section-offer" class="nav-link">本日精選</a></li>
-                    <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
-                    <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
-                    <li class="nav-item"><a href="#section-about" class="nav-link">關於我們</a></li>
-                    <li class="nav-item"><a href="#section-contact" class="nav-link">連繫我們</a></li>
-                </ul>
-            </div>
-        </div>
-        <div id="cart2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <div class="form-inline">
-                            <div style="position: relative; width: 35px; height: 35px;">
-                                <div style="position: absolute;left: 0px;bottom: 0;">
-                                    <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
-                                </div>
-                                <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
-                            </div>
-                            購物車
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php include("navbar.php"); ?>
     <!-- END nav -->
     <section class="ftco-cover" style="background-image: url(images/bg_3.jpg);" id="section-home">
         <div class="container">
@@ -216,7 +109,7 @@
                 <div class="col-md-12">
                     <h1 class="ftco-heading ftco-animate mb-3">胖不是罪</h1>
                     <h2 class="h5 ftco-subheading mb-5 ftco-animate">精緻、用心、美味 甜點專賣網</h2>
-                    <p><a href="" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#reservationModal">會員登入</a> <a href="" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#Create">加入會員</a></p>
+                    <p><a href="" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#login">會員登入</a> <a href="" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#Create">加入會員</a></p>
                 </div>
             </div>
         </div>
@@ -494,11 +387,11 @@ $result = mysqli_query($link, "SELECT * FROM products");
                     <form action="" method="post">
                         <div class="form-group">
                             <label for="name" class="sr-only">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="姓名 (Enter your name)">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="姓名 (Enter your name)">
                         </div>
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="text" class="form-control" id="email" placeholder="信箱 (Enter your email)">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="信箱 (Enter your email)">
                         </div>
                         <div class="form-group">
                             <label for="message" class="sr-only">Message</label>
@@ -508,6 +401,26 @@ $result = mysqli_query($link, "SELECT * FROM products");
                             <input type="submit" class="btn btn-primary btn-lg" value="傳送訊息">
                         </div>
                     </form>
+<?php
+$link = mysqli_connect("localhost","root","root123456","group_15")
+or die("無法開啟MySQL資料庫連結!<br>");
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link,"SET collation_connection = 'utf8_unicode_ci'");
+
+if (isset($_POST['name']))
+{
+  $sql="insert into comment (name,email,message) values ('" . $_POST['name'] . "','" . $_POST['email'] . "','" . $_POST['message']."')";
+
+  if ( $result = mysqli_query($link, $sql) ) // 送出查詢的SQL指令
+    $msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";
+  else
+    $msg= "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" .mysqli_error($link) ."</span>";
+
+  echo $msg;
+}
+mysqli_close($link); // 關閉資料庫連結
+
+?>
                 </div>
             </div>
         </div>
@@ -569,7 +482,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
         </div>
     </footer>
     <!-- Modal -->
-    <div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
+    <div class="modal fade member" id="login" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><!--reservationModalLabel-->
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -601,7 +514,7 @@ or die("無法開啟MySQL資料庫連結!<br>");
 // 送出編碼的MySQL指令
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
-if (@$_POST['account_login'] && @$_POST['password_login']) {
+if (isset($_POST['account_login']) && isset($_POST['password_login'])) {
 // 送出查詢的SQL指令
     $id=$_POST['account_login'];
     $pw=$_POST['password_login'];
@@ -613,7 +526,7 @@ if ($row[0] == $id && $row[1] == $pw) {
 } else {
 echo "<script>
 $(function(){
-$('#reservationModal').modal({
+$('#login').modal({
 show:true,
 })
 });
@@ -637,7 +550,7 @@ mysqli_close($link); // 關閉資料庫連結
     </div>
     <!-- END Modal -->
     <!-- Modal -->
-    <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
+    <div class="modal fade member" id="Create" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><!--reservationModalLabel-->
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -651,31 +564,34 @@ mysqli_close($link); // 關閉資料庫連結
                             <form action="#" method="post" id="form1" name="form1">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <label for="account">帳號</label>
+                                        <label for="account">帳號</label> <label id="account-error" class="error" for="account"></label>
                                         <input type="text" class="form-control" id="account" name="account" value="" placeholder="4-10字元" onkeyup=sendRequest();>
-                                        <input type="text" id="same" name="same" style="display: none">
                                         <span id='show_msg' style="color:red"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label id="same-error" class="error" for="same"></label>
+                                        <input type="text" id="same" name="same" style="visibility: hidden;width: 1px">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <label for="pwd">密碼</label>
+                                        <label for="pwd">密碼</label> <label id="pwd-error" class="error" for="pwd"></label>
                                         <input type="password" class="form-control" id="pwd" name="pwd" value="" placeholder="8-12字元">
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label for="m_lname">密碼確認</label>
+                                        <label for="m_lname">密碼確認</label> <label id="pwd2-error" class="error" for="pwd2"></label>
                                         <input type="password" class="form-control" id="pwd2" name="pwd2" value="" placeholder="需與密碼相符">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <label for="m_email">Email</label>
+                                        <label for="m_email">Email</label> <label id="email-error" class="error" for="email"></label>
                                         <input type="email" class="form-control" id="email" name="mail">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <label for="m_email">地址</label>
+                                        <label for="m_email">地址</label> <label id="addr-error" class="error" for="addr"></label>
                                         <input type="text" class="form-control" name="addr" value="">
                                     </div>
                                 </div>

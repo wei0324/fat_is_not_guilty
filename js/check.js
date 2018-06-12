@@ -43,20 +43,28 @@ $(document).ready(function($) {
     },
     messages: {
       account: {
-        required: "帳號為必填欄位",
-        minlength: "帳號最少要4個字",
-        maxlength: "帳號最長10個字"
+        required: "*必填",
+        minlength: "*帳號最少要4個字",
+        maxlength: "*帳號最長10個字"
       },
       same: {
         required: "",
       },
       pwd:{
-        required: "密碼為必填欄位",
-        minlength:"密碼最少要8個字",
-        maxlength: "密碼最長12個字"
+        required: "*必填",
+        minlength:"*密碼最少要8個字",
+        maxlength: "*密碼最長12個字"
       },
       pwd2: {
-        equalTo: "兩次密碼不相符"
+        required: "*必填",
+        equalTo: "*兩次密碼不相符"
+      },
+      mail: {
+        required: "*必填",
+        email: "*請輸入正確的電子信箱"
+      },
+      addr: {
+        required: "*必填"
       },
 
     }
