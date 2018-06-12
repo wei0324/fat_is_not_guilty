@@ -1,3 +1,4 @@
+
 <div id="gotop"><i class="fas fa-angle-up"></i></div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
@@ -11,7 +12,7 @@
                                 <div style="position: absolute;left: 0px;bottom: 0;">
                                     <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
                                 </div>
-                                <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
+                                <div id="cart" style="position: absolute;right: 0;top: 0;"><?php echo $cnt; ?></div>
                             </div>
                             購物車
                         </div>
@@ -42,7 +43,7 @@
                             <div style="position: absolute;left: 0px;bottom: 0;">
                                 <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
                             </div>
-                            <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
+                            <div id="cart" style="position: absolute;right: 0;top: 0;"><?php echo $cnt; ?></div>
                         </div>
                         購物車
                     </div>

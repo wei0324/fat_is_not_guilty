@@ -1,3 +1,11 @@
+<?php
+session_start();
+    if (isset($_SESSION['cart'])) {
+        $cnt = count($_SESSION['cart']);
+    } else {
+        $cnt = 0;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,7 +137,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="owl-carousel ftco-owl">
-                        <?php     
+                        <?php
                             $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
                             mysqli_query($link, 'SET CHARACTER SET utf8');
                             mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
@@ -139,11 +147,11 @@
                                 exit();
                             }
                             $result = mysqli_query($link, "SELECT * FROM products");
-                                for ($i=0; $i < 6 ; $i++) { 
+                                for ($i=0; $i < 6 ; $i++) {
                                     echo "<div class=\"item\">";
-                                    
-                                    
-                                         
+
+
+
                                             $row = mysqli_fetch_assoc($result);
                                             if(!is_null($row))
                                             {
@@ -153,11 +161,11 @@
                                                 echo "<h5 class=\"text-primary\">$".$row["price"]."</h5>";
                                                 echo "<h5 class=\"mt-0 h4\">".$row["name"]."</h5>";
                                                 echo "<p class=\"mb-4\">".$row["description"]."</p>";
-                                                echo "<p class=\"mb-0\"><a href=\"#\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>";
+                                                echo "<p class=\"mb-0\"><a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>";
                                                 echo "</div>";
                                                 echo "</div>";
                                             }
-                                    
+
                                     echo "</div>";
                                 }
                             ?>
@@ -197,7 +205,7 @@
                         <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
                             <div class="row">
                                 <?php
-                                
+
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
@@ -207,11 +215,11 @@ if (!$link) {
     exit();
 }
 $result = mysqli_query($link, "SELECT * FROM products");
-                                for ($i=0; $i < 2 ; $i++) { 
+                                for ($i=0; $i < 2 ; $i++) {
                                     echo "<div class=\"col-md-6 ftco-animate\">";
-                                    
-                                    
-                                        for ($j=0; $j < 3 ; $j++) { 
+
+
+                                        for ($j=0; $j < 3 ; $j++) {
                                             $row = mysqli_fetch_assoc($result);
                                             if(!is_null($row))
                                             {
@@ -227,7 +235,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                     }
                                     echo "</div>";
                                 }
-                                
+
 
 ?>
                             </div>
@@ -235,7 +243,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                         <div class="tab-pane fade" id="pills-lunch" role="tabpanel" aria-labelledby="pills-lunch-tab">
                             <div class="row">
                                 <?php
-                                
+
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
@@ -245,11 +253,11 @@ if (!$link) {
     exit();
 }
 $result = mysqli_query($link, "SELECT * FROM products");
-                                for ($i=0; $i < 2 ; $i++) { 
+                                for ($i=0; $i < 2 ; $i++) {
                                     echo "<div class=\"col-md-6 ftco-animate\">";
-                                    
-                                    
-                                        for ($j=0; $j < 3 ; $j++) { 
+
+
+                                        for ($j=0; $j < 3 ; $j++) {
                                             $row = mysqli_fetch_assoc($result);
                                             if(!is_null($row))
                                             {
@@ -265,7 +273,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                     }
                                     echo "</div>";
                                 }
-                                
+
 
 ?>
                             </div>
@@ -273,7 +281,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                         <div class="tab-pane fade" id="pills-dinner" role="tabpanel" aria-labelledby="pills-dinner-tab">
                             <div class="row">
                                 <?php
-                                
+
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
@@ -283,11 +291,11 @@ if (!$link) {
     exit();
 }
 $result = mysqli_query($link, "SELECT * FROM products");
-                                for ($i=0; $i < 2 ; $i++) { 
+                                for ($i=0; $i < 2 ; $i++) {
                                     echo "<div class=\"col-md-6 ftco-animate\">";
-                                    
-                                    
-                                        for ($j=0; $j < 3 ; $j++) { 
+
+
+                                        for ($j=0; $j < 3 ; $j++) {
                                             $row = mysqli_fetch_assoc($result);
                                             if(!is_null($row))
                                             {
@@ -303,7 +311,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                     }
                                     echo "</div>";
                                 }
-                                
+
 
 ?>
                             </div>
@@ -623,7 +631,7 @@ if (isset($_POST['account']))
   else
     $msg= "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" .mysqli_error($link) ."</span>";
 
-  
+
 }
 mysqli_close($link); // 關閉資料庫連結
 
