@@ -170,6 +170,32 @@ session_start();
               <div class="price-sale price">
                 NT$520
               </div>
+              <hr>
+              <h2 id="sec0" class="global-primary dark-primary">商品描述</h2>
+              <div ng-non-bindable="" class="global-secondary dark-secondary description-container">
+                <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;"><span lang="en-US" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">#&nbsp;</span>
+                  <span lang="zh-TW" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">無奶油</span>
+                  <span lang="en-US" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;-&nbsp;</span>
+                  <span lang="zh-TW" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">蛋糕變得簡單、純淨</span>
+                </p>
+                <p lang="en-US" style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;"><span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;</span></p>
+                <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;"><span lang="en-US" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">#&nbsp;</span>
+                  <span lang="zh-TW" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">無澱粉</span>
+                  <span lang="en-US" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;-&nbsp;</span>
+                  <span lang="zh-TW" style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">蛋糕變得更「輕」</span>
+                </p>
+                <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 10pt; color: black;"><span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><br></span></p>
+                <p lang="en-US" style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;"><span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">#TATURA乳酪，更純淨</span></p>
+                <p lang="en-US" style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;">&nbsp;</p>
+                <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;"><span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">#殺菌液蛋，無蛋殼，更安全</span></p>
+                <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;">&nbsp;</p>
+                <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;"><span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">#天然系「日式輕浴蒸烤技術」</span></p>
+                <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 10pt; color: black;"><span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></span></p>
+                  <span lang="en-US" style="font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;</span>
+                  <span lang="en-US" style="font-size: 12pt;">&nbsp;</span>
+                </p>
+                <p style="text-align: center;"></p>
+              </div>
               <div class="action-title global-secondary">數量</div>
               <div class="extra-quantity">
                 <label for="quantity" class="sr-only">數量</label>
@@ -182,6 +208,8 @@ session_start();
               <br>
               <button type="button" class="btn btn-primary">加入購物車</button>
               <button type="button" class="btn btn-danger">馬上購買</button>
+              <br>
+              <div class="clear"></div>
             </div>
           </div>
         </div>

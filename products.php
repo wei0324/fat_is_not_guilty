@@ -1,3 +1,4 @@
+<?php  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -154,7 +155,7 @@ echo "<div style=\"margin: auto\" id=\"myDIV\">
                         if(NULL==@$_GET['page'])
                         {
                             echo "<script type=\"text/javascript\">sendRequest(1);</script>";
-                            
+
                             echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
         echo 0;
         echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=1#section-menu'>1</a></li>";
