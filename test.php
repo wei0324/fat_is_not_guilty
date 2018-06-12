@@ -1,3 +1,11 @@
+<?php
+session_start();
+    if (isset($_SESSION['cart'])) {
+        $cnt = count($_SESSION['cart']);
+    } else {
+        $cnt = 0;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +14,9 @@
     <link rel="shortcut icon" href="images/icon.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="google" value="notranslate">
+    <meta name="viewport" content="initial-scale=1.0" >
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -18,8 +29,11 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- styles-->
+    <link href="https://dt9jl8a7gc9zr.cloudfront.net/assets/application-da885503914433bedb54117531928d84.css" media="all" rel="stylesheet" />
+    <!--<link href="https://dt9jl8a7gc9zr.cloudfront.net/assets/themes/ell-4caeda8c53718486094b6096d2b5b33e.css" media="screen" rel="stylesheet" />-->
+    <!-- styles-->
+
     <style type="text/css">
     .aaa,
     .aaa .bbb {
@@ -37,265 +51,155 @@
         border-radius: 50px;
         right: 20px;
         bottom: 30px;
-        padding: 5px;
+        padding: 10px 16px;
         font-size: 25px;
         background: rgba(0, 0, 0, 0.36);
         color: #FAFCFD;
         cursor: pointer;
         z-index: 1000;
-        width: 50px;
-        height: 50px;
-        text-align: center;
-    }
-
-    #cart {
-        border-radius: 5px;
-        font-size: 10px;
-        background: rgba(255, 0, 0, 0.9);
-        color: #FAFCFD;
-        width: 20px;
-        height: 20px;
-        text-align: center;
     }
     </style>
-    <script type="text/javascript">
-    var xmlHttp;
-
-    function sendRequest($i) {
-        if (window.XMLHttpRequest) xmlHttp = new XMLHttpRequest(); //建立XMLHttpRequest物件
-        else if (window.ActiveXObject) xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-        var url = 'products_ajax.php?page=' + $i;
-        xmlHttp.open('GET', url, true); //建立XMLHttpRequest連線要求
-        xmlHttp.onreadystatechange = catchResult; //指定處理程式
-        xmlHttp.send(null);
-    }
-
-    function catchResult() {
-        if (xmlHttp.readyState == 4 || xmlHttp.readyState == 'complete') { //取得XMLHttpRequest物件的狀態值,4--動作完成
-            if (xmlHttp.status == 200) { //執行狀態：200：OK 、403：Forbidden 、404：Not Found.......
-                var str = xmlHttp.responseText; //接收以文字方式傳回的執行結果
-                document.getElementById('products_content').innerHTML = str;
-            } else {
-                alert('執行錯誤,代碼:' + xmlHttp.status + '\(' + xmlHttp.statusText + '\)');
-            }
-        }
-    }
-    </script>
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
-    <div id="gotop"><i class="fas fa-angle-up"></i></div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">胖不是罪</a>
-            <div id="cart1">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <div class="form-inline">
-                                <div style="position: relative; width: 35px; height: 35px;">
-                                    <div style="position: absolute;left: 0px;bottom: 0;">
-                                        <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
-                                    </div>
-                                    <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
-                                </div>
-                                購物車
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#section-home" class="nav-link">首頁</a></li>
-                    <li class="nav-item"><a href="#section-offer" class="nav-link">本日精選</a></li>
-                    <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
-                    <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
-                    <li class="nav-item"><a href="#section-about" class="nav-link">關於我們</a></li>
-                    <li class="nav-item"><a href="#section-contact" class="nav-link">連繫我們</a></li>
-                </ul>
-            </div>
-        </div>
-        <div id="cart2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <div class="form-inline">
-                            <div style="position: relative; width: 35px; height: 35px;">
-                                <div style="position: absolute;left: 0px;bottom: 0;">
-                                    <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
-                                </div>
-                                <div id="cart" style="position: absolute;right: 0;top: 0;">0</div>
-                            </div>
-                            購物車
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  <div id="gotop"><i class="fas fa-angle-up"></i></div>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+          <a class="navbar-brand" href="index.php">胖不是罪</a>
+          <div id="cart1">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a href="" class="nav-link">
+                          <div class="form-inline">
+                              <div style="position: relative; width: 35px; height: 35px;">
+                                  <div style="position: absolute;left: 0px;bottom: 0;">
+                                      <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
+                                  </div>
+                                  <div id="cart" style="position: absolute;right: 0;top: 0;"><?php echo $cnt; ?></div>
+                              </div>
+                              購物車
+                          </div>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="oi oi-menu"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active"><a href="#section-home" class="nav-link">首頁</a></li>
+                  <li class="nav-item"><a href="#section-offer" class="nav-link">本日精選</a></li>
+                  <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
+                  <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
+                  <li class="nav-item"><a href="#section-about" class="nav-link">關於我們</a></li>
+                  <li class="nav-item"><a href="#section-contact" class="nav-link">連繫我們</a></li>
+              </ul>
+          </div>
+      </div>
+      <div id="cart2">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a href="" class="nav-link">
+                      <div class="form-inline">
+                          <div style="position: relative; width: 35px; height: 35px;">
+                              <div style="position: absolute;left: 0px;bottom: 0;">
+                                  <i class="fas fa-shopping-cart" style="font-size: 25px"></i>
+                              </div>
+                              <div id="cart" style="position: absolute;right: 0;top: 0;"><?php echo $cnt; ?></div>
+                          </div>
+                          購物車
+                      </div>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </nav>
     <!-- END nav -->
-    <section class="bg-light" id="section-news">
-        <div class="container" style="padding: 50px">
-            <div id="aaa" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#aaa" data-slide-to="0" class="active"></li>
-                    <li data-target="#aaa" data-slide-to="1"></li>
-                    <li data-target="#aaa" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href=""><img class="d-block w-100" src="images/ad_1.jpg" alt="First slide" height="200px" ></a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href=""><img class="d-block w-100" src="images/ad_2.jpg" alt="Second slide" height="200px" ></a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href=""><img class="d-block w-100" src="images/ad_3.jpg" alt="Third slide" height="200px" ></a>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#aaa" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                <a class="carousel-control-next" href="#aaa" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
     <section class="ftco-section bg-light form-inline" id="section-menu">
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin:auto;width:400px">
-                <a class="navbar-brand" href="#">產品分類</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          蛋糕
-        </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">1</a>
-                                <a class="dropdown-item" href="#">2</a>
-                                <a class="dropdown-item" href="#">3</a>
-                            </div>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          泡芙
-        </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">1</a>
-                                    <a class="dropdown-item" href="#">2</a>
-                                    <a class="dropdown-item" href="#">3</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          鬆餅
-        </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">1</a>
-                                    <a class="dropdown-item" href="#">2</a>
-                                    <a class="dropdown-item" href="#">3</a>
-                                </div>
-                            </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="false" data-wrap="false">
-<?php
-$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
-mysqli_query($link, 'SET CHARACTER SET utf8');
-mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
-if (!$link) {
-    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
-    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
-    exit();
-}
-echo "<div  id='products_content'>";
-
-if ($result = mysqli_query($link, "SELECT * FROM products")) {
-    $total_records = mysqli_num_rows($result);
-    $total_page = ceil($total_records / 9);
-
-
-}
-echo "</div></div></div>";
-
-echo "<div style=\"margin: auto\" id=\"myDIV\">
-                <nav aria-label=\"Page navigation example\">
-                    <ul class=\"pagination\">
-                        <li class=\"page-item\">
-                            <a class=\"page-link\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
-                                    <span aria-hidden=\"true\">&laquo;</span>
-                                    <span class=\"sr-only\">Previous</span>
-                                </a>
-                        </li>";
-                        if(NULL==@$_GET['page'])
-                        {
-                            echo "<script type=\"text/javascript\">sendRequest(1);</script>";
-                            
-                            echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
-        echo 0;
-        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=1#section-menu'>1</a></li>";
-        for ($i = 2; $i <= $total_page; $i++) {
-    /*if ($i == 1) {
-        echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
-    } else*/{
-
-        echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
-        echo $i - 1;
-        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
-        /*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
-        /*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
+            <div class="container content-controller" ng-controller="ProductsShowController">
+                <div class="row">
+                  <div class="col-md-6">
+                <product-variant-gallery item-size="72" item-margin="10" class="ng-scope"><!-- ngIf: selectedMedia --><div class="variant-gallery-stage text-center ng-scope" ng-if="selectedMedia" ng-swipe-left="selectNext()" ng-swipe-right="selectPrevious()">
+  <a ng-click="enlargeImage(selectedMedia)">
+    <img id="sl-product-image" class="img-responsive sl-lazy-image inline-block" data-ref-element=".variant-gallery-stage" ng-src="https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/400x.webp?source_format=jpg" src="https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/800x.webp?source_format=jpg">
+  </a>
+</div><!-- end ngIf: selectedMedia -->
+<div class="variant-gallery row" ng-class="{'no-arrow': canSelectPrevious() !== true &amp;&amp; canSelectNext() !== true }">
+  <style type="text/css" class="ng-binding">
+    .variant-gallery-control {
+      line-height: 72px;
     }
-
-}
-                        }
-                        else
-                        {
-
-
-for ($i = 1; $i <= $total_page; $i++) {
-    /*if ($i == 1) {
-        echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
-    } else*/{
-        if(@$_GET['page']==$i)
-            echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
-        else
-            echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
-        echo $i - 1;
-        echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
-        /*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
-        /*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
+    .variant-image {
+      width: 72px;
+      height: 72px;
+      margin-right: 10px;
     }
-
-}
- }
-echo "<li class=\"page-item\">
-                            <a class=\"page-link\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
-                                   <span aria-hidden=\"true\">&raquo;</span>
-                                   <span class=\"sr-only\">Next</span>
-                               </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>";
-
-mysqli_close($link); // 關閉資料庫連結
-?>
-                    </div>
+    @media screen and (min-width: 769px) {
+      product-variant-gallery.vertical .variant-gallery-stage {
+        padding-right: 77px;
+      }
+      product-variant-gallery.vertical .variant-gallery {
+        right: 72px;
+      }
+    }
+  </style>
+  <div class="variant-gallery-control left disable ng-hide" ng-click="selectPrevious()" ng-class="{ hide: canSelectPrevious() !== true &amp;&amp; canSelectNext() !== true, disable: canSelectPrevious() !== true }" ng-show="medias.length > maxImageContain">
+    <i class="fa fa-caret-left fa-inverse" aria-hidden="true"></i>
+  </div>
+  <div class="variant-gallery-scroll-container">
+    <div class="variant-gallery-slider">
+      <!-- ngRepeat: media in medias --><div class="variant-image ng-scope selected" ng-class="{ selected: media == selectedMedia }" ng-repeat="media in medias">
+        <a ng-click="selectMedia(media)">
+          <div class="image-container sl-lazy-image" data-resizing-segment="100" ng-style="getThumbnailStyle(media)" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/200x.webp?source_format=jpg);"></div>
+        </a>
+      </div><!-- end ngRepeat: media in medias --><div class="variant-image ng-scope" ng-class="{ selected: media == selectedMedia }" ng-repeat="media in medias">
+        <a ng-click="selectMedia(media)">
+          <div class="image-container sl-lazy-image" data-resizing-segment="100" ng-style="getThumbnailStyle(media)" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5adea11500fdde703800cc8a/200x.webp?source_format=jpg);"></div>
+        </a>
+      </div><!-- end ngRepeat: media in medias -->
+    </div>
+  </div>
+  <div class="variant-gallery-control right ng-hide" ng-click="selectNext()" ng-class="{ hide: canSelectPrevious() !== true &amp;&amp; canSelectNext() !== true, disable: canSelectNext() !== true  }" ng-show="medias.length > maxImageContain">
+    <i class="fa fa-caret-right fa-inverse" aria-hidden="true"></i>
+  </div>
+</div>
+</product-variant-gallery>
+                <div class="visible-lg visible-md">
                 </div>
+              </div>
+                <div ng-non-bindable="" class="title global-primary dark-primary">
+                  <h1>初夏桑椹乳酪蛋糕 6吋</h1>
+                  <div class="Product-promotions">
+                    <p class="Product-promotions-tag" ng-non-bindable="">
+                      全店，會員獨享，消費滿1500元，可享免運費~
+                    </p>
+                  </div>
+                  <div class="global-primary dark-primary price-regular price price-crossed">
+                    NT$580
+                  </div>
+                  <div class="price-sale price">
+                    NT$520
+                  </div>
+                  <div class="action-title global-secondary">數量</div>
+                  <div class="extra-quantity">
+                    <label for="quantity" class="sr-only">數量</label>
+                      <div class="quantity-number input-group " id="quanInput">
+                          <span class="add-down add-action input-group-addon"><i class="fa fa-minus"></i></span>
+                          <input id="item-quantity" class="form-control item_quantity" type="text" name="quantity" size="2" value="1">
+                          <span class="add-up add-action input-group-addon"><i class="fa fa-plus"></i></span>
+                      </div>
+                  </div>
+                  <br>
+                  <button type="button" class="btn btn-primary">加入購物車</button>
+                  <button type="button" class="btn btn-danger">馬上購買</button>
+                </div>
+                <hr>
+                <h2 id="sec0" class="global-primary dark-primary">商品描述</h2>
+              </div>
+            </div>
+        </div>
     </section>
     <!-- END section -->
     <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -379,22 +283,20 @@ mysqli_close($link); // 關閉資料庫連結
         var btns = header.getElementsByClassName("page-item");
 
         btns[0].addEventListener("click", function() {
-            for (var i = 2; i < btns.length - 1; i++) {
+            for (var i = 2; i < 4; i++) {
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i - 1].className += " active";
-                    sendRequest(i-1);
-                    location.href="#section-menu";
+                    location.href = "#section-offer";
                 }
             }
         });
-        btns[btns.length - 1].addEventListener("click", function() {
-            for (var i = btns.length - 3; i > 0; i--) {
+        btns[4].addEventListener("click", function() {
+            for (var i = 2; i > 0; i--) {
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i + 1].className += " active";
-                    sendRequest(i+1);
-                    location.href="#section-menu";
+                    location.href = "#section-menu";
                 }
             }
         });
@@ -405,20 +307,13 @@ mysqli_close($link); // 關閉資料庫連結
     var header = document.getElementById("myDIV");
     var btns = header.getElementsByClassName("page-item");
 
-    for (var i = 1; i < btns.length - 1; i++) {
+    for (var i = 1; i < 4; i++) {
         btns[i].addEventListener("click", function() {
-            for (var j = 1; j < btns.length - 1; j++) {
-                if ($(btns[j]).hasClass("active") == true) {
-                    btns[j].className = btns[j].className.replace(" active", "");
-                }
-            }
+            btns[1].className = btns[1].className.replace(" active", "");
+            btns[2].className = btns[2].className.replace(" active", "");
+            btns[3].className = btns[3].className.replace(" active", "");
             this.className += " active";
-            for (var j = 1; j < btns.length - 1; j++) {
-                if ($(btns[j]).hasClass("active") == true) {
-                    sendRequest(j);
-                    location.href="#section-menu";
-                }
-            }
+            location.href = "#section-menu";
         });
     }
     </script>
