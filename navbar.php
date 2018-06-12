@@ -1,4 +1,12 @@
-
+<?php
+      error_reporting(E_ERROR |  E_PARSE);
+    session_start();
+    if (isset($_SESSION['cart'])) {
+        $cnt = count($_SESSION['cart']);
+    } else {
+        $cnt = 0;
+    }
+?>
 <div id="gotop"><i class="fas fa-angle-up"></i></div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
