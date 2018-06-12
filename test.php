@@ -191,8 +191,8 @@ session_start();
                 <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;">&nbsp;</p>
                 <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 12pt; color: black;"><span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">#天然系「日式輕浴蒸烤技術」</span></p>
                 <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 10pt; color: black;"><span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></span></p>
-                  <span lang="en-US" style="font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;</span>
-                  <span lang="en-US" style="font-size: 12pt;">&nbsp;</span>
+                <span lang="en-US" style="font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;</span>
+                <span lang="en-US" style="font-size: 12pt;">&nbsp;</span>
                 </p>
                 <p style="text-align: center;"></p>
               </div>
@@ -211,6 +211,110 @@ session_start();
               <br>
               <div class="clear"></div>
             </div>
+            <span>&nbsp;</span>
+          </div>
+          <h2 id="sec0" class="global-primary dark-primary">相關產品</h2>
+          <div class="row">
+            <ul class="related-products boxify-container">
+              <li class="boxify-item product-item">
+                <a href="/products/5aed7aae4e22a61e09006ab0" ng-click="sendGaProductClick(&quot;5aed7aae4e22a61e09006ab0&quot;, &quot;SET-310&quot;, [], &quot;門市詢問度 No.1  天然乳酪香 濃厚濕潤朱古力  (6吋原味+6吋朱古力)&quot;)">
+                  <div class="boxify-image-wrapper">
+                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5aed7ac110abb9c3b00054c0/400x400f.webp?source_format=png)"></div>
+                  </div>
+                  <div class="info-box" style="">
+                    <div class="info-box-inner-wrapper">
+                      <div class="title text-primary-color title-container ellipsis" ng-non-bindable="" style="word-wrap: break-word;">
+                        門市詢問度 No.1 天然乳酪香 濃厚濕潤朱古力 (6吋原味+6吋朱古力)
+                      </div>
+                      <!-- <div class="global-primary dark-primary price " ></div>
+                      <div class="price-sale"></div> -->
+                      <div class="global-primary dark-primary price price-crossed">
+                        NT$1,030
+                      </div>
+                      <div class="price-sale price">
+                        NT$920
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <!--li-->
+              <li class="boxify-item product-item">
+                <a href="/products/5aed746e9a76f0189e000a6f" ng-click="sendGaProductClick(&quot;5aed746e9a76f0189e000a6f&quot;, &quot;SET-178&quot;, [], &quot;線上獨家，老顧客指定款(6吋原味+4吋藍莓)&quot;)">
+                  <div class="boxify-image-wrapper">
+                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5aed708000fdde47980058f8/400x400f.webp?source_format=png)"></div>
+                  </div>
+                  <div class="info-box" style="">
+                    <div class="info-box-inner-wrapper">
+                      <div class="title text-primary-color title-container ellipsis" ng-non-bindable="" style="word-wrap: break-word;">
+                        線上獨家，老顧客指定款(6吋原味+4吋藍莓)
+                      </div>
+                      <!-- <div class="global-primary dark-primary price " ></div>
+                      <div class="price-sale">
+                      </div> -->
+                      <div class="global-primary dark-primary price price-crossed">
+                        NT$870
+                      </div>
+                      <div class="price-sale price">
+                        NT$790
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <!--li-->
+              <li class="boxify-item product-item">
+                <a href="/products/5aed741a0e64fefaee006394" ng-click="sendGaProductClick(&quot;5aed741a0e64fefaee006394&quot;, &quot;SET-141&quot;, [], &quot;不可錯過的雙重滿足(6吋原味+6吋藍莓)&quot;)">
+                  <div class="boxify-image-wrapper">
+                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5aed708000fdde47980058f8/400x400f.webp?source_format=png)"></div>
+                  </div>
+                  <div class="info-box" style="">
+                    <div class="info-box-inner-wrapper">
+                      <div class="title text-primary-color title-container ellipsis" ng-non-bindable="" style="word-wrap: break-word;">
+                        不可錯過的雙重滿足(6吋原味+6吋藍莓)
+                      </div>
+                      <!-- <div class="global-primary dark-primary price " ></div>
+                      <div class="price-sale">
+                      </div> -->
+                      <div class="global-primary dark-primary price price-crossed">
+                        NT$1,030
+                      </div>
+                      <div class="price-sale price">
+                        NT$920
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <!--li-->
+              <li class="boxify-item product-item">
+                <a href="/products/5aed6fe100fdde47460061e0" ng-click="sendGaProductClick(&quot;5aed6fe100fdde47460061e0&quot;, &quot;SET-140&quot;, [], &quot;原味與初夏桑椹的天然滋味&quot;)">
+                  <div class="boxify-image-wrapper">
+                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5aed6c584e22a6fa77003b60/400x400f.webp?source_format=png)"></div>
+                  </div>
+                  <div class="info-box" style="">
+                    <div class="info-box-inner-wrapper">
+                      <div class="title text-primary-color title-container ellipsis" ng-non-bindable="" style="word-wrap: break-word;">
+                        原味與初夏桑椹的天然滋味
+                      </div>
+                      <!-- <div class="global-primary dark-primary price " ></div>
+                      <div class="price-sale">
+                      </div> -->
+                      <div class="global-primary dark-primary price price-crossed">
+                        NT$1,030
+                      </div>
+                      <div class="price-sale price">
+                        NT$920
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <!--li-->
+              <!--@products.each-->
+              <div class="clear"></div>
+            </ul>
+            <!--boxify-container-->
           </div>
         </div>
       </div>
