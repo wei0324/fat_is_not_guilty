@@ -104,8 +104,8 @@ session_start();
                 <!-- ngIf: selectedMedia -->
                 <div class="variant-gallery-stage text-center ng-scope" ng-if="selectedMedia" ng-swipe-left="selectNext()" ng-swipe-right="selectPrevious()">
                   <a ng-click="enlargeImage(selectedMedia)">
-    <img id="sl-product-image" class="img-responsive sl-lazy-image inline-block" data-ref-element=".variant-gallery-stage" ng-src="https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/400x.webp?source_format=jpg" src="https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/800x.webp?source_format=jpg">
-  </a>
+                    <img id="sl-product-image" class="img-responsive sl-lazy-image inline-block" data-ref-element=".variant-gallery-stage" ng-src="https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/400x.webp?source_format=jpg" src="https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/800x.webp?source_format=jpg">
+                  </a>
                 </div>
                 <!-- end ngIf: selectedMedia -->
                 <div class="variant-gallery row" ng-class="{'no-arrow': canSelectPrevious() !== true &amp;&amp; canSelectNext() !== true }">
