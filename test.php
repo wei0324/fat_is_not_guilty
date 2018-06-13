@@ -104,7 +104,7 @@ session_start();
                 <!-- ngIf: selectedMedia -->
                 <div class="variant-gallery-stage text-center ng-scope" ng-if="selectedMedia" ng-swipe-left="selectNext()" ng-swipe-right="selectPrevious()">
                   <a ng-click="enlargeImage(selectedMedia)">
-                    <img id="sl-product-image" class="img-responsive sl-lazy-image inline-block" data-ref-element=".variant-gallery-stage" ng-src="https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/400x.webp?source_format=jpg" src="https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/800x.webp?source_format=jpg">
+                    <img id="sl-product-image" class="img-responsive sl-lazy-image inline-block" data-ref-element=".variant-gallery-stage" ng-src="images/products/10.jpg" src="images/products/10.jpg">
                   </a>
                 </div>
                 <!-- end ngIf: selectedMedia -->
@@ -137,13 +137,13 @@ session_start();
                       <!-- ngRepeat: media in medias -->
                       <div class="variant-image ng-scope selected" ng-class="{ selected: media == selectedMedia }" ng-repeat="media in medias">
                         <a ng-click="selectMedia(media)">
-                          <div class="image-container sl-lazy-image" data-resizing-segment="100" ng-style="getThumbnailStyle(media)" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5adea13610abb99eb500caed/200x.webp?source_format=jpg);"></div>
+                          <div class="image-container sl-lazy-image" data-resizing-segment="100" ng-style="getThumbnailStyle(media)" style="background-image:url(images/products/11.jpg);"></div>
                         </a>
                       </div>
                       <!-- end ngRepeat: media in medias -->
                       <div class="variant-image ng-scope" ng-class="{ selected: media == selectedMedia }" ng-repeat="media in medias">
                         <a ng-click="selectMedia(media)">
-                          <div class="image-container sl-lazy-image" data-resizing-segment="100" ng-style="getThumbnailStyle(media)" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5adea11500fdde703800cc8a/200x.webp?source_format=jpg);"></div>
+                          <div class="image-container sl-lazy-image" data-resizing-segment="100" ng-style="getThumbnailStyle(media)" style="background-image:url(images/products/11.jpg);"></div>
                         </a>
                       </div>
                       <!-- end ngRepeat: media in medias -->
@@ -219,7 +219,7 @@ session_start();
               <li class="boxify-item product-item">
                 <a href="/products/5aed7aae4e22a61e09006ab0" ng-click="sendGaProductClick(&quot;5aed7aae4e22a61e09006ab0&quot;, &quot;SET-310&quot;, [], &quot;門市詢問度 No.1  天然乳酪香 濃厚濕潤朱古力  (6吋原味+6吋朱古力)&quot;)">
                   <div class="boxify-image-wrapper">
-                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5aed7ac110abb9c3b00054c0/400x400f.webp?source_format=png)"></div>
+                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(images/products/12.jpg)"></div>
                   </div>
                   <div class="info-box" style="">
                     <div class="info-box-inner-wrapper">
@@ -242,7 +242,7 @@ session_start();
               <li class="boxify-item product-item">
                 <a href="/products/5aed746e9a76f0189e000a6f" ng-click="sendGaProductClick(&quot;5aed746e9a76f0189e000a6f&quot;, &quot;SET-178&quot;, [], &quot;線上獨家，老顧客指定款(6吋原味+4吋藍莓)&quot;)">
                   <div class="boxify-image-wrapper">
-                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5aed708000fdde47980058f8/400x400f.webp?source_format=png)"></div>
+                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(images/products/13.jpg)"></div>
                   </div>
                   <div class="info-box" style="">
                     <div class="info-box-inner-wrapper">
@@ -266,7 +266,7 @@ session_start();
               <li class="boxify-item product-item">
                 <a href="/products/5aed741a0e64fefaee006394" ng-click="sendGaProductClick(&quot;5aed741a0e64fefaee006394&quot;, &quot;SET-141&quot;, [], &quot;不可錯過的雙重滿足(6吋原味+6吋藍莓)&quot;)">
                   <div class="boxify-image-wrapper">
-                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5aed708000fdde47980058f8/400x400f.webp?source_format=png)"></div>
+                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(images/products/13.jpg)"></div>
                   </div>
                   <div class="info-box" style="">
                     <div class="info-box-inner-wrapper">
@@ -290,7 +290,7 @@ session_start();
               <li class="boxify-item product-item">
                 <a href="/products/5aed6fe100fdde47460061e0" ng-click="sendGaProductClick(&quot;5aed6fe100fdde47460061e0&quot;, &quot;SET-140&quot;, [], &quot;原味與初夏桑椹的天然滋味&quot;)">
                   <div class="boxify-image-wrapper">
-                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(https://shoplineimg.com/5a224d3759d52417b700071b/5aed6c584e22a6fa77003b60/400x400f.webp?source_format=png)"></div>
+                    <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(images/products/14.jpg)"></div>
                   </div>
                   <div class="info-box" style="">
                     <div class="info-box-inner-wrapper">
