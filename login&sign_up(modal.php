@@ -1,3 +1,4 @@
+
 <!-- Modal -->
 <div class="modal fade member" id="login" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><!--reservationModalLabel-->
     <div class="modal-dialog modal-lg" role="document">
@@ -10,7 +11,7 @@
                             <small>CLOSE </small><span aria-hidden="true">&times;</span>
                         </button>
                         <h1 class="mb-4">登入</h1>
-                        <form action="#" method="post" id="form2">
+                        <form action="index.php" method="post" id="form2">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label for="account_login">帳號</label>
