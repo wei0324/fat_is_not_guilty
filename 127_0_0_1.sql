@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018 年 06 月 14 日 13:56
--- 伺服器版本: 10.1.31-MariaDB
--- PHP 版本： 7.2.3
+-- 產生時間： 2018 年 06 月 14 日 16:22
+-- 伺服器版本: 10.1.30-MariaDB
+-- PHP 版本： 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -50,27 +50,6 @@ INSERT INTO `account` (`account`, `password`, `email`, `address`, `info`, `autho
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `comment`
---
-
-CREATE TABLE `comment` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `message` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=big5;
-
---
--- 資料表的匯出資料 `comment`
---
-
-INSERT INTO `comment` (`id`, `name`, `email`, `message`) VALUES
-(1, '123', '456', '789'),
-(2, 'f', 'e', 'g');
-
--- --------------------------------------------------------
-
---
 -- 資料表結構 `orders`
 --
 
@@ -98,10 +77,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `description`, `image_name`) VALUES
-(1, 'food1', 100, '要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。', '1.jpg'),
-(2, 'food2', 200, '要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。', '2.jpg'),
-(3, 'food3', 300, '要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。', '3.jpg'),
-(4, 'food4', 400, '要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。', '4.jpg'),
+(1, '桑椹乳酪蛋糕', 520, '#桑椹漿果\r\n香味低調卻擁有令人齒頰生津的自然果酸\r\n#澳洲頂級乳酪\r\n純粹的大地乳香，天然的乳酪鹹與甜在口中釋放\r\n\r\n#成分\r\n100%凝脂乳酪、蛋、糖、蜂蜜、桑椹漿果', '10.jpg'),
+(2, '不可錯過的雙重滿足(原味&藍莓)', 920, '#澳洲頂級乳酪\r\n純粹的大地乳香，天然的乳酪鹹與甜在口中釋放\r\n#藍莓漿果\r\n溫火淬鍊出的藍莓漿果，更多的濕潤與甜香，為重乳酪帶來一抹清香\r\n\r\n#成分\r\n純粹原味乳酪蛋糕成分:100%凝脂乳酪、蛋、糖\r\n\r\n北國藍莓乳酪蛋糕成分:100%凝脂乳酪、蛋、糖、藍莓漿果', '15.jpg'),
+(3, '芝麻桂圓乳酪蛋糕', 880, '新鮮黑芝麻顛覆傳統高溫翻炒方式\r\n\r\n使用低溫焙炒後研磨\r\n\r\n因此製出的芝麻龍眼乳酪蛋糕\r\n\r\n吃了不燥熱上火，口感更加溫順', '16.jpg'),
+(4, '朱古力圓舞曲乳酪蛋糕', 580, '#舌尖上的優雅舞曲\r\n#香濃巧克力碎餅:\r\n撒於乳酪蛋糕頂端，讓喜愛可可得您，一次享用綿密與完美融合的盛宴\r\n#黑巧克力乳酪\r\n絲綢般柔滑的溫潤質地，融入自然熟成的乳酪蛋糕，仿若一支華麗的圓舞曲。\r\n\r\n', '17.jpg'),
 (5, 'food5', 500, '要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。', '5.jpg'),
 (6, 'food6', 600, '要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。', '6.jpg'),
 (7, 'food7', 700, '要一個對於食物只有分為能吃和不能吃的人，想出什麼精美的文案，實在太為難人了。', '7.jpg'),
@@ -122,12 +101,6 @@ ALTER TABLE `account`
   ADD PRIMARY KEY (`account`);
 
 --
--- 資料表索引 `comment`
---
-ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id`);
-
---
 -- 資料表索引 `orders`
 --
 ALTER TABLE `orders`
@@ -142,12 +115,6 @@ ALTER TABLE `products`
 --
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
-
---
--- 使用資料表 AUTO_INCREMENT `comment`
---
-ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表 AUTO_INCREMENT `orders`
