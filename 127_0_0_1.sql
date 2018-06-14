@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018 年 06 月 12 日 20:05
--- 伺服器版本: 10.1.30-MariaDB
--- PHP 版本： 7.2.2
+-- 產生時間： 2018 年 06 月 14 日 13:56
+-- 伺服器版本: 10.1.31-MariaDB
+-- PHP 版本： 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -54,19 +54,19 @@ INSERT INTO `account` (`account`, `password`, `email`, `address`, `info`, `autho
 --
 
 CREATE TABLE `comment` (
-  `no` int(255) NOT NULL,
-  `account` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `content` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `date` date NOT NULL,
-  `productID` int(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `message` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=big5;
 
 --
 -- 資料表的匯出資料 `comment`
 --
 
-INSERT INTO `comment` (`no`, `account`, `content`, `date`, `productID`) VALUES
-(1, '3', '3', '2018-06-12', 3);
+INSERT INTO `comment` (`id`, `name`, `email`, `message`) VALUES
+(1, '123', '456', '789'),
+(2, 'f', 'e', 'g');
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,7 @@ ALTER TABLE `account`
 -- 資料表索引 `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`no`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `orders`
@@ -147,7 +147,7 @@ ALTER TABLE `products`
 -- 使用資料表 AUTO_INCREMENT `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表 AUTO_INCREMENT `orders`
