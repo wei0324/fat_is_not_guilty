@@ -80,7 +80,7 @@
       <div> <!-- Logout -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="" class="nav-link" id="logout">
+            <a href="" class="nav-link" id="logout" onclick()="<?php session_destroy(); ?>">
               <div class="form-inline">
                 <div style="position: relative; width: 35px; height: 35px;">
                   <div style="position: absolute;left: 0px;bottom: 0;">
@@ -89,6 +89,7 @@
                   <div  style="position: absolute;right: 0;top: 0;"></div>
                 </div>
                 登出
+                <?php //session_destroy(); ?>
               </div>
             </a>
           </li>

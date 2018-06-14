@@ -110,7 +110,9 @@
                 <div class="col-md-12">
                     <h1 class="ftco-heading ftco-animate mb-3">胖不是罪</h1>
                     <h2 class="h5 ftco-subheading mb-5 ftco-animate">精緻、用心、美味 甜點專賣網</h2>
-                    <p><a href="" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#login">會員登入</a> <a href="" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#Create">加入會員</a></p>
+                    <?php if (!isset($_SESSION['account'])): ?>
+                      <p><a href="" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#login">會員登入</a> <a href="" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#Create">加入會員</a></p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -32,34 +32,6 @@
                               </div>
                             </div>
                               <div>
-                                <?php
-$link = mysqli_connect("localhost", "root", "root123456", "group_15") // 建立MySQL的資料庫連結
-or die("無法開啟MySQL資料庫連結!<br>");
-
-// 送出編碼的MySQL指令
-mysqli_query($link, 'SET CHARACTER SET utf8');
-mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
-if (isset($_POST['account_login']) && isset($_POST['password_login'])) {
-// 送出查詢的SQL指令
-$id=$_POST['account_login'];
-$pw=$_POST['password_login'];
-$result = mysqli_query($link, "SELECT * FROM account where account = '$id'");
-$row = @mysqli_fetch_row($result);
-if ($row[0] == $id && $row[1] == $pw) {
-//將帳號寫入session，方便驗證使用者身份
-$_SESSION['account'] = $id;
-} else {
-echo "<script>
-$(function(){
-$('#login').modal({
-show:true,
-})
-});
-</script>" . "<span style=\"color:red\">帳號或密碼錯誤</span>";
-}
-}
-mysqli_close($link); // 關閉資料庫連結
-?>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 form-group">
@@ -67,6 +39,37 @@ mysqli_close($link); // 關閉資料庫連結
                                 </div>
                             </div>
                         </form>
+                        <?php
+                        $link = mysqli_connect("localhost", "root", "root123456", "group_15") // 建立MySQL的資料庫連結
+                        or die("無法開啟MySQL資料庫連結!<br>");
+
+                        // 送出編碼的MySQL指令
+                        mysqli_query($link, 'SET CHARACTER SET utf8');
+                        mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+                        if (isset($_POST['account_login']) && isset($_POST['password_login'])) {
+                          // 送出查詢的SQL指令
+                          $id=$_POST['account_login'];
+                          $pw=$_POST['password_login'];
+                          $result = mysqli_query($link, "SELECT * FROM account where account = '$id'");
+                          $row = @mysqli_fetch_row($result);
+                          if ($row[0] == $id && $row[1] == $pw) {
+                            //將帳號寫入session，方便驗證使用者身份
+                            $_SESSION['account'] = $id;
+
+                          } else {
+                            echo "<script>
+                            $(function(){
+                              $('#login').modal({
+                                show:true,
+                              })
+                            });
+                            </script>" . "<span style=\"color:red\">帳號或密碼錯誤</span>";
+                          }
+                        }
+                        mysqli_close($link); // 關閉資料庫連結
+                        ?>
+
+
                     </div>
                 </div>
             </div>
