@@ -49,10 +49,11 @@
     }
     </script>
     <style type="text/css">
-        .ftco-navbar-light {
+    .ftco-navbar-light {
+        top: 0px;
         position: absolute;
     }
-    @media (min-width: 961px) {
+    /*@media (min-width: 961px) {
     
         #temp_section{
             height:100px;
@@ -65,18 +66,28 @@
             height:80px;
 
     }
-    }
-    
+    }*/
+
+    s
     </style>
+    <script type="text/javascript">
+    function add() {
+        document.getElementById("item-quantity").value++;
+    }
+
+    function minus() {
+        if (document.getElementById("item-quantity").value > 1) {
+            document.getElementById("item-quantity").value--;
+        }
+
+    }
+    </script>
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
-    <?php include("navbar.php"); ?>
     <!-- END nav -->
-    <section class="ftco-cover" style="" id="section-home">
-        <div class="container" id="temp_section">
-
-        </div>
+    <section class="ftco-section bg-light" style="padding: 5%;" id="">
+        <?php include("navbar.php"); ?>
     </section>
     <!-- END section -->
     <section class="ftco-section bg-light form-inline products_inner" id="">
@@ -87,54 +98,100 @@
                         <!-- ngIf: selectedMedia -->
                         <div class="variant-gallery-stage text-center ">
                             <!--!!!!!!!!!-->
-                            <a><img id="sl-product-image" class="img-responsive sl-lazy-image inline-block" src="images/products/10.jpg"></a>
+                            <a><img id="sl-product-image" class="img-responsive sl-lazy-image inline-block" 
+                                <?php
+
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
+$sql="SELECT * FROM products where id=".$_GET['id'];
+if ( $result = mysqli_query($link, $sql) ) { 
+$row = mysqli_fetch_assoc($result);
+echo "src=\"images/products/".$row["image_name"]."\"";
+}
+
+
+?>></a>
                         </div>
                         <!-- end ngIf: selectedMedia -->
-                        <div class="variant-gallery row">
-                            <div class="variant-gallery-control left disable ng-hide">
-                                <i class="fa fa-caret-left fa-inverse"></i>
-                            </div>
-                            <div class="variant-gallery-scroll-container">
-                                <div class="variant-gallery-slider">
-                                    <!-- ngRepeat: media in medias -->
-                                    <div class="variant-image  selected">
-                                        <a>
-                                            <div class="image-container sl-lazy-image" data-resizing-segment="100" ng-style="getThumbnailStyle(media)" style="background-image:url(images/products/11.jpg);"></div>
-                                        </a>
-                                    </div>
-                                    <!-- end ngRepeat: media in medias -->
-                                    <div class="variant-image ">
-                                        <a>
-                                            <div class="image-container sl-lazy-image" style="background-image:url(images/products/11.jpg);"></div>
-                                        </a>
-                                    </div>
-                                    <!-- end ngRepeat: media in medias -->
-                                </div>
-                            </div>
-                            <div class="variant-gallery-control right ng-hide">
-                                <i class="fa fa-caret-right fa-inverse" aria-hidden="true"></i>
-                            </div>
-                        </div>
+
                     </product-variant-gallery>
                     <div class="visible-lg visible-md">
                     </div>
                 </div>
                 <div class="title global-primary dark-primary">
-                    <h1>初夏桑椹乳酪蛋糕 6吋</h1>
+                    <h1><?php
+
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
+$sql="SELECT * FROM products where id=".$_GET['id'];
+if ( $result = mysqli_query($link, $sql) ) { 
+$row = mysqli_fetch_assoc($result);
+echo $row["name"];
+}
+
+
+?></h1>
                     <div class="Product-promotions">
                         <p class="Product-promotions-tag" ng-non-bindable="">
                             全店，會員獨享，消費滿1500元，可享免運費~
                         </p>
                     </div>
-                    <div class="global-primary dark-primary price-regular price price-crossed"> NT$580
-                    </div>
                     <div class="price-sale price">
-                        NT$520
+                        NT$
+                        <?php
+
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
+$sql="SELECT * FROM products where id=".$_GET['id'];
+if ( $result = mysqli_query($link, $sql) ) { 
+$row = mysqli_fetch_assoc($result);
+echo $row["price"];
+}
+
+
+?>
                     </div>
                     <hr>
                     <h2 id="sec0" class="global-primary dark-primary">商品描述</h2>
-                    <div ng-non-bindable="" class="global-secondary dark-secondary description-container">
-                        <p class="p_style"><span lang="en-US" class="span_style">#&nbsp;</span>
+                    <div ng-non-bindable="" class="global-secondary dark-secondary description-container p_style">
+                        <?php
+
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
+
+$sql="SELECT * FROM products where id=".$_GET['id'];
+if ( $result = mysqli_query($link, $sql) ) { 
+    $row = mysqli_fetch_assoc($result);
+    echo nl2br($row["description"]);
+}
+
+
+?>
+                            <!--<p class="p_style"><span lang="en-US" class="span_style">#&nbsp;</span>
                             <span lang="zh-TW" class="span_style">無奶油</span>
                             <span lang="en-US" class="span_style">&nbsp;-&nbsp;</span>
                             <span lang="zh-TW" class="span_style">蛋糕變得簡單、純淨</span>
@@ -155,15 +212,16 @@
                         <span lang="en-US" style="font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;</span>
                         <span lang="en-US" style="font-size: 12pt;">&nbsp;</span>
                         </p>
-                        <p style="text-align: center;"></p>
+                        <p style="text-align: center;"></p>-->
                     </div>
-                    <div class="action-title global-secondary">數量</div>
+                    <hr>
+                    <h3>數量</h3>
                     <div class="extra-quantity">
                         <label for="quantity" class="sr-only">數量</label>
                         <div class="quantity-number input-group " id="quanInput">
-                            <span class="add-down add-action input-group-addon"><i class="fa fa-minus"></i></span>
-                            <input id="item-quantity" class="form-control item_quantity" type="text" name="quantity" size="2" value="1">
-                            <span class="add-up add-action input-group-addon"><i class="fa fa-plus"></i></span>
+                            <button class="add-down add-action input-group-addon" onclick="minus()" style="cursor:pointer"><i class="fa fa-minus"></i></button>
+                            <input id="item-quantity" class="form-control item_quantity" type="text" name="quantity" size="2" value="1" disabled="disabled">
+                            <button class="add-up add-action input-group-addon" onclick="add()" style="cursor:pointer"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
                     <br>
@@ -174,6 +232,7 @@
                 </div>
                 <span>&nbsp;</span>
             </div>
+            <hr>
             <h2 id="sec0" class="global-primary dark-primary">相關產品</h2>
             <div class="row">
                 <ul class="related-products boxify-container">
