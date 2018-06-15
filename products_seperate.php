@@ -1,7 +1,24 @@
-<?php  ?>
-<!--abcabcabc
+<?php  
+$link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+if (!$link) {
+    echo "連結錯誤代碼: " . mysqli_connect_errno() . "<br>"; //顯示錯誤代碼
+    echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
+    exit();
+}
 
--->
+$sql="SELECT * FROM products where id=".$_GET['id'];
+$result = mysqli_query($link, $sql);
+if ( $result ) {
+    $row = mysqli_fetch_assoc($result);
+    if (!$row) {
+        header("Location:products.php");
+    } 
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,7 +133,7 @@ echo "src=\"images/products/".$row["image_name"]."\"";
 }
 
 
-?>></a>
+?>> </a>
                         </div>
                         <!-- end ngIf: selectedMedia -->
 
@@ -124,7 +141,7 @@ echo "src=\"images/products/".$row["image_name"]."\"";
                     <div class="visible-lg visible-md">
                     </div>
                 </div>
-                <div class="title global-primary dark-primary">
+                <div class="title global-primary dark-primary col-md-6">
                     <h1><?php
 
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');

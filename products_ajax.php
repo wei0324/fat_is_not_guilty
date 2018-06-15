@@ -14,13 +14,21 @@ if ($result = mysqli_query($link, "SELECT * FROM products")) {
             $row = mysqli_fetch_assoc($result);
             if(!is_null($row))
             {
+                if(mb_strlen( $row["description"], "utf-8")>30)
+                {
+                    $description=mb_substr( $row["description"],0,30,"utf-8")."......";
+
+                }
+                else
+                    $description=$row["description"];
+                
                 
             /*img class class=\"img-fluid\" */
             echo "<div class=\"d-block mb-4 text-center ftco-media border-0\" style=\"width: 360px; margin-right: 10px;\">
                                             <img src=\"images/products/".$row["image_name"]."\"  height=\"400px\"></img>
                                             <div class=\"media-body  p-4\">";
-            echo "<h5 class=\"text-primary\">" . $row["price"] . "</h5><h5 class=\"mt-0 h4\">" . $row["name"] . "</h5><p class=\"mb-4\">" . $row["description"] . "</p>
-                                                <p class=\"mb-0\"><a href=\"menu.php\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>
+            echo "<h5 class=\"text-primary\">$" . $row["price"] . "</h5><h5 class=\"mt-0 h4\">" . $row["name"] . "</h5><p class=\"mb-4\">" . $description . "</p>
+                                                <p class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>
                                             </div>
                                         </div>";
                                     }
