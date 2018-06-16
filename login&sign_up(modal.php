@@ -56,7 +56,7 @@
                           if ($row[0] == $id && $row[1] == $pw) {
                             //將帳號寫入session，方便驗證使用者身份
                             $_SESSION['account'] = $id;
-
+                            echo '<meta http-equiv=refresh content=0;url="index.php">';
                           } else {
                             echo "<script>
                             $(function(){
