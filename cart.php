@@ -2,7 +2,7 @@
 
 session_start();
 if (!isset($_SESSION['account'])) {
-  alert("請先登入!");
+  echo "<script>alert('請先登入!')  </script>" ;
     header("refresh:2;Location:login.php");
 }
 if (!isset($_SESSION['cart'])) {

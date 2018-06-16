@@ -1,4 +1,5 @@
-<?php  
+<?php
+  session_start();
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
@@ -14,7 +15,7 @@ if ( $result ) {
     $row = mysqli_fetch_assoc($result);
     if (!$row) {
         header("Location:products.php");
-    } 
+    }
 }
 
 ?>
@@ -71,14 +72,14 @@ if ( $result ) {
         position: absolute;
     }
     /*@media (min-width: 961px) {
-    
+
         #temp_section{
             height:100px;
 
     }
     }
     @media (max-width: 309px) {
-    
+
         #temp_section{
             height:80px;
 
@@ -115,7 +116,7 @@ if ( $result ) {
                         <!-- ngIf: selectedMedia -->
                         <div class="variant-gallery-stage text-center ">
                             <!--!!!!!!!!!-->
-                            <a><img id="sl-product-image" class="img-responsive sl-lazy-image inline-block" 
+                            <a><img id="sl-product-image" class="img-responsive sl-lazy-image inline-block"
                                 <?php
 
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
@@ -127,7 +128,7 @@ if (!$link) {
     exit();
 }
 $sql="SELECT * FROM products where id=".$_GET['id'];
-if ( $result = mysqli_query($link, $sql) ) { 
+if ( $result = mysqli_query($link, $sql) ) {
 $row = mysqli_fetch_assoc($result);
 echo "src=\"images/products/".$row["image_name"]."\"";
 }
@@ -153,7 +154,7 @@ if (!$link) {
     exit();
 }
 $sql="SELECT * FROM products where id=".$_GET['id'];
-if ( $result = mysqli_query($link, $sql) ) { 
+if ( $result = mysqli_query($link, $sql) ) {
 $row = mysqli_fetch_assoc($result);
 echo $row["name"];
 }
@@ -178,7 +179,7 @@ if (!$link) {
     exit();
 }
 $sql="SELECT * FROM products where id=".$_GET['id'];
-if ( $result = mysqli_query($link, $sql) ) { 
+if ( $result = mysqli_query($link, $sql) ) {
 $row = mysqli_fetch_assoc($result);
 echo $row["price"];
 }
@@ -201,7 +202,7 @@ if (!$link) {
 }
 
 $sql="SELECT * FROM products where id=".$_GET['id'];
-if ( $result = mysqli_query($link, $sql) ) { 
+if ( $result = mysqli_query($link, $sql) ) {
     $row = mysqli_fetch_assoc($result);
     echo nl2br($row["description"]);
 }

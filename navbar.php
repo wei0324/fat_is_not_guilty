@@ -81,7 +81,7 @@
       <div> <!-- Logout -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="" class="nav-link" id="logout" onclick()="<?php session_destroy(); ?>">
+            <a href="logout.php" class="nav-link" id="logout-1" >
               <div class="form-inline">
                 <div style="position: relative; width: 35px; height: 35px;">
                   <div style="position: absolute;left: 0px;bottom: 0;">
@@ -90,12 +90,30 @@
                   <div  style="position: absolute;right: 0;top: 0;"></div>
                 </div>
                 登出
-                <?php //session_destroy(); ?>
               </div>
             </a>
           </li>
         </ul>
       </div>
+      <?php else: ?>
+        <div> <!-- Logout -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="login.php" class="nav-link" id="login-1" >
+                <div class="form-inline">
+                  <div style="position: relative; width: 35px; height: 35px;">
+                    <div style="position: absolute;left: 0px;bottom: 0;">
+                      <i class="fas fa-power-off"></i>
+                    </div>
+                    <div  style="position: absolute;right: 0;top: 0;"></div>
+                  </div>
+                  登入
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
     <?php endif; ?>
+
 
 </nav>
