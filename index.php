@@ -59,9 +59,30 @@
         }
     }
     </script>
+<script type="text/javascript">
+    $.ajax({
+            url: 'cart_ajax.php',
+            data: {
+            },
+            type: 'POST',
+            dataType: "json",
+            success: function(Jdata) {
+                $(".cart_cnt").html(Jdata.length); //顯示購物車物品數量
+                for ($i = 0; $i <Jdata.length; $i++) {
+                    
+                    if($((".p"+Jdata[$i]).length))
+                    {
+                        $((".p"+Jdata[$i])).attr("onclick","cart(2,"+ Jdata[$i] +")");
+                        $((".p"+Jdata[$i])).html("取消購物車");
+                    }
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {}
+        });
+</script>
 </head>
 
-<body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
+<body data-spy="scroll" data-target="#ftco-navbar" data-offset="200" onload="a();">
     <?php include("navbar.php"); ?>
     <!-- END nav -->
     <section class="ftco-cover" style="background-image: url(images/bg_3.jpg);" id="section-home">
@@ -131,7 +152,7 @@
                 }
                                                 echo "<p class=\"mb-4\">".$description."</p>";
                                                 echo "<p class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> ";
-                                                echo "<a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></p>";
+                                                echo "<button onclick=\"cart(1,".$row["id"].")\" class=\"btn btn-primary btn-sm p".$row["id"]."\">加入購物車</button></p>";
 
                                                 echo "</div>";
                                                 echo "</div>";
@@ -216,7 +237,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                                 echo "<p>".$description."</p>";
                                                 echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
                                                 echo "<span class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> ";
-                                                echo "<a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></span>";
+                                                echo "<button onclick=\"cart(1,".$row["id"].")\" class=\"btn btn-primary btn-sm p".$row["id"]."\">加入購物車</button></p>";
                                                 echo "</div>";
                                                 echo "</div>";
                                             }
@@ -256,7 +277,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                                 echo "<p>".$row["description"]."</p>";
                                                 echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
                                                 echo "<span class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> ";
-                                                echo "<a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></span>";
+                                                echo "<button onclick=\"cart(1,".$row["id"].")\" class=\"btn btn-primary btn-sm p".$row["id"]."\">加入購物車</button></p>";
                                                 echo "</div>";
                                                 echo "</div>";
                                             }
@@ -296,7 +317,7 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                                 echo "<p>".$row["description"]."</p>";
                                                 echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
                                                 echo "<span class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> ";
-                                                echo "<a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></span>";
+                                                echo "<button onclick=\"cart(1,".$row["id"].")\" class=\"btn btn-primary btn-sm p".$row["id"]."\">加入購物車</button></p>";
                                                 echo "</div>";
                                                 echo "</div>";
                                             }

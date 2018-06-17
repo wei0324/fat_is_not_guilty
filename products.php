@@ -30,6 +30,27 @@
         }
     }
     </script>
+    <script type="text/javascript">
+        $.ajax({
+            url: 'cart_ajax.php',
+            data: {
+            },
+            type: 'POST',
+            dataType: "json",
+            success: function(Jdata) {
+                $(".cart_cnt").html(Jdata.length); //顯示購物車物品數量
+                for ($i = 0; $i <Jdata.length; $i++) {
+                    
+                    if($((".p"+Jdata[$i]).length))
+                    {
+                        $((".p"+Jdata[$i])).attr("onclick","cart(2,"+ Jdata[$i] +")");
+                        $((".p"+Jdata[$i])).html("取消購物車");
+                    }
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {}
+        });
+    </script>
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">

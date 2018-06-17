@@ -35,7 +35,7 @@ if ($result = mysqli_query($link, "SELECT * FROM products")) {
                                             <img src=\"images/products/".$row["image_name"]."\"  height=\"400px\"></img>
                                             <div class=\"media-body  p-4\">";
             echo "<h5 class=\"text-primary\">$" . $row["price"] . "</h5><h5 class=\"mt-0 h4\">" . $row["name"] . "</h5><p class=\"mb-4\">" . $description . "</p>
-                                                <p class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> <a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></p>
+                                                <p class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> <button onclick=\"cart(1,".$row["id"].")\" class=\"btn btn-primary btn-sm p".$row["id"]."\">加入購物車</button></p>
                                             </div>
                                         </div>";
                                     }
