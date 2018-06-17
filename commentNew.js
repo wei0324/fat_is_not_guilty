@@ -9,7 +9,7 @@ $(function() {
       "paginate": true, //是否分頁
       "lengthChange": true,
       "ajax": {
-            url: "datatable2_ajax.php",
+            url: "commentNew_ajax.php",
             data: function(d) {
                   return $('#comment').serialize() + "&oper=query";
             },
