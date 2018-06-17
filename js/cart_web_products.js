@@ -1,8 +1,8 @@
 var tbl;
 $(function() {
-
+/*form1*/
     //查詢
-    tbl = $('#ex').DataTable({
+    tbl = $('#example').DataTable({
         "scrollX": false,
         "scrollY": false,
         "scrollCollapse": false, //當筆數小於scrillY高度時,自動縮小
@@ -10,9 +10,9 @@ $(function() {
         "paginate": true, //是否分頁
         "lengthChange": true,
         "ajax": {
-            url: "comment_ajax.php",
+            url: "cart_web_products(table)_ajax.php",
             data: function(d) {
-                return $('#comment').serialize() + "&oper=query";
+               return $('#form1').serialize() + "&oper=query";
             },
             type: 'POST',
             dataType: 'json'
@@ -23,16 +23,14 @@ $(function() {
     //修改
     $('tbody').on('click', '#btn_update', function() {
         var data = tbl.row($(this).closest('tr')).data();
-        $('#account').val(data[0]);
-        $('#content').html(data[1]);
 
-        $('#id').val(data[5]);
-        $("#no").val(data[4]);
+        $('#num').val(num);
+        $("#id").val(data[5]);
         $("#oper").val("update");
     });
 
     //取消
-    $('tbody').on('click', '#btn_cancel', function() {
+    $('tbody').on('click', '#btn-cancel', function() {
         $("#oper").val("insert");
     });
 
@@ -47,40 +45,28 @@ $(function() {
         if (!confirm('是否確定要刪除?'))
             return false;
 
-        $("#no").val(data[4]);
+        $("#id").val(data[5]);
         $("#oper").val("delete"); //刪除
         CRUD();
     });
 
-    //送出表單 (儲存)
-    $("#form1").validate({
-        submitHandler: function(form) {
-            CRUD();
-        },
-        rules: {
-            content: {
-                required: true,
-            }
-
-        }
-    });
 
     function CRUD() {
         $.ajax({
-            url: "comment_ajax.php",
-            data: $("#comment").serialize(),
+            url: "cart_web_products(table)_ajax.php",
+            data: $("#form1").serialize(),
             type: 'POST',
             dataType: "json",
             success: function(JData) {
                 if (JData.code) {
                     toastr["error"](JData.message);
-                    document.getElementById("comment").reset();
+                    document.getElementById("form1").reset();
                     $(".area").html("");
                 } else {
                     $("#oper").val("insert");
                     toastr["success"](JData.message);
                     tbl.ajax.reload();
-                    document.getElementById("comment").reset();
+                    document.getElementById("form1").reset();
                     $(".area").html("");
                 }
             },
@@ -91,5 +77,6 @@ $(function() {
             }
         });
     }
+
 
 });
