@@ -116,7 +116,7 @@ $(document).ready(function($) {
     }
   });
 });
-
+//變更密碼
 $(document).ready(function($) {
   $.validator.setDefaults({
         ignore: []
@@ -151,7 +151,7 @@ $(document).ready(function($) {
 
     },
     messages: {
-      account: {
+      pwdInfro: {
         required: "*必填",
 
       },
@@ -166,6 +166,69 @@ $(document).ready(function($) {
         equalTo: "*兩次密碼不相符"
       },
 
+
+    }
+  });
+});
+//mail
+$(document).ready(function($) {
+  $.validator.setDefaults({
+        ignore: []
+    });
+  //for select
+  $.validator.addMethod("notEqualsto", function(value, element, arg) {
+    return arg != value;
+  }, "您尚未選擇!");
+
+  $("#email_edit").validate({
+    submitHandler: function(form) {
+
+      form.submit();
+    },
+    rules: {
+      emailInfro: {
+        required: true,
+        email: true
+      },
+
+    },
+    messages: {
+      emailInfro: {
+        required: "*必填",
+        email: "*請輸入正確的電子信箱"
+      },
+
+
+    }
+  });
+});
+//addr
+$(document).ready(function($) {
+  $.validator.setDefaults({
+        ignore: []
+    });
+  //for select
+  $.validator.addMethod("notEqualsto", function(value, element, arg) {
+    return arg != value;
+  }, "您尚未選擇!");
+
+  $("#addr_edit").validate({
+    submitHandler: function(form) {
+
+      form.submit();
+    },
+    rules: {
+      addrInfro: {
+        required: true,
+
+      },
+
+    },
+    messages: {
+      addrInfro: {
+        required: "*必填",
+
+      },
 
     }
   });
