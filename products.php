@@ -33,8 +33,11 @@
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
-    <?php include("navbar.php"); ?>
     <!-- END nav -->
+    <section class="ftco-section bg-light" style="padding-top: 0;" id="">
+        <?php include("navbar.php"); ?>
+    </section>
+    <!-- END section -->
     <section class="bg-light" id="section-news">
         <div class="container" style="padding: 50px">
             <div id="aaa" class="carousel slide" data-ride="carousel">

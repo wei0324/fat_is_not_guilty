@@ -8,7 +8,8 @@ if (!$link) {
     echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
     exit();
 }
-
+if(!isset($_GET['id']))
+    header("Location:products.php");
 $sql="SELECT * FROM products where id=".$_GET['id'];
 $result = mysqli_query($link, $sql);
 if ( $result ) {
@@ -53,28 +54,6 @@ if ( $result ) {
         }
     }
     </script>
-    <style type="text/css">
-    .ftco-navbar-light {
-        top: 0px;
-        position: absolute;
-    }
-    /*@media (min-width: 961px) {
-
-        #temp_section{
-            height:100px;
-
-    }
-    }
-    @media (max-width: 309px) {
-
-        #temp_section{
-            height:80px;
-
-    }
-    }*/
-
-    s
-    </style>
     <script type="text/javascript">
     function add() {
         document.getElementById("item-quantity").value++;
@@ -91,7 +70,7 @@ if ( $result ) {
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
     <!-- END nav -->
-    <section class="ftco-section bg-light" style="padding: 5%;" id="">
+    <section class="ftco-section bg-light" style="padding-top: 0;" id="">
         <?php include("navbar.php"); ?>
     </section>
     <!-- END section -->
@@ -225,7 +204,7 @@ if ( $result = mysqli_query($link, $sql) ) {
                         <label for="quantity" class="sr-only">數量</label>
                         <div class="quantity-number input-group " id="quanInput">
                             <button class="add-down add-action input-group-addon" onclick="minus()" style="cursor:pointer"><i class="fa fa-minus"></i></button>
-                            <input id="item-quantity" class="form-control item_quantity" type="text" name="quantity" size="2" value="1" disabled="disabled">
+                            <input id="item-quantity" class="form-control item_quantity" type="text" name="quantity" size="2" value="1" min="1" disabled="disabled" required>
                             <button class="add-up add-action input-group-addon" onclick="add()" style="cursor:pointer"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
