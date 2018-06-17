@@ -24,7 +24,7 @@
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-<script src="commentNew.js"></script>
+
 <style>
 body {
     font-family: "微軟正黑體";
@@ -37,13 +37,16 @@ body {
     padding: 1px;
 }
 </style>
+  <script src="commentNew.js"></script>
+
+</script>
 </head>
 
 <body>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 text-center">
-            <form class="form-horizontal form-inline" name="form1" id="comment" method="post">
+            <form class="form-horizontal form-inline" name="form1" id="ex" method="post">
                 <input type="hidden" name="oper" id="oper" value="insert">
                 <input type="hidden" name="no_old" id="no_old" value="">
                 <table id="edit" class="table table-striped table-bordered">
@@ -73,17 +76,19 @@ body {
                         </tr>
                     </thead>
                 </table>
-                <table id="example" class="table table-striped table-bordered">
+                <table id="comment" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th class="text-center">帳號</th>
                            <th class="text-center">內容</th>
                            <th class="text-center">時間</th>
                            <?php
-                              $data = mysql_query("select * from account") ;
-                              $authority = mysqli_fetch_row($date) ;
+                              $data = mysqli_query($link,"select * from account") ;
+                              $authority = mysqli_fetch_row($data) ;
                               if ($authority[5] == 0)
                                 echo '<th class="text-center">修改/刪除</th>';
+
+                                  mysqli_close( $link);
                             ?>
                         </tr>
                     </thead>

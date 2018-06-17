@@ -75,6 +75,7 @@ or die("無法開啟MySQL資料庫連結!<br>");
                                       $sql="update account set password='".@$_POST['Newpwd']."' where account='".$_SESSION['account']."'";
                                       mysqli_query($link, $sql);
                                       echo "<script> alert('恭喜，密碼修改成功！')</script>";
+                                      echo '<meta http-equiv=refresh content=0;url="#">';
 
 
 
@@ -89,9 +90,7 @@ or die("無法開啟MySQL資料庫連結!<br>");
                                     }
 
                                   }
-                                  else if(@$_POST['pwdInfro'] == "" && isset($_POST['pwdInfro'])) {
-                                    echo "<script> alert('不可輸入空白!')</script>";
-                                  }
+
 
 
                                 mysqli_close($link); // 關閉資料庫連結
@@ -108,9 +107,9 @@ or die("無法開啟MySQL資料庫連結!<br>");
                                 </div>
                                 <div class="col-md-12 form-group" id="mailEdit" style="display:none">
 
-                                    <form class="" action="" method="post" id="email_edit">
+                                    <form class="" action="" method="post" id="email_edit" name="email_edit">
 
-                                      <input type="email" class="form-control" name="emailInfro" id="emailInfro" name="mail" >
+                                      <input type="email" class="form-control" name="emailInfro" id="emailInfro" >
                                       <div class="row">
                                           <div class="col-md-6 form-group">
                                             <input type="submit" id="mailSave" class="btn btn-primary btn-lg btn-block" value="儲存" >
@@ -129,10 +128,10 @@ or die("無法開啟MySQL資料庫連結!<br>");
                                         mysqli_query($link, $sql);
                                          mysqli_close($link); // 關閉資料庫連結
                                          echo "<script> alert('信箱變更成功!!')</script>";
+                                           echo '<meta http-equiv=refresh content=0;url="#">';
+
                                        }
-                                       else if(@$_POST['emailInfro'] == "" && isset($_POST['emailInfro'])) {
-                                         echo "<script> alert('不可輸入空白!')</script>";
-                                       }
+
                                     ?>
                                   </div>
                             </div>
@@ -168,11 +167,10 @@ or die("無法開啟MySQL資料庫連結!<br>");
                                     mysqli_query($link, $sql);
                                     mysqli_close($link); // 關閉資料庫連結
                                     echo "<script> alert('地址變更成功!')</script>";
+                                      echo '<meta http-equiv=refresh content=0;url="#">';
 
                                   }
-                                  else if(@$_POST['addrInfro'] == "" && isset($_POST['addrInfro'])) {
-                                    echo "<script> alert('不可輸入空白!')</script>";
-                                  }
+
 
                                 ?>
                             </div>
