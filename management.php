@@ -1,3 +1,7 @@
+<?php session_start();
+if (!isset($_SESSION['account']) || @$_SESSION['authority'] != 1) {
+  echo '<meta http-equiv=refresh content=0;url="index.php">';
+}?>
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +75,7 @@
                 <div class="col-md-10 text-center" id="CRUD"></div>
                 <div class="col-md-1"></div>
             </div>
-            
+
     </section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
