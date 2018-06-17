@@ -82,8 +82,9 @@ h5,
 }
 
 .ftco-navbar-light {
-    /*background: transparent !important;
-  position: absolute;*/
+    /*background: transparent !important;*/
+    top: 0px;
+  position: absolute;
     left: 0;
     right: 0;
     z-index: 3;
