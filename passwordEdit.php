@@ -31,7 +31,7 @@ or die("無法開啟MySQL資料庫連結!<br>");
                               <label for="pwd" >密碼</label>
                                 <div class="col-md-12 form-group" id="pwdShow" style="display:block">
                                     <div class="col-md-6 form-group">
-                                    <input type="button" id="pwdButtonE" class="btn btn-primary btn-lg btn-block" value="修改" style="display:block">
+                                    <input type="button" id="pwdButtonE" class="btn btn-primary btn-lg btn-block" value="修改" >
                                   </div>
                                 </div>
                                   <div class="col-md-12 form-group" id="pwdEdit" style="display:none">

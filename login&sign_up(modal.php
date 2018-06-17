@@ -28,7 +28,7 @@
                               <div class="row">
                                   <div class="col-md-6 form-group">
 
-                                      <a href="passwordEdit.php" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" >忘記密碼？</a>
+                                      <a href="pwdforget.php" target="_self" class="btn btn-outline-white btn-lg ftco-animate" >忘記密碼？</a>
                                   </div>
                               </div>
                             </div>
@@ -56,6 +56,7 @@
                           if ($row[0] == $id && $row[1] == $pw) {
                             //將帳號寫入session，方便驗證使用者身份
                             $_SESSION['account'] = $id;
+                            $_SESSION['authority'] = $row[5];
                             echo '<meta http-equiv=refresh content=0;url="index.php">';
                           } else {
                             echo "<script>

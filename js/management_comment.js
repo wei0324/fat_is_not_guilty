@@ -2,7 +2,7 @@
  $(function() {
 /*form1*/
      //查詢
-     tbl = $('#example').DataTable({
+     tbl = $('#example1').DataTable({
          "scrollX": false,
          "scrollY": false,
          "scrollCollapse": false, //當筆數小於scrillY高度時,自動縮小
@@ -106,5 +106,5 @@
          });
      }
 
- 
+
  });

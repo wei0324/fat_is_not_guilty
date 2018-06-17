@@ -233,3 +233,94 @@ $(document).ready(function($) {
     }
   });
 });
+
+//mail
+$(document).ready(function($) {
+  $.validator.setDefaults({
+        ignore: []
+    });
+  //for select
+  $.validator.addMethod("notEqualsto", function(value, element, arg) {
+    return arg != value;
+  }, "您尚未選擇!");
+
+  $("#forgetpwd").validate({
+    submitHandler: function(form) {
+
+      form.submit();
+    },
+    rules: {
+      accountCheckForget: {
+        required: true,
+        minlength: 4,
+        maxlength: 10
+      },
+      emailCheckForget: {
+        required: true,
+        email: true
+      },
+
+    },
+    messages: {
+      accountCheckForget: {
+        required: "*必填",
+        minlength: "*帳號最少要4個字",
+        maxlength: "*帳號最長10個字"
+      },
+      emailCheckForget: {
+        required: "*必填",
+        email: "*請輸入正確的電子信箱"
+      },
+
+
+    }
+  });
+});
+
+//忘記密碼
+$(document).ready(function($) {
+  $.validator.setDefaults({
+        ignore: []
+    });
+  //for select
+  $.validator.addMethod("notEqualsto", function(value, element, arg) {
+    return arg != value;
+  }, "您尚未選擇!");
+
+  $("#pwd_forget").validate({
+    submitHandler: function(form) {
+
+      form.submit();
+    },
+    rules: {
+
+
+      NpwdForget: {
+        required: true,
+        minlength: 8,
+        maxlength: 12
+      },
+      NpwdForget2: {
+        required: true,
+        equalTo: "#NpwdForget"
+      },
+
+
+    },
+    messages: {
+
+
+      NpwdForget:{
+        required: "*必填",
+        minlength:"*密碼最少要8個字",
+        maxlength: "*密碼最長12個字"
+      },
+    NpwdForget2: {
+        required: "*必填",
+        equalTo: "*兩次密碼不相符"
+      },
+
+
+    }
+  });
+});

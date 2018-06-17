@@ -35,7 +35,7 @@ echo "<div class=\"row\" id=\"comment\">
                         </thead>
                     </table>
                 </form>
-                <table id=\"example\" class=\"table table-striped table-bordered\">
+                <table id=\"example1\" class=\"table table-striped table-bordered\">
                     <thead>
                         <tr>
                             <th class=\"text-center\">產品ID</th>

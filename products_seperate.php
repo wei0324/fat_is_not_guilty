@@ -209,7 +209,7 @@ if ( $result = mysqli_query($link, $sql) ) {
                         </div>
                     </div>
                     <br>
-                    <button type="button" class="btn btn-primary">加入購物車</button>
+                    <?php echo "<button onclick=\"cart(1,".$row["id"].")\" class=\"btn btn-primary p".$row["id"]."\">加入購物車</button>";?>
                     <button type="button" class="btn btn-danger">馬上購買</button>
                     <br>
                     <div class="clear"></div>
