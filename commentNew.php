@@ -59,7 +59,9 @@ body {
                         </tr>
                         <tr>
                             <td class="text-center">
-                                <input type="text" id="account" name="account">
+                              <?php
+                                  echo $_SESSION['account'];
+                               ?>
                             </td>
                             <td class="text-center">
                                 <input type="text" id="content" name="content">
