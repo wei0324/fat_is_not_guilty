@@ -35,7 +35,7 @@ echo "<div class=\"row\" id=\"message\">
                         </thead>
                     </table>
                 </form>
-                <table id=\"example\" class=\"table table-striped table-bordered\">
+                <table id=\"example3\" class=\"table table-striped table-bordered\">
                     <thead>
                         <tr>
                             <th class=\"text-center\">姓名</th>

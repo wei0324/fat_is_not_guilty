@@ -1,44 +1,5 @@
-<?php
-session_start();
-$link = mysqli_connect("localhost", "root", "root123456", "group_15") // 建立MySQL的資料庫連結
-or die("無法開啟MySQL資料庫連結!<br>");
-date_default_timezone_set('Asia/Taipei');
-$date = date('Y-m-d H:i:s', time());
 
-mysqli_query($link, 'SET CHARACTER SET utf8');
-mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
- ?>
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <title>留言板CRUD</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
-    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-    <script src="commentNew.js"></script>
-    <style>
-    body {
-        font-family: "微軟正黑體";
-    }
-
-    .error {
-        color: #D82424;
-        font-weight: normal;
-        display: inline;
-        padding: 1px;
-    }
-    </style>
-</head>
-
-<body>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 text-center">
@@ -87,6 +48,3 @@ mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
         </div>
         <div class="col-md-2"></div>
     </div>
-</body>
-
-</html>
