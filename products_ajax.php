@@ -14,13 +14,20 @@ if ($result = mysqli_query($link, "SELECT * FROM products")) {
             $row = mysqli_fetch_assoc($result);
             if(!is_null($row))
             {
-                if(mb_strlen( $row["description"], "utf-8")>30)
+                if(mb_strwidth( $row["description"], "utf-8")>150)
                 {
-                    $description=mb_substr( $row["description"],0,30,"utf-8")."......";
+                    $description=mb_strimwidth( $row["description"],0,150)."......";
 
                 }
                 else
-                    $description=$row["description"];
+                {   
+                    $temp="";
+                    if(mb_strlen( $row["description"], "utf-8")<150)
+                        for ($a=0; $a < 150-mb_strwidth( $row["description"], "utf-8") ; $a++) { 
+                            $temp=$temp."&nbsp;";
+                        }
+                    $description=$row["description"]."......".$temp;
+                }
                 
                 
             /*img class class=\"img-fluid\" */
@@ -28,7 +35,7 @@ if ($result = mysqli_query($link, "SELECT * FROM products")) {
                                             <img src=\"images/products/".$row["image_name"]."\"  height=\"400px\"></img>
                                             <div class=\"media-body  p-4\">";
             echo "<h5 class=\"text-primary\">$" . $row["price"] . "</h5><h5 class=\"mt-0 h4\">" . $row["name"] . "</h5><p class=\"mb-4\">" . $description . "</p>
-                                                <p class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>
+                                                <p class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> <a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></p>
                                             </div>
                                         </div>";
                                     }

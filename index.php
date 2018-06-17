@@ -37,32 +37,6 @@
     }
     </style>
     <style type="text/css">
-    #gotop {
-        position: fixed;
-        border-radius: 50px;
-        right: 20px;
-        bottom: 30px;
-        padding: 5px;
-        font-size: 25px;
-        background: rgba(0, 0, 0, 0.36);
-        color: #FAFCFD;
-        cursor: pointer;
-        z-index: 1000;
-        width: 50px;
-        height: 50px;
-        text-align: center;
-    }
-
-    #cart {
-        border-radius: 5px;
-        font-size: 10px;
-        background: rgba(255, 0, 0, 0.9);
-        color: #FAFCFD;
-        width: 20px;
-        height: 20px;
-        text-align: center;
-    }
-
     .ftco-navbar-light {
         background: transparent !important;
         position: absolute;
@@ -156,8 +130,24 @@
                                                 echo "<div class=\"media-body p-4\">";
                                                 echo "<h5 class=\"text-primary\">$".$row["price"]."</h5>";
                                                 echo "<h5 class=\"mt-0 h4\">".$row["name"]."</h5>";
-                                                echo "<p class=\"mb-4\">".$row["description"]."</p>";
-                                                echo "<p class=\"mb-0\"><a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">馬上訂購</a></p>";
+                                                if(mb_strwidth( $row["description"], "utf-8")>150)
+                {
+                    $description=mb_strimwidth( $row["description"],0,150)."......";
+
+                }
+                else
+                {   
+                    $temp="";
+                    if(mb_strlen( $row["description"], "utf-8")<150)
+                        for ($k=0; $k < 150-mb_strwidth( $row["description"], "utf-8") ; $k++) { 
+                            $temp=$temp."&nbsp;";
+                        }
+                    $description=$row["description"]."......".$temp;
+                }
+                                                echo "<p class=\"mb-4\">".$description."</p>";
+                                                echo "<p class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> ";
+                                                echo "<a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></p>";
+
                                                 echo "</div>";
                                                 echo "</div>";
                                             }
@@ -223,8 +213,25 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                                 echo "<img class=\"mr-3\" src=\"images/products/".$row["image_name"]."\" class=\"img-fluid\">";
                                                 echo "<div class=\"media-body\">";
                                                 echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
-                                                echo "<p>".$row["description"]."</p>";
+                                                if(mb_strwidth( $row["description"], "utf-8")>150)
+                {
+                    $description=mb_strimwidth( $row["description"],0,150)."......";
+
+                }
+                else
+                {   
+                    $temp="";
+                    if(mb_strlen( $row["description"], "utf-8")<150)
+                        for ($k=0; $k < 150-mb_strwidth( $row["description"], "utf-8") ; $k++) { 
+                            $temp=$temp."&nbsp;";
+                        }
+                    $description=$row["description"]."......".$temp;
+                }
+
+                                                echo "<p>".$description."</p>";
                                                 echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
+                                                echo "<span class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> ";
+                                                echo "<a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></span>";
                                                 echo "</div>";
                                                 echo "</div>";
                                             }
@@ -263,6 +270,8 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                                 echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
                                                 echo "<p>".$row["description"]."</p>";
                                                 echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
+                                                echo "<span class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> ";
+                                                echo "<a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></span>";
                                                 echo "</div>";
                                                 echo "</div>";
                                             }
@@ -301,6 +310,8 @@ $result = mysqli_query($link, "SELECT * FROM products");
                                                 echo "<h5 class=\"mt-0\">".$row["name"]."</h5>";
                                                 echo "<p>".$row["description"]."</p>";
                                                 echo "<h6 class=\"text-primary menu-price\">$".$row["price"]."</h6>";
+                                                echo "<span class=\"mb-0\"><a href=\"products_seperate.php?id=".$row["id"]."\" class=\"btn btn-primary btn-sm\">馬上訂購</a> ";
+                                                echo "<a href=\"cart.php?id=" .$row["id"]. "\" class=\"btn btn-primary btn-sm\">加入購物車</a></span>";
                                                 echo "</div>";
                                                 echo "</div>";
                                             }
