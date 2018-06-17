@@ -67,6 +67,9 @@ if (!isset($_SESSION['account']) || @$_SESSION['authority'] != 1) {
                         <li class="nav-item ftco-animate" id="">
                             <a class="nav-link" id="message_select" data-toggle="pill" href="" role="" aria-controls="" aria-selected="false">message</a>
                         </li>
+                        <li class="nav-item ftco-animate" id="">
+                            <a class="nav-link" id="order_select" data-toggle="pill" href="" role="" aria-controls="" aria-selected="false">order</a>
+                        </li>
                     </ul>
                 </div>
             </div>
