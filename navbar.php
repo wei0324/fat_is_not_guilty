@@ -1,7 +1,7 @@
 
 <script type="text/javascript">
 
-    
+
         function cart(add_remove,id) {
         $.ajax({
             url: 'cart_ajax.php',
@@ -91,6 +91,25 @@
             </ul>
         </div>
         <?php if (isset($_SESSION['account'])): ?>
+          <?php if (@$_SESSION['authority'] == 1): ?>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="management.php" target="_self" class="nav-link" >
+                        <div class="form-inline">
+                            <div style="position: relative; width: 35px; height: 35px;">
+                                <div style="position: absolute;left: 0px;bottom: 0;">
+                                    <i class="fas fa-user-cog"></i>
+                                </div>
+                                <div style="position: absolute;right: 0;top: 0;"></div>
+                            </div>
+                            管理
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+          <?php endif; ?>
         <div>
             <!-- member -->
             <ul class="navbar-nav ml-auto">
