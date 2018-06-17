@@ -1,6 +1,6 @@
 
 <?php
-
+  include("passwordEdit.php"); 
     if (isset($_SESSION['cart'])) {
         $cnt = count($_SESSION['cart']);
     } else {
@@ -33,12 +33,12 @@
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="#section-home" class="nav-link">首頁</a></li>
-                <li class="nav-item"><a href="#section-offer" class="nav-link">本日精選</a></li>
-                <li class="nav-item"><a href="#section-menu" class="nav-link">商品專區</a></li>
-                <li class="nav-item"><a href="#section-news" class="nav-link">活動快訊</a></li>
-                <li class="nav-item"><a href="#section-about" class="nav-link">關於我們</a></li>
-                <li class="nav-item"><a href="#section-contact" class="nav-link">連繫我們</a></li>
+                <li class="nav-item active"><a href="index.php#section-home" class="nav-link">首頁</a></li>
+                <li class="nav-item"><a href="index.php#section-offer" class="nav-link">本日精選</a></li>
+                <li class="nav-item"><a href="index.php#section-menu" class="nav-link">商品專區</a></li>
+                <li class="nav-item"><a href="index.php#section-news" class="nav-link">活動快訊</a></li>
+                <li class="nav-item"><a href="index.php#section-about" class="nav-link">關於我們</a></li>
+                <li class="nav-item"><a href="index.php#section-contact" class="nav-link">連繫我們</a></li>
             </ul>
         </div>
     </div>
@@ -67,6 +67,7 @@
               <div class="form-inline">
                 <div style="position: relative; width: 35px; height: 35px;">
                   <div style="position: absolute;left: 0px;bottom: 0;">
+                    <a href="" target="_blank" class="nav-link" data-toggle="modal" data-target="#Edit">
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div  style="position: absolute;right: 0;top: 0;"></div>
@@ -114,6 +115,7 @@
           </ul>
         </div>
     <?php endif; ?>
+
 
 
 </nav>

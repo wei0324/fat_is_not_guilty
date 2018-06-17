@@ -116,3 +116,57 @@ $(document).ready(function($) {
     }
   });
 });
+
+$(document).ready(function($) {
+  $.validator.setDefaults({
+        ignore: []
+    });
+  //for select
+  $.validator.addMethod("notEqualsto", function(value, element, arg) {
+    return arg != value;
+  }, "您尚未選擇!");
+
+  $("#pwd_edit").validate({
+    submitHandler: function(form) {
+
+      form.submit();
+    },
+    rules: {
+      pwdInfro: {
+        required: true,
+        minlength: 8,
+        maxlength: 12
+      },
+
+      Newpwd: {
+        required: true,
+        minlength: 8,
+        maxlength: 12
+      },
+      Newpwd2: {
+        required: true,
+        equalTo: "#Newpwd"
+      },
+
+
+    },
+    messages: {
+      account: {
+        required: "*必填",
+
+      },
+
+      Newpwd:{
+        required: "*必填",
+        minlength:"*密碼最少要8個字",
+        maxlength: "*密碼最長12個字"
+      },
+      Newpwd2: {
+        required: "*必填",
+        equalTo: "*兩次密碼不相符"
+      },
+
+
+    }
+  });
+});

@@ -147,8 +147,11 @@ if (isset($_POST['account']))
 {
 $sql="insert into account values ('" . $_POST['account'] . "','" . $_POST['pwd'] . "','" . $_POST['mail']. "','" . $_POST['addr'] ."','" . $_POST['news'] ."',0)";
 
-if ( $result = mysqli_query($link, $sql) ) // 送出查詢的SQL指令
-$msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";
+if ( $result = mysqli_query($link, $sql) )
+{
+  $msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";
+  echo "<script> alert('恭喜，註冊成功！')</script>";
+} // 送出查詢的SQL指令
 else
 $msg= "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" .mysqli_error($link) ."</span>";
 
