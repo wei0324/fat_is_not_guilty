@@ -1,6 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['account'])) {
+      echo "<script>alert('請先登入!')</script>";
       echo '<meta http-equiv=refresh content=0;url="index.php">';
     }
  ?>

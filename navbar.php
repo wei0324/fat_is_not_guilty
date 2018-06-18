@@ -9,7 +9,7 @@ $.ajax({
             success: function(Jdata) {
                 $(".cart_cnt").html(Jdata.length); //顯示購物車物品數量
                 for ($i = 0; $i <Jdata.length; $i++) {
-                    
+
                     if($((".p"+Jdata[$i]).length))
                     {
                         $((".p"+Jdata[$i])).attr("onclick","cart(2,"+ Jdata[$i] +")");
@@ -91,7 +91,7 @@ $.ajax({
         <div id="cart2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="cart_web.php" class="nav-link">
                         <div class="form-inline">
                             <div style="position: relative; width: 35px; height: 35px;">
                                 <div style="position: absolute;left: 0px;bottom: 0;">
