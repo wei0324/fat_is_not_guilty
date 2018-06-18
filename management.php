@@ -1,6 +1,7 @@
 <?php session_start();
 if (!isset($_SESSION['account']) || @$_SESSION['authority'] != 1) {
-  echo '<meta http-equiv=refresh content=0;url="index.php">';
+    echo "<script>alert('非管理者!!!');</script>";
+  echo '<meta http-equiv=refresh content=0;url="login.php">';
 }?>
 <!DOCTYPE html>
 <html>

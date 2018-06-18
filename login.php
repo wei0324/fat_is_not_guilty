@@ -1,4 +1,8 @@
-
+<?php session_start();
+if (isset($_SESSION['account'])) {
+    echo "<script>alert('已登入!!!');</script>";
+    echo '<meta http-equiv=refresh content=0;url="index.php">';
+}?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
