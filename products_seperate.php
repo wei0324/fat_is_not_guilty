@@ -177,101 +177,36 @@ if ( $result = mysqli_query($link, $sql) ) {
             <hr>
             <h2 id="sec0" class="global-primary dark-primary">相關產品</h2>
             <div class="row">
-                <ul class="related-products boxify-container">
-                    <li class="boxify-item product-item">
-                        <a href="/products/5aed7aae4e22a61e09006ab0">
-                            <div class="boxify-image-wrapper">
-                                <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(images/products/12.jpg)"></div>
-                            </div>
-                            <div class="info-box" style="">
-                                <div class="info-box-inner-wrapper">
-                                    <div class="title text-primary-color title-container ellipsis products_inner_a" style="word-wrap: break-word;">
-                                        門市詢問度 No.1 天然乳酪香 濃厚濕潤朱古力 (6吋原味+6吋朱古力)
-                                    </div>
-                                    <!-- <div class="global-primary dark-primary price " ></div>
-                      <div class="price-sale"></div> -->
-                                    <div class="global-primary dark-primary price price-crossed">
-                                        NT$1,030
-                                    </div>
-                                    <div class="price-sale price">
-                                        NT$920
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                <ul class="related-products boxify-container" style="width: 100%">
+                    <?php
+                    $result = mysqli_query($link, "SELECT * FROM products where id=".$_GET['id']);
+                    $row = mysqli_fetch_assoc($result);
+                    $category=$row["category"];
+                    $result = mysqli_query($link, "SELECT * FROM products where category=".$category);
+                    for($i=0;$i<4;$i++)
+                    {
+                        $row = mysqli_fetch_assoc($result);
+                        if(!is_null($row))
+                        {
+
+
+                        echo "<li class=\"boxify-item product-item\"><a href=\"products_seperate.php?id=".$row["id"]."\"><div class=\"boxify-image-wrapper\"><div class=\"boxify-image center-contain sl-lazy-image\" style=\"background-image:url(images/products/".$row["image_name"].")\"></div></div><div class=\"info-box\"><div class=\"info-box-inner-wrapper\"><div class=\"info-box-inner-wrapper\"><div class=\"title text-primary-color title-container ellipsis products_inner_a\" style=\"word-wrap: break-word;\">".$row["name"]."</div><div class=\"global-primary dark-primary price price-crossed\">NT$".($row["price"]+100)."</div><div class=\"price-sale price\">NT$".$row["price"]."</div></div></div></a></li>";
+                        }
+                    }
+                    
+                    ?>
+                    
+                        
+                            
+                              
+                            
+                    
                     <!--li-->
-                    <li class="boxify-item product-item">
-                        <a href="/products/5aed746e9a76f0189e000a6f">
-                            <div class="boxify-image-wrapper">
-                                <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(images/products/13.jpg)"></div>
-                            </div>
-                            <div class="info-box" style="">
-                                <div class="info-box-inner-wrapper">
-                                    <div class="title text-primary-color title-container ellipsis products_inner_a" style="word-wrap: break-word;">
-                                        線上獨家，老顧客指定款(6吋原味+4吋藍莓)
-                                    </div>
-                                    <!-- <div class="global-primary dark-primary price " ></div>
-                      <div class="price-sale">
-                      </div> -->
-                                    <div class="global-primary dark-primary price price-crossed">
-                                        NT$870
-                                    </div>
-                                    <div class="price-sale price">
-                                        NT$790
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+
                     <!--li-->
-                    <li class="boxify-item product-item">
-                        <a href="/products/5aed741a0e64fefaee006394">
-                            <div class="boxify-image-wrapper">
-                                <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(images/products/13.jpg)"></div>
-                            </div>
-                            <div class="info-box" style="">
-                                <div class="info-box-inner-wrapper">
-                                    <div class="title text-primary-color title-container ellipsis products_inner_a" style="word-wrap: break-word;">
-                                        不可錯過的雙重滿足(6吋原味+6吋藍莓)
-                                    </div>
-                                    <!-- <div class="global-primary dark-primary price " ></div>
-                      <div class="price-sale">
-                      </div> -->
-                                    <div class="global-primary dark-primary price price-crossed">
-                                        NT$1,030
-                                    </div>
-                                    <div class="price-sale price">
-                                        NT$920
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                    
                     <!--li-->
-                    <li class="boxify-item product-item">
-                        <a href="/products/5aed6fe100fdde47460061e0">
-                            <div class="boxify-image-wrapper">
-                                <div class="boxify-image center-contain sl-lazy-image" style="background-image:url(images/products/14.jpg)"></div>
-                            </div>
-                            <div class="info-box" style="">
-                                <div class="info-box-inner-wrapper">
-                                    <div class="title text-primary-color title-container ellipsis products_inner_a" style="word-wrap: break-word;">
-                                        原味與初夏桑椹的天然滋味
-                                    </div>
-                                    <!-- <div class="global-primary dark-primary price " ></div>
-                      <div class="price-sale">
-                      </div> -->
-                                    <div class="global-primary dark-primary price price-crossed">
-                                        NT$1,030
-                                    </div>
-                                    <div class="price-sale price">
-                                        NT$920
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                    
                     <!--li-->
                     <!--@products.each-->
                     <div class="clear"></div>
@@ -282,7 +217,7 @@ if ( $result = mysqli_query($link, $sql) ) {
         </div>
     </section>
     <!-- END section -->
-        <section class="ftco-section bg-light" id="section-contact">
+        <section class="ftco-section bg-light" id="section-contact" style="padding-top:0px">
             <h2 class="display-5" style="text-align: center;">留言板</h2>
         <div class="container">
             <?php include 'board.php';?>
