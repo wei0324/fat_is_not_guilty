@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018 年 06 月 18 日 16:55
+-- 產生時間： 2018 年 06 月 18 日 17:12
 -- 伺服器版本: 10.1.30-MariaDB
 -- PHP 版本： 7.2.2
 
@@ -45,7 +45,8 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account`, `password`, `email`, `address`, `info`, `authority`) VALUES
 ('admin', 'admin123456', 'admin@admin', 'admin', 0, 1),
-('member', 'member123456', 'ncue@gmail.com', '國立彰化師範大學', 0, 0);
+('member', 'member123456', 'ncue@gmail.com', '國立彰化師範大學', 0, 0),
+('test', 'test123456', 'test@test', '5', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -106,8 +107,16 @@ CREATE TABLE `orders` (
   `account` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `price` int(10) NOT NULL,
-  `num` int(10) NOT NULL
+  `num` int(10) NOT NULL,
+  `productID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=big5;
+
+--
+-- 資料表的匯出資料 `orders`
+--
+
+INSERT INTO `orders` (`id`, `account`, `name`, `price`, `num`, `productID`) VALUES
+(1, 'test', '56', 3, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -206,7 +215,7 @@ ALTER TABLE `message`
 -- 使用資料表 AUTO_INCREMENT `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表 AUTO_INCREMENT `products`
