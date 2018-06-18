@@ -3,7 +3,11 @@ header('Content-Type: text/xml;charset=utf-8;Pragma: no-cache;Cache-Control: no-
 $link = mysqli_connect('localhost', 'root', 'root123456', 'group_15');
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
-if ($result = mysqli_query($link, "SELECT * FROM products")) {
+if(isset($_GET['category']))
+    $category=$_GET['category'];
+else
+    $category=0;
+if ($result = mysqli_query($link, "SELECT * FROM products where category=".$category)) {
     $total_records = mysqli_num_rows($result);
     $total_page = ceil($total_records / 9);
     mysqli_data_seek($result, (@$_GET['page'] - 1) * 9);
@@ -47,7 +51,7 @@ if ($result = mysqli_query($link, "SELECT * FROM products")) {
 
 }
 
-mysqli_free_result($result); // 釋放佔用的記憶體
+
 
 mysqli_close($link); // 關閉資料庫連結
 
