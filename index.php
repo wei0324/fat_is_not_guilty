@@ -59,27 +59,6 @@
         }
     }
     </script>
-<script type="text/javascript">
-    $.ajax({
-            url: 'cart_ajax.php',
-            data: {
-            },
-            type: 'POST',
-            dataType: "json",
-            success: function(Jdata) {
-                $(".cart_cnt").html(Jdata.length); //顯示購物車物品數量
-                for ($i = 0; $i <Jdata.length; $i++) {
-                    
-                    if($((".p"+Jdata[$i]).length))
-                    {
-                        $((".p"+Jdata[$i])).attr("onclick","cart(2,"+ Jdata[$i] +")");
-                        $((".p"+Jdata[$i])).html("取消購物車");
-                    }
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {}
-        });
-</script>
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200" onload="a();">
@@ -430,7 +409,7 @@ mysqli_query($link,"SET collation_connection = 'utf8_unicode_ci'");
 
 if (isset($_POST['name']))
 {
-  $sql="insert into comment (name,email,message) values ('" . $_POST['name'] . "','" . $_POST['email'] . "','" . $_POST['message']."')";
+  $sql="insert into message (name,email,message) values ('" . $_POST['name'] . "','" . $_POST['email'] . "','" . $_POST['message']."')";
 
   if ( $result = mysqli_query($link, $sql) ) // 送出查詢的SQL指令
     $msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";
