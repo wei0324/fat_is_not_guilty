@@ -57,7 +57,7 @@
                             //將帳號寫入session，方便驗證使用者身份
                             $_SESSION['account'] = $id;
                             $_SESSION['authority'] = $row[5];
-                            echo '<meta http-equiv=refresh content=0;url="index.php">';
+                            echo '<script>history.go(-2);</script>';
                           } else {
                             echo "<script>
                             $(function(){
