@@ -44,12 +44,6 @@ if ( $result ) {
       padding: 1px;
   }
   </style>
-  <style type="text/css">
-  .ftco-navbar-light {
-      background: transparent !important;
-      position: absolute;
-  }
-  </style>
     <script type="text/javascript">
     function add() {
         document.getElementById("item-quantity").value++;
