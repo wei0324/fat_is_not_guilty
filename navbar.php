@@ -1,4 +1,4 @@
-
+<?php include("passwordEdit.php"); ?>
 <script type="text/javascript">
 
 
@@ -114,7 +114,7 @@
             <!-- member -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="" target="_blank" class="nav-link" data-toggle="modal" data-target="#Edit">
+                    <a href="" target="_blank" class="nav-link" data-toggle="modal" data-target="#Edit-pwd">
                         <div class="form-inline">
                             <div style="position: relative; width: 35px; height: 35px;">
                                 <div style="position: absolute;left: 0px;bottom: 0;">

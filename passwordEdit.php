@@ -10,7 +10,7 @@ or die("無法開啟MySQL資料庫連結!<br>");
   <script src="js/passwordEdit.js"></script>
   <script src="js/check.js"></script>
 <!-- Modal -->
-<div class="modal fade member" id="Edit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><!--reservationModalLabel-->
+<div class="modal fade member" id="Edit-pwd" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><!--reservationModalLabel-->
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
