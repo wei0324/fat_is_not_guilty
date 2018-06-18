@@ -21,7 +21,7 @@ $(function() { //網頁完成後才會載入
                 alert(thrownError);
             }
         });
-    $('#products_select').click(function() {
+    $('#cart_products_select').click(function() {
         $.ajax({
             url: "cart_web_products_ajax.php",
             dataType: 'text',

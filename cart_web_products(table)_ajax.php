@@ -11,10 +11,10 @@ $arr_oper = array("insert" => "新增", "update" => "修改", "delete" => "刪�
 $oper = $_POST['oper'];
 
 if ($oper == "query") {
-      $sql = "select * from order";
+      $sql = "select * from orders";
       if ($result = mysqli_query($link, $sql)) {
             while ($row = mysqli_fetch_assoc($result)) {
-                  $a['data'][] = array($row["name"], "$".$row["price"],$row["num"],"</button> <button type='button' class='btn btn-danger btn-xs' id='btn_delete'><i class='glyphicon glyphicon-remove'></i>刪除</button>",$row["id"]);
+                  $a['data'][] = array($row["name"], "$".$row["price"],"<input type=\"text\" id=\"num\" name=\"num\" value='".$row["num"]."'>　<button type='button' class='btn btn-warning btn-xs' id='btn_update'><i class='glyphicon glyphicon-pencil'></i>修改</button> ","<button type='button' class='btn btn-danger btn-xs' id='btn_delete'><i class='glyphicon glyphicon-remove'></i>刪除</button>",$row["id"]);
             }
             mysqli_free_result($result); // 釋放佔用的記憶體
       }
@@ -25,11 +25,11 @@ if ($oper == "query") {
 }
 
 if ($oper == "update") {
-      $sql = "update order set name='" . $_POST['name'] . "',price='" . $_POST['price'] . "',num='" . $_POST['num'] ."' where id='" . $_POST['id'] . "'";
+      $sql = "update orders set name='" . $_POST['name'] . "',price='" . $_POST['price'] . "',num='" . $_POST['num'] ."' where id='" . $_POST['id'] . "'";
 }
 
 if ($oper == "delete") {
-      $sql = "delete from order where id='" . $_POST['id'] . "'";
+      $sql = "delete from orders where id='" . $_POST['id'] . "'";
 }
 
 if (strlen($sql) > 10) {
