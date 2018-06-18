@@ -27,9 +27,29 @@ if ( $result ) {
 <head>
     <title>胖不是罪 甜點專賣網</title>
     <?php include("link.php"); ?>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <!--additional method - for checkbox .. ,require_from_group method ...-->
+    <script src="//jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    <!--中文錯誤訊息-->
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js "></script>
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/products_seperate.css">
-
+  <script src="js/check.js"></script>
+  <style type="text/css">
+  .error {
+      color: red !important;
+      font-weight: normal;
+      font-family: "微軟正黑體";
+      display: inline;
+      padding: 1px;
+  }
+  </style>
+  <style type="text/css">
+  .ftco-navbar-light {
+      background: transparent !important;
+      position: absolute;
+  }
+  </style>
     <script type="text/javascript">
     function add() {
         document.getElementById("item-quantity").value++;
@@ -42,6 +62,7 @@ if ( $result ) {
 
     }
     </script>
+
     <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
         <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
@@ -289,25 +310,25 @@ if ( $result = mysqli_query($link, $sql) ) {
             <div class="row">
                 <div class="col-md mb-5 ftco-animate">
 
-                    <form action="" method="post" onsubmit="return check_login();">
+                    <form action="" method="post" onsubmit="return check_login(); " id="board" name="board">
                         <div class="form-group">
-                            <label for="account" class="sr-only">Account</label>
-                            <input type="text" class="form-control" id="account" name="account" placeholder="姓名 (Enter your name)" readonly="readonly">
+                            <label for="accountConnect" class="sr-only">Account</label>
+                            <input type="text" class="form-control" id="accountConnect" name="accountConnect" placeholder="姓名 (Enter your name)" readonly="readonly">
                             <?php
                             if (!isset($_SESSION['account']))
 {
 
-    echo "<script>document.getElementById(\"account\").value=\"欲留言請先登入!!\";document.getElementById('account').style.cssText = 'color: red !important';</script>";
+    echo "<script>document.getElementById(\"accountConnect\").value=\"欲留言請先登入!!\";document.getElementById('accountConnect').style.cssText = 'color: red !important';</script>";
 }
 else
 {
-    echo "<script>document.getElementById(\"account\").value=\"".$_SESSION['account']."\";document.getElementById('account').style.color=null;</script>";
+    echo "<script>document.getElementById(\"accountConnect\").value=\"".$_SESSION['account']."\";document.getElementById('accountConnect').style.color=null;</script>";
 }
                             ?>
                         </div>
                         <div class="form-group">
-                            <label for="content" class="sr-only">content</label>
-                            <textarea name="content" id="content" cols="30" rows="10" class="form-control" placeholder="內容 (Write your content)"></textarea>
+                            <label for="boardContent" class="sr-only">content</label>
+                            <textarea name="boardContent" id="boardContent" cols="30" rows="10" class="form-control" placeholder="內容 (Write your content)" required></textarea>
                         </div>
                         <div class="form-group">
 
@@ -323,7 +344,7 @@ mysqli_query($link,"SET collation_connection = 'utf8_unicode_ci'");
 
 if (isset($_POST['account']))
 {
-  $sql="insert into comment (productID,account,content,time) values ('". $_GET['id'] . "','" . $_POST['account'] . "','" . $_POST['content']."',NOW())";
+  $sql="insert into comment (productID,account,content,time) values ('". $_GET['id'] . "','" . $_POST['accountConnect'] . "','" . $_POST['boardContent']."',NOW())";
 
   if ( $result = mysqli_query($link, $sql) ) // 送出查詢的SQL指令
     $msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";
@@ -433,8 +454,8 @@ mysqli_close($link); // 關閉資料庫連結
                     $content = $content+"<tr><td>"+Jdata.data[$i][0]+"</td><td>"+Jdata.data[$i][1]+"</td><td>"+Jdata.data[$i][2]+"</td></tr>";
                     $("#comment_content").html($content);
                 }
-                
-                
+
+
             },
             error: function(xhr, ajaxOptions, thrownError) {}
         });
@@ -515,7 +536,7 @@ mysqli_close($link); // 關閉資料庫連結
                     $content = $content+"<tr><td>"+Jdata.data[$i][0]+"</td><td>"+Jdata.data[$i][1]+"</td><td>"+Jdata.data[$i][2]+"</td></tr>";
                     $("#comment_content").html($content);
                 }
-                
+
             },
             error: function(xhr, ajaxOptions, thrownError) {}
         });

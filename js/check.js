@@ -324,3 +324,84 @@ $(document).ready(function($) {
     }
   });
 });
+
+//connect
+$(document).ready(function($) {
+  $.validator.setDefaults({
+        ignore: []
+    });
+  //for select
+  $.validator.addMethod("notEqualsto", function(value, element, arg) {
+    return arg != value;
+  }, "您尚未選擇!");
+
+  $("#connect").validate({
+    submitHandler: function(form) {
+
+      form.submit();
+    },
+    rules: {
+      nameConnect:{
+        required: true,
+        minlength: 4,
+        maxlength: 20
+      },
+      emailConnect:{
+        required: true,
+        email: true
+      },
+      messageConnect:{
+        required: true,
+      },
+
+    },
+    messages: {
+      nameConnect: {
+        required: "*必填",
+        minlength: "*名字最少要4個字",
+        maxlength: "*名字最長20個字"
+      },
+      emailConnect: {
+        required: "*必填",
+        email: "*請輸入正確的電子信箱"
+      },
+      messageConnect:{
+        required: "*必填",
+      },
+
+
+    }
+  });
+});
+
+//board
+$(document).ready(function($) {
+  $.validator.setDefaults({
+        ignore: []
+    });
+  //for select
+  $.validator.addMethod("notEqualsto", function(value, element, arg) {
+    return arg != value;
+  }, "您尚未選擇!");
+
+  $("#board").validate({
+    submitHandler: function(form) {
+
+      form.submit();
+    },
+    rules: {
+
+      boardContent:{
+        required: true
+      }
+
+    },
+    messages: {
+
+      boardContent:{
+        required: "*必填"
+      }
+
+    }
+  });
+});
