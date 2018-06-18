@@ -208,20 +208,20 @@ if ( $result = mysqli_query($link, $sql) ) {
                         echo "<li class=\"boxify-item product-item\"><a href=\"products_seperate.php?id=".$row["id"]."\"><div class=\"boxify-image-wrapper\"><div class=\"boxify-image center-contain sl-lazy-image\" style=\"background-image:url(images/products/".$row["image_name"].")\"></div></div><div class=\"info-box\"><div class=\"info-box-inner-wrapper\"><div class=\"info-box-inner-wrapper\"><div class=\"title text-primary-color title-container ellipsis products_inner_a\" style=\"word-wrap: break-word;\">".$row["name"]."</div><div class=\"global-primary dark-primary price price-crossed\">NT$".($row["price"]+100)."</div><div class=\"price-sale price\">NT$".$row["price"]."</div></div></div></a></li>";
                         }
                     }
-                    
+
                     ?>
-                    
-                        
-                            
-                              
-                            
-                    
+
+
+
+
+
+
                     <!--li-->
 
                     <!--li-->
-                    
+
                     <!--li-->
-                    
+
                     <!--li-->
                     <!--@products.each-->
                     <div class="clear"></div>
@@ -241,23 +241,23 @@ if ( $result = mysqli_query($link, $sql) ) {
 
                     <form action="" method="post" onsubmit="return check_login(); " id="board" name="board">
                         <div class="form-group">
-                            <label for="accountConnect" class="sr-only">Account</label>
-                            <input type="text" class="form-control" id="accountConnect" name="accountConnect" placeholder="姓名 (Enter your name)" readonly="readonly">
+                            <label for="account" class="sr-only">Account</label>
+                            <input type="text" class="form-control" id="account" name="account" placeholder="姓名 (Enter your name)" readonly="readonly">
                             <?php
                             if (!isset($_SESSION['account']))
 {
 
-    echo "<script>document.getElementById(\"accountConnect\").value=\"欲留言請先登入!!\";document.getElementById('accountConnect').style.cssText = 'color: red !important';</script>";
+    echo "<script>document.getElementById(\"account\").value=\"欲留言請先登入!!\";document.getElementById('account').style.cssText = 'color: red !important';</script>";
 }
 else
 {
-    echo "<script>document.getElementById(\"accountConnect\").value=\"".$_SESSION['account']."\";document.getElementById('accountConnect').style.color=null;</script>";
+    echo "<script>document.getElementById(\"account\").value=\"".$_SESSION['account']."\";document.getElementById('account').style.color=null;</script>";
 }
                             ?>
                         </div>
                         <div class="form-group">
                             <label for="boardContent" class="sr-only">content</label>
-                            <textarea name="boardContent" id="boardContent" cols="30" rows="10" class="form-control" placeholder="內容 (Write your content)" required></textarea>
+                            <textarea name="content" id="content" cols="30" rows="10" class="form-control" placeholder="內容 (Write your content)" ></textarea>
                         </div>
                         <div class="form-group">
 
@@ -273,7 +273,7 @@ mysqli_query($link,"SET collation_connection = 'utf8_unicode_ci'");
 
 if (isset($_POST['account']))
 {
-  $sql="insert into comment (productID,account,content,time) values ('". $_GET['id'] . "','" . $_POST['accountConnect'] . "','" . $_POST['boardContent']."',NOW())";
+  $sql="insert into comment (productID,account,content,time) values ('". $_GET['id'] . "','" . $_POST['account'] . "','" . $_POST['content']."',NOW())";
 
   if ( $result = mysqli_query($link, $sql) ) // 送出查詢的SQL指令
     $msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";

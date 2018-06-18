@@ -391,14 +391,14 @@ $(document).ready(function($) {
     },
     rules: {
 
-      boardContent:{
+      content:{
         required: true
       }
 
     },
     messages: {
 
-      boardContent:{
+      content:{
         required: "*必填"
       }
 
