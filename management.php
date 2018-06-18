@@ -8,22 +8,7 @@ if (!isset($_SESSION['account']) || @$_SESSION['authority'] != 1) {
 
 <head>
     <title>胖不是罪 甜點專賣網</title>
-    <link rel="shortcut icon" href="images/icon.png">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <?php include("link.php"); ?>
     <script src="//jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
     <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
@@ -137,40 +122,7 @@ if (!isset($_SESSION['account']) || @$_SESSION['authority'] != 1) {
             </div>
         </div>
     </footer>
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen">
-        <svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
-        </svg>
-    </div>
-    <!--<script src="js/jquery.min.js"></script>-->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.timepicker.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="js/google-map.js"></script>
-    <script src="js/main.js"></script>
-    <script type="text/javascript">
-    $("#gotop").click(function() {
-        jQuery("html,body").animate({
-            scrollTop: 0
-        }, 500);
-    });
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 300) {
-            $('#gotop').fadeIn("fast");
-        } else {
-            $('#gotop').stop().fadeOut("fast");
-        }
-    });
-    </script>
+    <?php include("loader.php"); ?>
 </body>
 
 </html>
