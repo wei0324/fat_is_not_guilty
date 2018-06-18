@@ -20,7 +20,7 @@ if ($oper == "query") {
       }
       mysqli_close($link); // 關閉資料庫連結
 
-      echo json_encode($a);
+      echo json_encode(@$a);
       exit;
 }
 
