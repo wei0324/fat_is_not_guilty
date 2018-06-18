@@ -183,7 +183,7 @@ if ( $result = mysqli_query($link, $sql) ) {
                     </div>
                     <br>
                     <?php echo "<button onclick=\"cart(1,".$row["id"].")\" class=\"btn btn-primary p".$row["id"]."\">加入購物車</button>";?>
-                    <button type="button" class="btn btn-danger">馬上購買</button>
+                    <a href="cart_web.php"><button type="button" class="btn btn-danger" onclick="cart(1,<?php echo $_GET['id'] ?>)">馬上購買</button></a>
                     <br>
                     <div class="clear"></div>
                 </div>
