@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if (!isset($_SESSION['account'])) {
+      echo '<meta http-equiv=refresh content=0;url="index.php">';
+    }
  ?>
 <!DOCTYPE html>
 <html>

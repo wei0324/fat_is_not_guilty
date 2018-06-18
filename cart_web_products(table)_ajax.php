@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $link = mysqli_connect("localhost", "root", "root123456", "group_15") // 建立MySQL的資料庫連結
 or die("無法開啟MySQL資料庫連結!<br>");
 
@@ -11,10 +11,10 @@ $arr_oper = array("insert" => "新增", "update" => "修改", "delete" => "刪�
 $oper = $_POST['oper'];
 
 if ($oper == "query") {
-      $sql = "select * from orders";
+      $sql = "select * from orders where account = '".@$_SESSION['account']."'";
       if ($result = mysqli_query($link, $sql)) {
             while ($row = mysqli_fetch_assoc($result)) {
-                  $a['data'][] = array($row["name"], "$".$row["price"],"<input type=\"text\" id=\"num\" name=\"num\" value='".$row["num"]."'>　<button type='button' class='btn btn-warning btn-xs' id='btn_update'><i class='glyphicon glyphicon-pencil'></i>修改</button> ","<button type='button' class='btn btn-danger btn-xs' id='btn_delete'><i class='glyphicon glyphicon-remove'></i>刪除</button>",$row["id"]);
+                  $a['data'][] = array($row["name"], "$".$row["price"],/*"<input type=\"text\" id=\"num\" name=\"num\" value='".*/$row["num"]/*."'>　<button type='button' class='btn btn-warning btn-xs' id='btn_update'><i class='glyphicon glyphicon-pencil'></i>修改</button> "*/,"<button type='button' class='btn btn-danger btn-xs' id='btn_delete'><i class='glyphicon glyphicon-remove'></i>刪除</button>",$row["id"]);
             }
             mysqli_free_result($result); // 釋放佔用的記憶體
       }

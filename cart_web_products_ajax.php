@@ -9,10 +9,8 @@ echo "<div class=\"row\" id=\"orders\">
                             <th class=\"text-center\">品名</th>
                             <th class=\"text-center\">價格</th>
                             <th class=\"text-center\">數量</th>
-
                             <th class=\"text-center\">刪除</th>
                         </tr>
-                    
                     </thead>
                     </table>
                   </form>
