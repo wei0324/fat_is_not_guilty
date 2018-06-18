@@ -23,7 +23,7 @@ echo "<div class=\"row\" id=\"message\">
                                     <label id=\"email-error\" class=\"error\" for=\"email\"></label>
                                 </td>
                                 <td class=\"text-center\">
-                                    <textarea id=\"message\" name=\"message\" style=\"resize:none;height: 100%;width:100%\" class=\"area\"></textarea>
+                                    <textarea id=\"content\" name=\"content\" style=\"resize:none;height: 100%;width:100%\" class=\"area\"></textarea>
                                     <br/>
                                     <label id=\"message-error\" class=\"error\" for=\"message\"></label>
                                 </td>
@@ -35,7 +35,7 @@ echo "<div class=\"row\" id=\"message\">
                         </thead>
                     </table>
                 </form>
-                <table id=\"example3\" class=\"table table-striped table-bordered\">
+                <table id=\"example1\" class=\"table table-striped table-bordered\">
                     <thead>
                         <tr>
                             <th class=\"text-center\">姓名</th>
