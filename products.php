@@ -9,13 +9,14 @@
     <script type="text/javascript">
     var xmlHttp;
 
-    function sendRequest($i) {
+    function sendRequest($i, $j) {
         if (window.XMLHttpRequest) xmlHttp = new XMLHttpRequest(); //建立XMLHttpRequest物件
         else if (window.ActiveXObject) xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-        var url = 'products_ajax.php?page=' + $i;
+        var url = 'products_ajax.php?page=' + $i + "&category=" + $j;
         xmlHttp.open('GET', url, true); //建立XMLHttpRequest連線要求
         xmlHttp.onreadystatechange = catchResult; //指定處理程式
         xmlHttp.send(null);
+
     }
 
     function catchResult() {
@@ -24,7 +25,7 @@
                 var str = xmlHttp.responseText; //接收以文字方式傳回的執行結果
                 document.getElementById('products_content').innerHTML = str;
             } else {
-                alert('執行錯誤,代碼:' + xmlHttp.status + '\(' + xmlHttp.statusText + '\)');
+                /*alert('執行錯誤,代碼:' + xmlHttp.status + '\(' + xmlHttp.statusText + '\)');*/
             }
         }
     }
@@ -78,7 +79,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link " href="products.php?category=0#section-menu" id="navbarDropdown" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false" onclick="sendRequest(1,0)">
           蛋糕
         </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -87,7 +88,7 @@
                                 <a class="dropdown-item" href="#">3</a>
                             </div>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link " href="products.php?category=1#section-menu" id="navbarDropdown" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false" onclick="sendRequest(1,1)">
           泡芙
         </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -97,8 +98,8 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          鬆餅
+                                <a class="nav-link" href="products.php?category=2#section-menu" id="navbarDropdown" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false" onclick="sendRequest(1,2)">
+          其他
         </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">1</a>
@@ -122,8 +123,11 @@ if (!$link) {
     exit();
 }
 echo "<div  id='products_content'>";
-
-if ($result = mysqli_query($link, "SELECT * FROM products")) {
+if(isset($_GET['category']))
+    $category=$_GET['category'];
+else
+    $category=0;
+if ($result = mysqli_query($link, "SELECT * FROM products where category=".$category)) {
     $total_records = mysqli_num_rows($result);
     $total_page = ceil($total_records / 9);
 
@@ -132,8 +136,10 @@ if ($result = mysqli_query($link, "SELECT * FROM products")) {
 echo "</div></div></div>";
 
 echo "<div style=\"margin: auto\" id=\"myDIV\">
-                <nav aria-label=\"Page navigation example\">
-                    <ul class=\"pagination\">
+                <nav aria-label=\"Page navigation example\" id='page_nav'>
+
+
+<ul class=\"pagination\">
                         <li class=\"page-item\">
                             <a class=\"page-link\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
                                     <span aria-hidden=\"true\">&laquo;</span>
@@ -143,7 +149,7 @@ echo "<div style=\"margin: auto\" id=\"myDIV\">
 
                         if(!isset($_GET['page']))
                         {
-                            echo "<script type=\"text/javascript\">sendRequest(1);</script>";
+                            echo "<script type=\"text/javascript\">sendRequest(1,".$category.");</script>";
 
                             echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
         echo 0;
@@ -183,6 +189,12 @@ echo "<li class=\"page-item\">
                                </a>
                         </li>
                     </ul>
+    
+
+
+
+
+
                 </nav>
             </div>";
 
@@ -277,7 +289,14 @@ mysqli_close($link); // 關閉資料庫連結
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i - 1].className += " active";
-                    sendRequest(i - 1);
+                    <?php
+                    if(isset($_GET['category']))
+    $category=$_GET['category'];
+else
+    $category=0;
+echo "sendRequest(i-1,".$category.");";
+                    ?>
+
                     location.href = "#section-menu";
                 }
             }
@@ -287,7 +306,13 @@ mysqli_close($link); // 關閉資料庫連結
                 if ($(btns[i]).hasClass("active") == true) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i + 1].className += " active";
-                    sendRequest(i + 1);
+                    <?php
+                    if(isset($_GET['category']))
+    $category=$_GET['category'];
+else
+    $category=0;
+echo "sendRequest(i+1,".$category.");";
+                    ?>
                     location.href = "#section-menu";
                 }
             }
@@ -309,7 +334,13 @@ mysqli_close($link); // 關閉資料庫連結
             this.className += " active";
             for (var j = 1; j < btns.length - 1; j++) {
                 if ($(btns[j]).hasClass("active") == true) {
-                    sendRequest(j);
+                    <?php
+                    if(isset($_GET['category']))
+    $category=$_GET['category'];
+else
+    $category=0;
+echo "sendRequest(j,".$category.");";
+                    ?>
                     location.href = "#section-menu";
                 }
             }

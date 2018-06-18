@@ -154,7 +154,7 @@
                     <h2 class="display-4"><a href="products.php"  style="color: black">商品專區</a></h2>
                     <div class="row justify-content-center">
                         <div class="col-md-7">
-                            <p class="lead">本店提供各類甜點，無論是蛋糕、鬆餅、或是小甜食，所有您想吃的都在這裡。
+                            <p class="lead">本店提供各類甜點，無論是蛋糕、泡芙、或是小甜食，所有您想吃的都在這裡。
                                 <br/>保證能滿足您挑剔的味蕾。</p>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                             <a class="nav-link" id="pills-lunch-tab" data-toggle="pill" href="#pills-lunch" role="tab" aria-controls="pills-lunch" aria-selected="false">泡芙</a>
                         </li>
                         <li class="nav-item ftco-animate">
-                            <a class="nav-link" id="pills-dinner-tab" data-toggle="pill" href="#pills-dinner" role="tab" aria-controls="pills-dinner" aria-selected="false">鬆餅</a>
+                            <a class="nav-link" id="pills-dinner-tab" data-toggle="pill" href="#pills-dinner" role="tab" aria-controls="pills-dinner" aria-selected="false">其他</a>
                         </li>
                     </ul>
                     <div class="tab-content text-left">
@@ -185,7 +185,7 @@ if (!$link) {
     echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
     exit();
 }
-$result = mysqli_query($link, "SELECT * FROM products");
+$result = mysqli_query($link, "SELECT * FROM products where category=0");
                                 for ($i=0; $i < 2 ; $i++) {
                                     echo "<div class=\"col-md-6 ftco-animate\">";
 
@@ -240,7 +240,7 @@ if (!$link) {
     echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
     exit();
 }
-$result = mysqli_query($link, "SELECT * FROM products");
+$result = mysqli_query($link, "SELECT * FROM products where category=1");
                                 for ($i=0; $i < 2 ; $i++) {
                                     echo "<div class=\"col-md-6 ftco-animate\">";
 
@@ -280,7 +280,7 @@ if (!$link) {
     echo "連結錯誤訊息: " . mysqli_connect_error() . "<br>"; //顯示錯誤訊息
     exit();
 }
-$result = mysqli_query($link, "SELECT * FROM products");
+$result = mysqli_query($link, "SELECT * FROM products where category=2");
                                 for ($i=0; $i < 2 ; $i++) {
                                     echo "<div class=\"col-md-6 ftco-animate\">";
 
