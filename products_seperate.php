@@ -30,30 +30,6 @@ if ( $result ) {
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/products_seperate.css">
 
-
-    <script type="text/javascript">
-    var xmlHttp;
-
-    function sendRequest($i) {
-        if (window.XMLHttpRequest) xmlHttp = new XMLHttpRequest(); //建立XMLHttpRequest物件
-        else if (window.ActiveXObject) xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-        var url = 'products_ajax.php?page=' + $i;
-        xmlHttp.open('GET', url, true); //建立XMLHttpRequest連線要求
-        xmlHttp.onreadystatechange = catchResult; //指定處理程式
-        xmlHttp.send(null);
-    }
-
-    function catchResult() {
-        if (xmlHttp.readyState == 4 || xmlHttp.readyState == 'complete') { //取得XMLHttpRequest物件的狀態值,4--動作完成
-            if (xmlHttp.status == 200) { //執行狀態：200：OK 、403：Forbidden 、404：Not Found.......
-                var str = xmlHttp.responseText; //接收以文字方式傳回的執行結果
-                document.getElementById('products_content').innerHTML = str;
-            } else {
-                alert('執行錯誤,代碼:' + xmlHttp.status + '\(' + xmlHttp.statusText + '\)');
-            }
-        }
-    }
-    </script>
     <script type="text/javascript">
     function add() {
         document.getElementById("item-quantity").value++;
@@ -66,6 +42,9 @@ if ( $result ) {
 
     }
     </script>
+    <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
@@ -175,28 +154,7 @@ if ( $result = mysqli_query($link, $sql) ) {
 
 
 ?>
-                            <!--<p class="p_style"><span lang="en-US" class="span_style">#&nbsp;</span>
-                            <span lang="zh-TW" class="span_style">無奶油</span>
-                            <span lang="en-US" class="span_style">&nbsp;-&nbsp;</span>
-                            <span lang="zh-TW" class="span_style">蛋糕變得簡單、純淨</span>
-                        </p>
-                        <p lang="en-US" class="p_style"><span class="span_style">&nbsp;</span></p>
-                        <p class="p_style"><span lang="en-US" class="span_style">#&nbsp;</span>
-                            <span lang="zh-TW" class="span_style">無澱粉</span>
-                            <span lang="en-US" class="span_style">&nbsp;-&nbsp;</span>
-                            <span lang="zh-TW" class="span_style">蛋糕變得更「輕」</span>
-                        </p>
-                        <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 10pt; color: black;"><span class="span_style"><br></span></p>
-                        <p lang="en-US" class="p_style"><span class="span_style">#TATURA乳酪，更純淨</span></p>
-                        <p lang="en-US" class="p_style">&nbsp;</p>
-                        <p class="p_style"><span class="span_style">#殺菌液蛋，無蛋殼，更安全</span></p>
-                        <p class="p_style">&nbsp;</p>
-                        <p class="p_style"><span class="span_style">#天然系「日式輕浴蒸烤技術」</span></p>
-                        <p style="margin: 0in; line-height: 20pt; font-family: 微軟正黑體; font-size: 10pt; color: black;"><span class="span_style"></span></p>
-                        <span lang="en-US" style="font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;</span>
-                        <span lang="en-US" style="font-size: 12pt;">&nbsp;</span>
-                        </p>
-                        <p style="text-align: center;"></p>-->
+
                     </div>
                     <hr>
                     <h3>數量</h3>
@@ -324,6 +282,64 @@ if ( $result = mysqli_query($link, $sql) ) {
         </div>
     </section>
     <!-- END section -->
+        <section class="ftco-section bg-light" id="section-contact">
+            <h2 class="display-5" style="text-align: center;">留言板</h2>
+        <div class="container">
+            <?php include 'board.php';?>
+            <div class="row">
+                <div class="col-md mb-5 ftco-animate">
+
+                    <form action="" method="post" onsubmit="return check_login();">
+                        <div class="form-group">
+                            <label for="account" class="sr-only">Account</label>
+                            <input type="text" class="form-control" id="account" name="account" placeholder="姓名 (Enter your name)" readonly="readonly">
+                            <?php
+                            if (!isset($_SESSION['account']))
+{
+
+    echo "<script>document.getElementById(\"account\").value=\"欲留言請先登入!!\";document.getElementById('account').style.cssText = 'color: red !important';</script>";
+}
+else
+{
+    echo "<script>document.getElementById(\"account\").value=\"".$_SESSION['account']."\";document.getElementById('account').style.color=null;</script>";
+}
+                            ?>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="sr-only">content</label>
+                            <textarea name="content" id="content" cols="30" rows="10" class="form-control" placeholder="內容 (Write your content)"></textarea>
+                        </div>
+                        <div class="form-group">
+
+
+                            <input type="submit" class="btn btn-primary btn-lg" value="傳送訊息" >
+                        </div>
+                    </form>
+<?php
+$link = mysqli_connect("localhost","root","root123456","group_15")
+or die("無法開啟MySQL資料庫連結!<br>");
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link,"SET collation_connection = 'utf8_unicode_ci'");
+
+if (isset($_POST['account']))
+{
+  $sql="insert into comment (productID,account,content,time) values ('". $_GET['id'] . "','" . $_POST['account'] . "','" . $_POST['content']."',NOW())";
+
+  if ( $result = mysqli_query($link, $sql) ) // 送出查詢的SQL指令
+    $msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";
+  else
+    $msg= "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" .mysqli_error($link) ."</span>";
+
+  echo $msg;
+}
+mysqli_close($link); // 關閉資料庫連結
+
+?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section -->
     <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
@@ -386,6 +402,7 @@ if ( $result = mysqli_query($link, $sql) ) {
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
         </svg>
     </div>
+    <script src="js/comment_board.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -400,8 +417,32 @@ if ( $result = mysqli_query($link, $sql) ) {
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
+        function sendRequest($page) {
+
+        $.ajax({
+            url: 'comment_board_ajax.php',
+            data: {
+                productID : <?php echo $_GET['id']; ?>
+            },
+            type: 'POST',
+            dataType: "json",
+            success: function(Jdata) {
+                $content="";
+                for($i=($page-1)*5;$i<($page-1)*5+5;$i++)
+                {
+                    $content = $content+"<tr><td>"+Jdata.data[$i][0]+"</td><td>"+Jdata.data[$i][1]+"</td><td>"+Jdata.data[$i][2]+"</td></tr>";
+                    $("#comment_content").html($content);
+                }
+                
+                
+            },
+            error: function(xhr, ajaxOptions, thrownError) {}
+        });
+    }
+    </script>
+    <script type="text/javascript">
     $(document).ready(function() {
-        var header = document.getElementById("myDIV");
+        var header = document.getElementById("page");
         var btns = header.getElementsByClassName("page-item");
 
         btns[0].addEventListener("click", function() {
@@ -410,7 +451,6 @@ if ( $result = mysqli_query($link, $sql) ) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i - 1].className += " active";
                     sendRequest(i - 1);
-                    location.href = "#section-menu";
                 }
             }
         });
@@ -420,7 +460,6 @@ if ( $result = mysqli_query($link, $sql) ) {
                     btns[i].className = btns[i].className.replace(" active", "");
                     btns[i + 1].className += " active";
                     sendRequest(i + 1);
-                    location.href = "#section-menu";
                 }
             }
         });
@@ -428,7 +467,7 @@ if ( $result = mysqli_query($link, $sql) ) {
     </script>
     <script>
     // Add active class to the current button (highlight it)
-    var header = document.getElementById("myDIV");
+    var header = document.getElementById("page");
     var btns = header.getElementsByClassName("page-item");
 
     for (var i = 1; i < btns.length - 1; i++) {
@@ -442,7 +481,6 @@ if ( $result = mysqli_query($link, $sql) ) {
             for (var j = 1; j < btns.length - 1; j++) {
                 if ($(btns[j]).hasClass("active") == true) {
                     sendRequest(j);
-                    location.href = "#section-menu";
                 }
             }
         });
@@ -462,6 +500,38 @@ if ( $result = mysqli_query($link, $sql) ) {
         }
     });
     </script>
+    <script type="text/javascript">
+    $.ajax({
+            url: 'comment_board_ajax.php',
+            data: {
+                productID : <?php echo $_GET['id']; ?>
+            },
+            type: 'POST',
+            dataType: "json",
+            success: function(Jdata) {
+                $content="";
+                for($i=0;$i<5;$i++)
+                {
+                    $content = $content+"<tr><td>"+Jdata.data[$i][0]+"</td><td>"+Jdata.data[$i][1]+"</td><td>"+Jdata.data[$i][2]+"</td></tr>";
+                    $("#comment_content").html($content);
+                }
+                
+            },
+            error: function(xhr, ajaxOptions, thrownError) {}
+        });
+</script>
+<script type="text/javascript">
+    function check_login() {
+        if(<?php if (!isset($_SESSION['account'])) echo "true"; else echo "false"; ?>)
+        {
+            alert("欲留言請先登入!!");
+            document.location.href="login.php";
+            return false;
+        }
+        else
+            return true;
+    }
+</script>
 </body>
 
 </html>

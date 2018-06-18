@@ -6,7 +6,6 @@
     <title>胖不是罪 甜點專賣網</title>
     <?php include("link.php"); ?>
     <link rel="stylesheet" href="css/sidebar.css">
-
     <script type="text/javascript">
     var xmlHttp;
 
@@ -29,27 +28,6 @@
             }
         }
     }
-    </script>
-    <script type="text/javascript">
-        $.ajax({
-            url: 'cart_ajax.php',
-            data: {
-            },
-            type: 'POST',
-            dataType: "json",
-            success: function(Jdata) {
-                $(".cart_cnt").html(Jdata.length); //顯示購物車物品數量
-                for ($i = 0; $i <Jdata.length; $i++) {
-                    
-                    if($((".p"+Jdata[$i]).length))
-                    {
-                        $((".p"+Jdata[$i])).attr("onclick","cart(2,"+ Jdata[$i] +")");
-                        $((".p"+Jdata[$i])).html("取消購物車");
-                    }
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {}
-        });
     </script>
 </head>
 
@@ -162,7 +140,8 @@ echo "<div style=\"margin: auto\" id=\"myDIV\">
                                     <span class=\"sr-only\">Previous</span>
                                 </a>
                         </li>";
-                        if(NULL==@$_GET['page'])
+
+                        if(!isset($_GET['page']))
                         {
                             echo "<script type=\"text/javascript\">sendRequest(1);</script>";
 
@@ -170,15 +149,12 @@ echo "<div style=\"margin: auto\" id=\"myDIV\">
         echo 0;
         echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=1#section-menu'>1</a></li>";
         for ($i = 2; $i <= $total_page; $i++) {
-    /*if ($i == 1) {
-        echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
-    } else*/{
+    {
 
         echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
         echo $i - 1;
         echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
-        /*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
-        /*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
+        
     }
 
 }
@@ -188,18 +164,15 @@ echo "<div style=\"margin: auto\" id=\"myDIV\">
 
 
 for ($i = 1; $i <= $total_page; $i++) {
-    /*if ($i == 1) {
-        echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\"><a class=\"page-link\" href=\"#\">1</a></li>";
-    } else*/{
+    
         if(@$_GET['page']==$i)
             echo "<li class=\"page-item active\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
         else
             echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to=\"";
         echo $i - 1;
         echo "\"><a class=\"page-link\" href='" . $_SERVER['PHP_SELF'] . "?page=$i#section-menu'>$i</a></li>";
-        /*<a href='" . $_SERVER['PHP_SELF'] . "?page=$i'>$i</a>*/
-        /*echo "<li class=\"page-item\" data-target=\"#carouselExampleIndicators\" data-slide-to='" .$i-1. "'><a class='page-link' href='#'>".$i."</a></li>";*/
-    }
+        
+    
 
 }
  }
