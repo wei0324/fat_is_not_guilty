@@ -1,6 +1,24 @@
 <?php include("passwordEdit.php"); ?>
 <script type="text/javascript">
-
+$.ajax({
+            url: 'cart_ajax.php',
+            data: {
+            },
+            type: 'POST',
+            dataType: "json",
+            success: function(Jdata) {
+                $(".cart_cnt").html(Jdata.length); //顯示購物車物品數量
+                for ($i = 0; $i <Jdata.length; $i++) {
+                    
+                    if($((".p"+Jdata[$i]).length))
+                    {
+                        $((".p"+Jdata[$i])).attr("onclick","cart(2,"+ Jdata[$i] +")");
+                        $((".p"+Jdata[$i])).html("取消購物車");
+                    }
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {}
+        });
 
         function cart(add_remove,id) {
         $.ajax({
@@ -63,7 +81,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="index.php#section-home" class="nav-link">首頁</a></li>
                     <li class="nav-item"><a href="index.php#section-offer" class="nav-link">本日精選</a></li>
-                    <li class="nav-item"><a href="index.php#section-menu" class="nav-link">商品專區</a></li>
+                    <li class="nav-item"><a href="products.php" class="nav-link">商品專區</a></li>
                     <li class="nav-item"><a href="index.php#section-news" class="nav-link">活動快訊</a></li>
                     <li class="nav-item"><a href="index.php#section-about" class="nav-link">關於我們</a></li>
                     <li class="nav-item"><a href="index.php#section-contact" class="nav-link">連繫我們</a></li>

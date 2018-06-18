@@ -2,7 +2,7 @@
  $(function() {
 /*form1*/
      //查詢
-     tbl = $('#example3').DataTable({
+     tbl = $('#example1').DataTable({
          "scrollX": false,
          "scrollY": false,
          "scrollCollapse": false, //當筆數小於scrillY高度時,自動縮小
@@ -23,14 +23,12 @@
      //修改
      $('tbody').on('click', '#btn_update', function() {
          var data = tbl.row($(this).closest('tr')).data();
-         let price = data[1].replace('$', '');
-         let description = data[2].replace(/<br \/>/g, ''); // 處理nl2br造成的問題
+         let message = data[2].replace(/<br \/>/g, ''); // 處理nl2br造成的問題
 
          $('#name').val(data[0]);
-         $('#price').val(price);
-         $('#description').html(description);
-         /*$('#image_name').val(data[3]);*/
-         $("#id").val(data[5]);
+         $('#email').val(data[1]);
+         $('#content').html(message);
+         $("#id").val(data[4]);
          $("#oper").val("update");
      });
 
@@ -50,7 +48,7 @@
          if (!confirm('是否確定要刪除?'))
              return false;
 
-         $("#id").val(data[5]);
+         $("#id").val(data[4]);
          $("#oper").val("delete"); //刪除
          CRUD();
      });

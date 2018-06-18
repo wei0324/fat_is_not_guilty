@@ -121,10 +121,10 @@
 
                 }
                 else
-                {   
+                {
                     $temp="";
                     if(mb_strlen( $row["description"], "utf-8")<150)
-                        for ($k=0; $k < 150-mb_strwidth( $row["description"], "utf-8") ; $k++) { 
+                        for ($k=0; $k < 150-mb_strwidth( $row["description"], "utf-8") ; $k++) {
                             $temp=$temp."&nbsp;";
                         }
                     $description=$row["description"]."......".$temp;
@@ -204,10 +204,10 @@ $result = mysqli_query($link, "SELECT * FROM products where category=0");
 
                 }
                 else
-                {   
+                {
                     $temp="";
                     if(mb_strlen( $row["description"], "utf-8")<150)
-                        for ($k=0; $k < 150-mb_strwidth( $row["description"], "utf-8") ; $k++) { 
+                        for ($k=0; $k < 150-mb_strwidth( $row["description"], "utf-8") ; $k++) {
                             $temp=$temp."&nbsp;";
                         }
                     $description=$row["description"]."......".$temp;
@@ -384,18 +384,18 @@ $result = mysqli_query($link, "SELECT * FROM products where category=2");
                     </div>
                 </div>
                 <div class="col-md mb-5 ftco-animate">
-                    <form action="" method="post">
+                    <form action="" method="post" name="connect" id="connect">
                         <div class="form-group">
                             <label for="name" class="sr-only">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="姓名 (Enter your name)">
+                            <input type="text" class="form-control" id="nameConnect" name="nameConnect" placeholder="姓名 (Enter your name) " value="<?php echo@$_SESSION['account']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="信箱 (Enter your email)">
+                            <input type="text" class="form-control" id="emailConnect" name="emailConnect" placeholder="信箱 (Enter your email)" value="<?php echo@$_SESSION['usermail']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="message" class="sr-only">Message</label>
-                            <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="內容 (Write your message)"></textarea>
+                            <textarea id="messageConnect"  name="messageConnect" cols="30" rows="10" class="form-control" placeholder="內容 (Write your message)"></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-lg" value="傳送訊息">
@@ -407,9 +407,9 @@ or die("無法開啟MySQL資料庫連結!<br>");
 mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link,"SET collation_connection = 'utf8_unicode_ci'");
 
-if (isset($_POST['name']))
+if (isset($_POST['nameConnect']))
 {
-  $sql="insert into message (name,email,message) values ('" . $_POST['name'] . "','" . $_POST['email'] . "','" . $_POST['message']."')";
+  $sql="insert into message (name,email,message) values ('" . $_POST['nameConnect'] . "','" . $_POST['emailConnect'] . "','" . $_POST['messageConnect']."')";
 
   if ( $result = mysqli_query($link, $sql) ) // 送出查詢的SQL指令
     $msg= "<span style='color:#0000FF'>資料新增成功!<br>影響記錄數: ". mysqli_affected_rows($link) . "筆</span>";

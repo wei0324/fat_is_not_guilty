@@ -1,8 +1,8 @@
 var tbl;
 $(function() {
-/*form4*/
+/*form1*/
     //查詢
-    tbl = $('#example4').DataTable({
+    tbl = $('#example1').DataTable({
         "scrollX": false,
         "scrollY": false,
         "scrollCollapse": false, //當筆數小於scrillY高度時,自動縮小
@@ -12,7 +12,7 @@ $(function() {
         "ajax": {
             url: "management_order(table)_ajax.php",
             data: function(d) {
-               return $('#form4').serialize() + "&oper=query";
+               return $('#form1').serialize() + "&oper=query";
             },
             type: 'POST',
             dataType: 'json'
@@ -58,7 +58,7 @@ $(function() {
     });
 
     //送出表單 (儲存)
-    $("#form4").validate({
+    $("#form1").validate({
         submitHandler: function(form) {
             CRUD();
         },
@@ -112,19 +112,19 @@ $(function() {
     function CRUD() {
         $.ajax({
             url: "management_order(table)_ajax.php",
-            data: $("#form4").serialize(),
+            data: $("#form1").serialize(),
             type: 'POST',
             dataType: "json",
             success: function(JData) {
                 if (JData.code) {
                     toastr["error"](JData.message);
-                    document.getElementById("form4").reset();
+                    document.getElementById("form1").reset();
                     $(".area").html("");
                 } else {
                     $("#oper").val("insert");
                     toastr["success"](JData.message);
                     tbl.ajax.reload();
-                    document.getElementById("form4").reset();
+                    document.getElementById("form1").reset();
                     $(".area").html("");
                 }
             },

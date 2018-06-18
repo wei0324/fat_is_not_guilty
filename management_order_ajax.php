@@ -1,6 +1,6 @@
 <?php
 echo "<div class=\"row\" id=\"order\">
-                <form class=\"\" name=\"form4\" id=\"form4\" method=\"post\" style=\"overflow: auto;width:100%\" enctype=\"multipart/form-data\" >
+                <form class=\"\" name=\"form1\" id=\"form1\" method=\"post\" style=\"overflow: auto;width:100%\" enctype=\"multipart/form-data\" >
                     <input type=\"hidden\" name=\"oper\" id=\"oper\" value=\"insert\">
                     <input type=\"hidden\" name=\"id\" id=\"id\" value=\"\">
                     <table id=\"edit\" class=\"table table-striped table-bordered\">
@@ -48,7 +48,7 @@ echo "<div class=\"row\" id=\"order\">
                         </thead>
                     </table>
                 </form>
-                <table id=\"example4\" class=\"table table-striped table-bordered\">
+                <table id=\"example1\" class=\"table table-striped table-bordered\">
                     <thead>
                         <tr>
                           <th class=\"text-center\">帳號</th>

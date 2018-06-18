@@ -25,11 +25,11 @@ if ($oper == "query") {
 }
 
 if ($oper == "insert") {
-      $sql = "insert into message(name,price,description,image_name) values ('" . $_POST['name'] . "','" . $_POST['email'] . "','" . $_POST['message'] . "')";
+      $sql = "insert into message(name,email,message) values ('" . $_POST['name'] . "','" . $_POST['email'] . "','" . $_POST['message'] . "')";
 }
 
 if ($oper == "update") {
-      $sql = "update message set name='" . $_POST['name'] . "',email='" . $_POST['email'] . "',message='" . $_POST['message'] . "' where id='" . $_POST['id'] . "'";
+      $sql = "update message set name='" . $_POST['name'] . "',email='" . $_POST['email'] . "',message='" . $_POST['content'] . "' where id='" . $_POST['id'] . "'";
 }
 
 if ($oper == "delete") {
