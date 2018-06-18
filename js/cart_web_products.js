@@ -22,11 +22,13 @@ $(function() {
 
     //修改
     $('tbody').on('click', '#btn_update', function() {
-        var data = tbl.row($(this).closest('tr')).data();
-
-        $('#num').val(num);
-        $("#id").val(data[5]);
-        $("#oper").val("update");
+      $("#form1").validate({
+        submitHandler:function(form) {
+          $("#oper").val("update");
+          $("#id").val(data[4]);
+          CRUD();
+        },
+      });
     });
 
     //取消
@@ -45,7 +47,7 @@ $(function() {
         if (!confirm('是否確定要刪除?'))
             return false;
 
-        $("#id").val(data[5]);
+        $("#id").val(data[4]);
         $("#oper").val("delete"); //刪除
         CRUD();
     });

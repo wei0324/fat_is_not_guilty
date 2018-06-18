@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if (!isset($_SESSION['account'])) {
+      echo '<meta http-equiv=refresh content=0;url="index.php">';
+    }
  ?>
 <!DOCTYPE html>
 <html>
@@ -58,7 +61,7 @@
                 <div class="col-md-12 text-center">
                     <ul class="nav ftco-tab-nav nav-pills mb-5" id="" role="">
                         <li class="nav-item ftco-animate" id="">
-                            <a class="nav-link active" id="products_select" data-toggle="pill" href="" role="" aria-controls="" aria-selected="true">My cart</a>
+                            <a class="nav-link active" id="cart_products_select" data-toggle="pill" href="" role="" aria-controls="" aria-selected="true">My cart</a>
                         </li>
                     </ul>
                 </div>
