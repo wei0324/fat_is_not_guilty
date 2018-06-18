@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018 年 06 月 18 日 14:45
+-- 產生時間： 2018 年 06 月 18 日 16:42
 -- 伺服器版本: 10.1.30-MariaDB
 -- PHP 版本： 7.2.2
 
@@ -21,6 +21,91 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `group_15`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `account`
+--
+
+CREATE TABLE `account` (
+  `account` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(12) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `info` tinyint(1) NOT NULL,
+  `authority` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=big5;
+
+--
+-- 資料表的匯出資料 `account`
+--
+
+INSERT INTO `account` (`account`, `password`, `email`, `address`, `info`, `authority`) VALUES
+('admin', 'admin123456', 'admin@admin', 'admin', 0, 1),
+('member', 'member123456', 'ncue@gmail.com', '國立彰化師範大學', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `comment`
+--
+
+CREATE TABLE `comment` (
+  `no` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
+  `account` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=big5;
+
+--
+-- 資料表的匯出資料 `comment`
+--
+
+INSERT INTO `comment` (`no`, `productID`, `account`, `content`, `time`) VALUES
+(1, 34, '34', '344', '2018-06-17 00:00:00'),
+(2, 0, 'admin', 'jier', '2018-06-18 00:17:53'),
+(3, 0, 'admin', 'fe', '2018-06-18 00:22:32'),
+(4, 0, 'admin', 'fwq', '2018-06-18 00:46:14'),
+(5, 0, 'admin', 'fefe', '2018-06-18 00:48:20'),
+(6, 1, 'admin', 'fff', '2018-06-18 22:05:13');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `message` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=big5;
+
+--
+-- 資料表的匯出資料 `message`
+--
+
+INSERT INTO `message` (`id`, `name`, `email`, `message`) VALUES
+(1, '123', '456', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
+(2, 'f', 'e', 'g'),
+(13, '6666', '555555555', '4444444');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `account` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `price` int(10) NOT NULL,
+  `num` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=big5;
 
 -- --------------------------------------------------------
 
@@ -70,6 +155,30 @@ INSERT INTO `products` (`id`, `name`, `price`, `description`, `category`, `image
 --
 
 --
+-- 資料表索引 `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`account`);
+
+--
+-- 資料表索引 `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`no`);
+
+--
+-- 資料表索引 `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `products`
 --
 ALTER TABLE `products`
@@ -78,6 +187,24 @@ ALTER TABLE `products`
 --
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
+
+--
+-- 使用資料表 AUTO_INCREMENT `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- 使用資料表 AUTO_INCREMENT `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- 使用資料表 AUTO_INCREMENT `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表 AUTO_INCREMENT `products`
