@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $link = mysqli_connect("localhost", "root", "root123456", "group_15") // 建立MySQL的資料庫連結
 or die("無法開啟MySQL資料庫連結!<br>");
 
@@ -11,10 +11,10 @@ $arr_oper = array("insert" => "新增", "update" => "修改", "delete" => "刪�
 $oper = $_POST['oper'];
 
 if ($oper == "query") {
-      $sql = "select * from orderdone";
+      $sql = "select * from orders";
       if ($result = mysqli_query($link, $sql)) {
             while ($row = mysqli_fetch_assoc($result)) {
-                  $a['data'][] = array($row["account"], .$row["productID"], $row["productName"], "$".$row["price"], $row["quantity"],"<button type='button' class='btn btn-warning btn-xs' id='btn_update'><i class='glyphicon glyphicon-pencil'></i>修改</button> <button type='button' class='btn btn-danger btn-xs' id='btn_delete'><i class='glyphicon glyphicon-remove'></i>刪除</button>",$row["no"]);
+                  $a['data'][] = array($row["account"],$row["productID"],$row["name"], "$".$row["price"],$row["num"],"<button type='button' class='btn btn-warning btn-xs' id='btn_update'><i class='glyphicon glyphicon-pencil'></i>修改</button> <button type='button' class='btn btn-danger btn-xs' id='btn_delete'><i class='glyphicon glyphicon-remove'></i>刪除</button>",$row["id"]);
             }
             mysqli_free_result($result); // 釋放佔用的記憶體
       }
@@ -24,16 +24,12 @@ if ($oper == "query") {
       exit;
 }
 
-if ($oper == "insert") {
-      $sql = "insert into orderdone(account,productID,productName,price,quantity) values ('" . $_POST['account'] . "','" . $_POST['productID'] . "','" . $_POST['productName'] ."','" . $_POST['price'] . "','" . $_POST['quantity'] ."')";
-}
-
 if ($oper == "update") {
-      $sql = "update orderdone set account='" . $_POST['account'] . "',productID='" . $_POST['productID'] . "',productName='" . $_POST['productName'] . "',price='" . $_POST['price'] . "',quantity='" . $_POST['quantity'] ."' where no='" . $_POST['id'] . "'";
+      $sql = "update orders set account='" . $_POST['account'] . "',productID='" . $_POST['productID'] ."',name='" . $_POST['productName'] ."',price='" . $_POST['price'] . "',num='" . $_POST['quantity'] ."' where id='" . $_POST['id'] . "'";
 }
 
 if ($oper == "delete") {
-      $sql = "delete from orderdone where no='" . $_POST['id'] . "'";
+      $sql = "delete from orders where id='" . $_POST['id'] . "'";
 }
 
 if (strlen($sql) > 10) {
