@@ -2,7 +2,7 @@ var tbl;
 $(function() {
 /*form1*/
     //查詢
-    tbl = $('#example').DataTable({
+    tbl = $('#example1').DataTable({
         "scrollX": false,
         "scrollY": false,
         "scrollCollapse": false, //當筆數小於scrillY高度時,自動縮小
@@ -11,9 +11,7 @@ $(function() {
         "lengthChange": true,
         "ajax": {
             url: "cart_web_products(table)_ajax.php",
-            data: function(d) {
-               return $('#form1').serialize() + "&oper=query";
-            },
+            data: {oper:"query"},
             type: 'POST',
             dataType: 'json'
         },
