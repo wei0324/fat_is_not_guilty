@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018 年 06 月 18 日 16:42
+-- 產生時間： 2018 年 06 月 18 日 16:55
 -- 伺服器版本: 10.1.30-MariaDB
 -- PHP 版本： 7.2.2
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `group_15`
 --
+CREATE DATABASE IF NOT EXISTS `group_15` DEFAULT CHARACTER SET big5 COLLATE big5_chinese_ci;
+USE `group_15`;
 
 -- --------------------------------------------------------
 
